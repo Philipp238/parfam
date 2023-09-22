@@ -1,0 +1,572 @@
+Seed: 12345
+
+
+/home/philipp/anaconda3/envs/srbench/bin/python /home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch
+Using cpu.
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/utils.py:253: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  y = torch.tensor(y, dtype=torch.float, device=device)
+########## Learning the following function: 5.997*sin(1.462*x0 - 4.439)*sqrt(Abs(1.079*x0 + 1.332)) ##########
+##### Standard training #####
+Training time: 173.86659288406372
+Computing the formula for the input layer took 0.016 seconds
+Computing the end formula took 0.003 seconds
+Estimated expression (before simplification): 0.311*x0**2 + 1.139*x0*sin(0.09*x0**2 + 0.436*x0 + 1.197) + 0.44*x0*sqrt(Abs(0.838*x0**2 + 3.985*x0 + 0.089)) - 0.398*x0 - 1.852*sin(0.09*x0**2 + 0.436*x0 + 1.197)*sqrt(Abs(0.838*x0**2 + 3.985*x0 + 0.089)) - 9.314*sin(0.09*x0**2 + 0.436*x0 + 1.197) - 7.532*sqrt(Abs(0.838*x0**2 + 3.985*x0 + 0.089)) + 23.729
+running... let's kill it...
+Simplifying the formula took 0.117 seconds
+Estimated expression: 0.311*x0**2 + 1.139*x0*sin(0.09*x0**2 + 0.436*x0 + 1.197) + 0.44*x0*sqrt(Abs(0.838*x0**2 + 3.985*x0 + 0.089)) - 0.398*x0 - 1.852*sin(0.09*x0**2 + 0.436*x0 + 1.197)*sqrt(Abs(0.838*x0**2 + 3.985*x0 + 0.089)) - 9.314*sin(0.09*x0**2 + 0.436*x0 + 1.197) - 7.532*sqrt(Abs(0.838*x0**2 + 3.985*x0 + 0.089)) + 23.729
+Target expression: 5.997*sin(1.462*x0 - 4.439)*sqrt(Abs(1.079*x0 + 1.332))
+Relative l_2-distance: 0.2869722934462839
+L_1 reg: 0.02701752882140377
+Loss: 0.3139898222676877
+##### Classifier informed training ######
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Reduced formula: a8*sin(1.0*a0 + 1.0*a1*x0) + a9*sin(1.0*a0 + 1.0*a1*x0)*sqrt(Abs(1.0*a3 + 1.0*a4*x0))
+Training time: 214.9739227294922
+Computing the formula for the input layer took 0.006 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): -5.579*sin(1.462*x0 - 1.298)*sqrt(Abs(1.247*x0 + 1.539))
+running... let's kill it...
+Simplifying the formula took 0.151 seconds
+Estimated expression: -5.579*sin(1.462*x0 - 1.298)*sqrt(Abs(1.247*x0 + 1.539))
+Target expression: 5.997*sin(1.462*x0 - 4.439)*sqrt(Abs(1.079*x0 + 1.332))
+Relative l_2-distance: 3.5659386485031894e-07
+L_1 reg: 0.0062344382015661086
+Loss: 0.006234794795430959
+########## Learning the following function: 2.604*x0*sin(0.56*x0 + 2.795) + 3.827*x0 ##########
+##### Standard training #####
+Training time: 202.60219287872314
+Computing the formula for the input layer took 0.002 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): -2.604*x0*sin(0.56*x0 - 0.346) + 3.827*x0
+running... let's kill it...
+Simplifying the formula took 0.151 seconds
+Estimated expression: -2.604*x0*sin(0.56*x0 - 0.346) + 3.827*x0
+Target expression: 2.604*x0*sin(0.56*x0 + 2.795) + 3.827*x0
+Relative l_2-distance: 4.493356690269787e-07
+L_1 reg: 0.004694991847547092
+Loss: 0.004695441183216119
+##### Classifier informed training ######
+Reduced formula: a10*x0 + 1.0*a11*x0*sqrt(Abs(a3)) + a12*x0*sin(1.0*a0 + 1.0*a1*x0)
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 185.0454797744751
+Computing the formula for the input layer took 0.001 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): -2.604*x0*sin(0.56*x0 - 0.346) + 3.827*x0
+running... let's kill it...
+Simplifying the formula took 0.230 seconds
+Estimated expression: -2.604*x0*sin(0.56*x0 - 0.346) + 3.827*x0
+Target expression: 2.604*x0*sin(0.56*x0 + 2.795) + 3.827*x0
+Relative l_2-distance: 9.714242105715925e-08
+L_1 reg: 0.004675311462931474
+Loss: 0.004675408605352531
+########## Learning the following function: -1.375*x0 ##########
+##### Standard training #####
+Training time: 362.0401873588562
+Computing the formula for the input layer took 0.001 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): -1.375*x0
+running... let's kill it...
+Simplifying the formula took 0.231 seconds
+Estimated expression: -1.375*x0
+Target expression: -1.375*x0
+Relative l_2-distance: 4.3710373787318946e-08
+L_1 reg: 0.001375131448686875
+Loss: 0.0013751751590606622
+##### Classifier informed training ######
+Reduced formula: a10*x0
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 49.08344006538391
+Computing the formula for the input layer took 0.000 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): -1.375*x0
+running... let's kill it...
+Simplifying the formula took 0.223 seconds
+Estimated expression: -1.375*x0
+Target expression: -1.375*x0
+Relative l_2-distance: 3.39262999215813e-08
+L_1 reg: 0.0013751316223697822
+Loss: 0.0013751655486697037
+########## Learning the following function: -0.137*sin(7.051*x0**2 - 3.124*x0 + 2.104) + 0.203*sqrt(Abs(1.901*x0 + 0.553)) ##########
+##### Standard training #####
+Training time: 231.6789984703064
+Computing the formula for the input layer took 0.014 seconds
+Computing the end formula took 0.003 seconds
+Estimated expression (before simplification): -0.013*x0*sin(-6.908*x0**2 + 1.316*x0 + 0.027) - 0.012*x0*sqrt(Abs(0.006*x0**2 - 0.109*x0 + 0.003)) + 0.034*x0 - 0.176*sin(-6.908*x0**2 + 1.316*x0 + 0.027)*sqrt(Abs(0.006*x0**2 - 0.109*x0 + 0.003)) + 0.089*sin(-6.908*x0**2 + 1.316*x0 + 0.027) + 0.86*sqrt(Abs(0.006*x0**2 - 0.109*x0 + 0.003)) - 0.011
+running... let's kill it...
+Simplifying the formula took 0.231 seconds
+Estimated expression: -0.013*x0*sin(-6.908*x0**2 + 1.316*x0 + 0.027) - 0.012*x0*sqrt(Abs(0.006*x0**2 - 0.109*x0 + 0.003)) + 0.034*x0 - 0.176*sin(-6.908*x0**2 + 1.316*x0 + 0.027)*sqrt(Abs(0.006*x0**2 - 0.109*x0 + 0.003)) + 0.089*sin(-6.908*x0**2 + 1.316*x0 + 0.027) + 0.86*sqrt(Abs(0.006*x0**2 - 0.109*x0 + 0.003)) - 0.011
+Target expression: -0.137*sin(7.051*x0**2 - 3.124*x0 + 2.104) + 0.203*sqrt(Abs(1.901*x0 + 0.553))
+Relative l_2-distance: 0.12969405460011257
+L_1 reg: 0.007088669454772166
+Loss: 0.13678272405488473
+##### Classifier informed training ######
+Reduced formula: a7*sqrt(Abs(1.0*a3 + 1.0*a4*x0 + 1.0*a5*x0**2)) + a8*sin(1.0*a0 + 1.0*a1*x0 + 1.0*a2*x0**2)
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 480.92636013031006
+Computing the formula for the input layer took 0.025 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): 0.025*sin(1.071*x0**2 - 0.115*x0) + 0.569*sqrt(Abs(0.001*x0**2 + 0.248*x0 + 0.041))
+running... let's kill it...
+Simplifying the formula took 0.399 seconds
+Estimated expression: 0.025*sin(1.071*x0**2 - 0.115*x0) + 0.569*sqrt(Abs(0.001*x0**2 + 0.248*x0 + 0.041))
+Target expression: -0.137*sin(7.051*x0**2 - 3.124*x0 + 2.104) + 0.203*sqrt(Abs(1.901*x0 + 0.553))
+Relative l_2-distance: 0.15092203313178557
+L_1 reg: 0.001243690845063283
+Loss: 0.15216572397684885
+########## Learning the following function: -3.907*x0*sin(5.384*x0**2) + 2.681*sin(5.384*x0**2)*sqrt(Abs(0.276*x0**2 + 2.406*x0 - 1.149)) ##########
+##### Standard training #####
+Training time: 320.1939046382904
+Computing the formula for the input layer took 0.025 seconds
+Computing the end formula took 0.006 seconds
+Estimated expression (before simplification): -0.047*x0**2 - 1.635*x0*sin(5.468*x0**2 + 1.129*x0 - 2.853) - 0.008*x0*sqrt(Abs(-0.766*x0**2 + 0.999*x0 + 1.728)) + 0.093*x0 + 2.996*sin(5.468*x0**2 + 1.129*x0 - 2.853)*sqrt(Abs(-0.766*x0**2 + 0.999*x0 + 1.728)) - 0.989*sin(5.468*x0**2 + 1.129*x0 - 2.853) + 0.476*sqrt(Abs(-0.766*x0**2 + 0.999*x0 + 1.728)) - 0.147
+running... let's kill it...
+Simplifying the formula took 0.374 seconds
+Estimated expression: -0.047*x0**2 - 1.635*x0*sin(5.468*x0**2 + 1.129*x0 - 2.853) - 0.008*x0*sqrt(Abs(-0.766*x0**2 + 0.999*x0 + 1.728)) + 0.093*x0 + 2.996*sin(5.468*x0**2 + 1.129*x0 - 2.853)*sqrt(Abs(-0.766*x0**2 + 0.999*x0 + 1.728)) - 0.989*sin(5.468*x0**2 + 1.129*x0 - 2.853) + 0.476*sqrt(Abs(-0.766*x0**2 + 0.999*x0 + 1.728)) - 0.147
+Target expression: -3.907*x0*sin(5.384*x0**2) + 2.681*sin(5.384*x0**2)*sqrt(Abs(0.276*x0**2 + 2.406*x0 - 1.149))
+Relative l_2-distance: 0.49386441658789887
+L_1 reg: 0.007534774055508794
+Loss: 0.5013991906434077
+##### Classifier informed training ######
+Reduced formula: a12*x0*sin(1.0*a1*x0 + 1.0*a2*x0**2) + a9*sin(1.0*a1*x0 + 1.0*a2*x0**2)*sqrt(Abs(1.0*a3 + 1.0*a4*x0 + 1.0*a5*x0**2))
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 472.81835985183716
+Computing the formula for the input layer took 0.063 seconds
+Computing the end formula took 0.007 seconds
+Estimated expression (before simplification): -1.9*x0*sin(5.515*x0**2 + 1.878*x0) + 2.471*sin(5.515*x0**2 + 1.878*x0)*sqrt(Abs(0.772*x0**2 + 0.528*x0 - 1.557))
+running... let's kill it...
+Simplifying the formula took 0.777 seconds
+Estimated expression: -1.9*x0*sin(5.515*x0**2 + 1.878*x0) + 2.471*sin(5.515*x0**2 + 1.878*x0)*sqrt(Abs(0.772*x0**2 + 0.528*x0 - 1.557))
+Target expression: -3.907*x0*sin(5.384*x0**2) + 2.681*sin(5.384*x0**2)*sqrt(Abs(0.276*x0**2 + 2.406*x0 - 1.149))
+Relative l_2-distance: 0.6256594186060046
+L_1 reg: 0.0068524040521066336
+Loss: 0.6325118226581112
+########## Learning the following function: -6.929*sin(2.451*x0**2 + 2.37*x0 + 4.415)*sqrt(Abs(2.486*x0 - 1.428)) - 1.873*sin(2.451*x0**2 + 2.37*x0 + 4.415) ##########
+##### Standard training #####
+Training time: 234.20733189582825
+Computing the formula for the input layer took 0.013 seconds
+Computing the end formula took 0.003 seconds
+Estimated expression (before simplification): 0.035*x0**2 + 0.671*x0*sin(2.353*x0**2 + 1.043*x0 + 6.641) + 0.169*x0*sqrt(Abs(-0.167*x0**2 + 1.258*x0 + 1.12)) - 0.439*x0 - 6.073*sin(2.353*x0**2 + 1.043*x0 + 6.641)*sqrt(Abs(-0.167*x0**2 + 1.258*x0 + 1.12)) + 0.783*sin(2.353*x0**2 + 1.043*x0 + 6.641) - 0.274*sqrt(Abs(-0.167*x0**2 + 1.258*x0 + 1.12)) + 0.892
+running... let's kill it...
+Simplifying the formula took 0.247 seconds
+Estimated expression: 0.035*x0**2 + 0.671*x0*sin(2.353*x0**2 + 1.043*x0 + 6.641) + 0.169*x0*sqrt(Abs(-0.167*x0**2 + 1.258*x0 + 1.12)) - 0.439*x0 - 6.073*sin(2.353*x0**2 + 1.043*x0 + 6.641)*sqrt(Abs(-0.167*x0**2 + 1.258*x0 + 1.12)) + 0.783*sin(2.353*x0**2 + 1.043*x0 + 6.641) - 0.274*sqrt(Abs(-0.167*x0**2 + 1.258*x0 + 1.12)) + 0.892
+Target expression: -6.929*sin(2.451*x0**2 + 2.37*x0 + 4.415)*sqrt(Abs(2.486*x0 - 1.428)) - 1.873*sin(2.451*x0**2 + 2.37*x0 + 4.415)
+Relative l_2-distance: 0.7372491510984998
+L_1 reg: 0.009624805344564074
+Loss: 0.7468739564430639
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+##### Classifier informed training ######
+Reduced formula: a9*sin(1.0*a0 + 1.0*a1*x0 + 1.0*a2*x0**2)*sqrt(Abs(1.0*a3 + 1.0*a4*x0))
+Training time: 149.70245671272278
+Computing the formula for the input layer took 0.011 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): 7.543*sin(2.451*x0**2 + 2.37*x0 + 1.275)*sqrt(Abs(2.41*x0 - 1.361))
+running... let's kill it...
+Simplifying the formula took 0.238 seconds
+Estimated expression: 7.543*sin(2.451*x0**2 + 2.37*x0 + 1.275)*sqrt(Abs(2.41*x0 - 1.361))
+Target expression: -6.929*sin(2.451*x0**2 + 2.37*x0 + 4.415)*sqrt(Abs(2.486*x0 - 1.428)) - 1.873*sin(2.451*x0**2 + 2.37*x0 + 4.415)
+Relative l_2-distance: 0.02416348474150986
+L_1 reg: 0.008820995335993414
+Loss: 0.03298448007750327
+########## Learning the following function: 2.952*x0**2 - 1.724*x0*sin(3.151*x0**2 + 0.204*x0 - 1.566) ##########
+##### Standard training #####
+Training time: 249.71742129325867
+Computing the formula for the input layer took 0.003 seconds
+Computing the end formula took 0.002 seconds
+Estimated expression (before simplification): 2.952*x0**2 - 1.724*x0*sin(3.151*x0**2 + 0.204*x0 - 1.566) - 0.001*sin(3.151*x0**2 + 0.204*x0 - 1.566) + 0.001
+running... let's kill it...
+Simplifying the formula took 0.260 seconds
+Estimated expression: 2.952*x0**2 - 1.724*x0*sin(3.151*x0**2 + 0.204*x0 - 1.566) - 0.001*sin(3.151*x0**2 + 0.204*x0 - 1.566) + 0.001
+Target expression: 2.952*x0**2 - 1.724*x0*sin(3.151*x0**2 + 0.204*x0 - 1.566)
+Relative l_2-distance: 3.559570685891026e-05
+L_1 reg: 0.00495045590732619
+Loss: 0.0049860516141851
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+##### Classifier informed training ######
+Reduced formula: a12*x0*sin(1.0*a0 + 1.0*a1*x0 + 1.0*a2*x0**2) + a13*x0**2
+Training time: 173.4428849220276
+Computing the formula for the input layer took 0.009 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): 2.943*x0**2 - 1.262*x0*sin(-3.137*x0**2 + 0.181*x0 + 0.519)
+running... let's kill it...
+Simplifying the formula took 0.258 seconds
+Estimated expression: 2.943*x0**2 - 1.262*x0*sin(-3.137*x0**2 + 0.181*x0 + 0.519)
+Target expression: 2.952*x0**2 - 1.724*x0*sin(3.151*x0**2 + 0.204*x0 - 1.566)
+Relative l_2-distance: 0.03506528384361609
+L_1 reg: 0.004516528412118749
+Loss: 0.03958181225573484
+########## Learning the following function: 0.184*x0 ##########
+##### Standard training #####
+Training time: 329.1083414554596
+Computing the formula for the input layer took 0.001 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): 0.184*x0
+running... let's kill it...
+Simplifying the formula took 0.257 seconds
+Estimated expression: 0.184*x0
+Target expression: 0.184*x0
+Relative l_2-distance: 3.8702556243268104e-08
+L_1 reg: 0.00018446298217581863
+Loss: 0.0001845016847320619
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+##### Classifier informed training ######
+Reduced formula: a10*x0
+Training time: 61.93084120750427
+Computing the formula for the input layer took 0.000 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): 0.184*x0
+running... let's kill it...
+Simplifying the formula took 0.265 seconds
+Estimated expression: 0.184*x0
+Target expression: 0.184*x0
+Relative l_2-distance: 3.8715063246441175e-08
+L_1 reg: 0.00018446272788655394
+Loss: 0.00018450144294980037
+########## Learning the following function: -1.467*x0*sqrt(Abs(2.281*x0**2 - 2.23*x0)) + 2.744*sin(0.432*x0**2 - 0.264) ##########
+##### Standard training #####
+Training time: 274.67314076423645
+Computing the formula for the input layer took 0.012 seconds
+Computing the end formula took 0.003 seconds
+Estimated expression (before simplification): -2.332*x0*sqrt(Abs(0.903*x0**2 - 0.883*x0)) + 2.744*sin(0.432*x0**2 - 0.264)
+running... let's kill it...
+Simplifying the formula took 0.242 seconds
+Estimated expression: -2.332*x0*sqrt(Abs(0.903*x0**2 - 0.883*x0)) + 2.744*sin(0.432*x0**2 - 0.264)
+Target expression: -1.467*x0*sqrt(Abs(2.281*x0**2 - 2.23*x0)) + 2.744*sin(0.432*x0**2 - 0.264)
+Relative l_2-distance: 9.804267984102697e-08
+L_1 reg: 0.0038496823983320255
+Loss: 0.0038497804410118665
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+##### Classifier informed training ######
+Reduced formula: a11*x0*sqrt(Abs(1.0*a3 + 1.0*a4*x0 + 1.0*a5*x0**2)) + a8*sin(1.0*a0 + 1.0*a1*x0 + 1.0*a2*x0**2)
+Training time: 397.23244547843933
+Computing the formula for the input layer took 0.009 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): -2.664*x0*sqrt(Abs(0.692*x0**2 - 0.676*x0)) + 2.744*sin(0.432*x0**2 - 0.264)
+running... let's kill it...
+Simplifying the formula took 0.233 seconds
+Estimated expression: -2.664*x0*sqrt(Abs(0.692*x0**2 - 0.676*x0)) + 2.744*sin(0.432*x0**2 - 0.264)
+Target expression: -1.467*x0*sqrt(Abs(2.281*x0**2 - 2.23*x0)) + 2.744*sin(0.432*x0**2 - 0.264)
+Relative l_2-distance: 7.35770105092065e-08
+L_1 reg: 0.003977740909416376
+Loss: 0.003977814486426885
+########## Learning the following function: -0.424*x0**2 + 0.609*x0*sin(1.261*x0**2 + 3.998*x0 + 1.09) ##########
+##### Standard training #####
+Training time: 213.431476354599
+Computing the formula for the input layer took 0.014 seconds
+Computing the end formula took 0.003 seconds
+Estimated expression (before simplification): -0.429*x0**2 - 0.173*x0*sin(1.201*x0**2 + 4.828*x0 + 1.614) + 0.004*x0*sqrt(Abs(0.059*x0**2 + 0.138*x0 - 0.19)) - 0.022*x0 - 1.833*sin(1.201*x0**2 + 4.828*x0 + 1.614)*sqrt(Abs(0.059*x0**2 + 0.138*x0 - 0.19)) + 0.518*sin(1.201*x0**2 + 4.828*x0 + 1.614) + 0.22*sqrt(Abs(0.059*x0**2 + 0.138*x0 - 0.19)) - 0.003
+running... let's kill it...
+Simplifying the formula took 0.265 seconds
+Estimated expression: -0.429*x0**2 - 0.173*x0*sin(1.201*x0**2 + 4.828*x0 + 1.614) + 0.004*x0*sqrt(Abs(0.059*x0**2 + 0.138*x0 - 0.19)) - 0.022*x0 - 1.833*sin(1.201*x0**2 + 4.828*x0 + 1.614)*sqrt(Abs(0.059*x0**2 + 0.138*x0 - 0.19)) + 0.518*sin(1.201*x0**2 + 4.828*x0 + 1.614) + 0.22*sqrt(Abs(0.059*x0**2 + 0.138*x0 - 0.19)) - 0.003
+Target expression: -0.424*x0**2 + 0.609*x0*sin(1.261*x0**2 + 3.998*x0 + 1.09)
+Relative l_2-distance: 0.09173332054197954
+L_1 reg: 0.0055949658013619095
+Loss: 0.09732828634334145
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+##### Classifier informed training ######
+Reduced formula: a12*x0*sin(1.0*a0 + 1.0*a1*x0 + 1.0*a2*x0**2) + a13*x0**2 + a9*sin(1.0*a0 + 1.0*a1*x0 + 1.0*a2*x0**2)*sqrt(Abs(1.0*a3 + 1.0*a4*x0 + 1.0*a5*x0**2))
+Training time: 202.3898584842682
+Computing the formula for the input layer took 0.016 seconds
+Computing the end formula took 0.002 seconds
+Estimated expression (before simplification): -0.423*x0**2 + 0.26*x0*sin(1.343*x0**2 + 2.859*x0 - 1.507) + 0.609*sin(1.343*x0**2 + 2.859*x0 - 1.507)*sqrt(Abs(0.267*x0**2 + 0.001*x0 - 0.093))
+running... let's kill it...
+Simplifying the formula took 0.261 seconds
+Estimated expression: -0.423*x0**2 + 0.26*x0*sin(1.343*x0**2 + 2.859*x0 - 1.507) + 0.609*sin(1.343*x0**2 + 2.859*x0 - 1.507)*sqrt(Abs(0.267*x0**2 + 0.001*x0 - 0.093))
+Target expression: -0.424*x0**2 + 0.609*x0*sin(1.261*x0**2 + 3.998*x0 + 1.09)
+Relative l_2-distance: 0.09670885373175685
+L_1 reg: 0.0035977655447648514
+Loss: 0.1003066192765217
+########## Learning the following function: 5.56300000000000 ##########
+##### Standard training #####
+Training time: 293.32204580307007
+Computing the formula for the input layer took 0.001 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): 5.56300000000000
+running... let's kill it...
+Simplifying the formula took 0.259 seconds
+Estimated expression: 5.56300000000000
+Target expression: 5.56300000000000
+Relative l_2-distance: 1.1848177481227812e-07
+L_1 reg: 0.005563099028445107
+Loss: 0.005563217510219919
+##### Classifier informed training ######
+Reduced formula: a6
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 91.81222486495972
+Computing the formula for the input layer took 0.000 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): 5.56300000000000
+running... let's kill it...
+Simplifying the formula took 0.262 seconds
+Estimated expression: 5.56300000000000
+Target expression: 5.56300000000000
+Relative l_2-distance: 0.0
+L_1 reg: 0.005563099384307862
+Loss: 0.005563099384307862
+########## Learning the following function: 4.276*x0 + 2.025*sin(3.93*x0) ##########
+##### Standard training #####
+Training time: 236.37435102462769
+Computing the formula for the input layer took 0.012 seconds
+Computing the end formula took 0.002 seconds
+Estimated expression (before simplification): 0.188*x0*sin(0.273*x0**2 + 0.004*x0 + 0.825) + 0.011*x0*sqrt(Abs(0.027*x0**2 - 0.09*x0)) + 4.253*x0 + 0.017*sin(0.273*x0**2 + 0.004*x0 + 0.825)*sqrt(Abs(0.027*x0**2 - 0.09*x0)) - 0.003*sin(0.273*x0**2 + 0.004*x0 + 0.825) - 0.002*sqrt(Abs(0.027*x0**2 - 0.09*x0))
+running... let's kill it...
+Simplifying the formula took 0.264 seconds
+Estimated expression: 0.188*x0*sin(0.273*x0**2 + 0.004*x0 + 0.825) + 0.011*x0*sqrt(Abs(0.027*x0**2 - 0.09*x0)) + 4.253*x0 + 0.017*sin(0.273*x0**2 + 0.004*x0 + 0.825)*sqrt(Abs(0.027*x0**2 - 0.09*x0)) - 0.003*sin(0.273*x0**2 + 0.004*x0 + 0.825) - 0.002*sqrt(Abs(0.027*x0**2 - 0.09*x0))
+Target expression: 4.276*x0 + 2.025*sin(3.93*x0)
+Relative l_2-distance: 0.04875675338828758
+L_1 reg: 0.004346363553787664
+Loss: 0.05310311694207524
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+##### Classifier informed training ######
+Reduced formula: a10*x0 + a8*sin(1.0*a1*x0)
+Training time: 125.92059588432312
+Computing the formula for the input layer took 0.000 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): 4.276*x0 + 2.025*sin(3.93*x0)
+running... let's kill it...
+Simplifying the formula took 0.252 seconds
+Estimated expression: 4.276*x0 + 2.025*sin(3.93*x0)
+Target expression: 4.276*x0 + 2.025*sin(3.93*x0)
+Relative l_2-distance: 5.8359871295937916e-08
+L_1 reg: 0.00615109414353162
+Loss: 0.006151152503402916
+########## Learning the following function: 0.653*x0 ##########
+##### Standard training #####
+Training time: 285.450448513031
+Computing the formula for the input layer took 0.001 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): 0.653*x0
+running... let's kill it...
+Simplifying the formula took 0.252 seconds
+Estimated expression: 0.653*x0
+Target expression: 0.653*x0
+Relative l_2-distance: 8.825483294427797e-08
+L_1 reg: 0.0006530227334370701
+Loss: 0.0006531109882700145
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+##### Classifier informed training ######
+Reduced formula: a10*x0
+Training time: 52.01652240753174
+Computing the formula for the input layer took 0.000 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): 0.653*x0
+running... let's kill it...
+Simplifying the formula took 0.252 seconds
+Estimated expression: 0.653*x0
+Target expression: 0.653*x0
+Relative l_2-distance: 4.135446696298576e-08
+L_1 reg: 0.0006530227137191994
+Loss: 0.0006530640681861623
+########## Learning the following function: 1.357*sin(4.072*x0**2 + 1.044) ##########
+##### Standard training #####
+Training time: 153.14392375946045
+Computing the formula for the input layer took 0.012 seconds
+Computing the end formula took 0.003 seconds
+Estimated expression (before simplification): -0.009*x0**2 - 0.113*x0*sin(-4.23*x0**2 + 0.127*x0 + 15.184) - 0.049*x0*sqrt(Abs(0.051*x0**2 - 0.505*x0 + 0.054)) + 0.074*x0 - 1.155*sin(-4.23*x0**2 + 0.127*x0 + 15.184)*sqrt(Abs(0.051*x0**2 - 0.505*x0 + 0.054)) + 2.004*sin(-4.23*x0**2 + 0.127*x0 + 15.184) - 0.066*sqrt(Abs(0.051*x0**2 - 0.505*x0 + 0.054)) + 0.083
+running... let's kill it...
+Simplifying the formula took 0.252 seconds
+Estimated expression: -0.009*x0**2 - 0.113*x0*sin(-4.23*x0**2 + 0.127*x0 + 15.184) - 0.049*x0*sqrt(Abs(0.051*x0**2 - 0.505*x0 + 0.054)) + 0.074*x0 - 1.155*sin(-4.23*x0**2 + 0.127*x0 + 15.184)*sqrt(Abs(0.051*x0**2 - 0.505*x0 + 0.054)) + 2.004*sin(-4.23*x0**2 + 0.127*x0 + 15.184) - 0.066*sqrt(Abs(0.051*x0**2 - 0.505*x0 + 0.054)) + 0.083
+Target expression: 1.357*sin(4.072*x0**2 + 1.044)
+Relative l_2-distance: 0.8409608396281562
+L_1 reg: 0.015940797503933325
+Loss: 0.8569016371320894
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+##### Classifier informed training ######
+Reduced formula: a8*sin(1.0*a0 + 1.0*a2*x0**2)
+Training time: 68.72431778907776
+Computing the formula for the input layer took 0.000 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): 1.357*sin(4.072*x0**2 + 1.044)
+running... let's kill it...
+Simplifying the formula took 0.248 seconds
+Estimated expression: 1.357*sin(4.072*x0**2 + 1.044)
+Target expression: 1.357*sin(4.072*x0**2 + 1.044)
+Relative l_2-distance: 1.0777400560891353e-05
+L_1 reg: 0.004417535177911152
+Loss: 0.004428312578472044
+########## Learning the following function: -0.64*x0*sin(6.289*x0**2) ##########
+##### Standard training #####
+Training time: 172.0624725818634
+Computing the formula for the input layer took 0.012 seconds
+Computing the end formula took 0.003 seconds
+Estimated expression (before simplification): 0.019*x0**2 - 0.477*x0*sin(6.274*x0**2 + 0.378*x0 + 4.324) + 0.001*x0*sqrt(Abs(0.112*x0**2 - 0.414*x0 + 0.278)) - 0.091*x0 - 0.206*sin(6.274*x0**2 + 0.378*x0 + 4.324)*sqrt(Abs(0.112*x0**2 - 0.414*x0 + 0.278)) - 0.633*sin(6.274*x0**2 + 0.378*x0 + 4.324) - 0.402*sqrt(Abs(0.112*x0**2 - 0.414*x0 + 0.278)) + 0.159
+running... let's kill it...
+Simplifying the formula took 0.250 seconds
+Estimated expression: 0.019*x0**2 - 0.477*x0*sin(6.274*x0**2 + 0.378*x0 + 4.324) + 0.001*x0*sqrt(Abs(0.112*x0**2 - 0.414*x0 + 0.278)) - 0.091*x0 - 0.206*sin(6.274*x0**2 + 0.378*x0 + 4.324)*sqrt(Abs(0.112*x0**2 - 0.414*x0 + 0.278)) - 0.633*sin(6.274*x0**2 + 0.378*x0 + 4.324) - 0.402*sqrt(Abs(0.112*x0**2 - 0.414*x0 + 0.278)) + 0.159
+Target expression: -0.64*x0*sin(6.289*x0**2)
+Relative l_2-distance: 0.6337950750042308
+L_1 reg: 0.007702227430039883
+Loss: 0.6414973024342707
+##### Classifier informed training ######
+Reduced formula: a12*x0*sin(1.0*a0 + 1.0*a2*x0**2)
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 85.07126355171204
+Computing the formula for the input layer took 0.000 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): -0.64*x0*sin(6.289*x0**2)
+running... let's kill it...
+Simplifying the formula took 0.247 seconds
+Estimated expression: -0.64*x0*sin(6.289*x0**2)
+Target expression: -0.64*x0*sin(6.289*x0**2)
+Relative l_2-distance: 2.81338370532424e-05
+L_1 reg: 0.006321686426144084
+Loss: 0.006349820263197327
+########## Learning the following function: -0.528*x0**2 - 0.601*sin(3.249*x0**2) ##########
+##### Standard training #####
+Training time: 241.89932775497437
+Computing the formula for the input layer took 0.002 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): -0.528*x0**2 - 0.601*sin(3.249*x0**2)
+running... let's kill it...
+Simplifying the formula took 0.249 seconds
+Estimated expression: -0.528*x0**2 - 0.601*sin(3.249*x0**2)
+Target expression: -0.528*x0**2 - 0.601*sin(3.249*x0**2)
+Relative l_2-distance: 6.542557015590886e-07
+L_1 reg: 0.00334598058354743
+Loss: 0.003346634839248989
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+##### Classifier informed training ######
+Reduced formula: a13*x0**2 + a8*sin(1.0*a2*x0**2)
+Training time: 74.45134115219116
+Computing the formula for the input layer took 0.000 seconds
+Computing the end formula took 0.000 seconds
+Estimated expression (before simplification): -0.528*x0**2 - 0.601*sin(3.249*x0**2)
+running... let's kill it...
+Simplifying the formula took 0.252 seconds
+Estimated expression: -0.528*x0**2 - 0.601*sin(3.249*x0**2)
+Target expression: -0.528*x0**2 - 0.601*sin(3.249*x0**2)
+Relative l_2-distance: 1.9218100909657756e-07
+L_1 reg: 0.0033459801417262155
+Loss: 0.003346172322735312
+########## Learning the following function: -6.21*sin(1.577*x0**2 + 0.474*x0)*sqrt(Abs(1.442*x0**2 + 0.934*x0 + 1.045)) + 0.612*sin(1.577*x0**2 + 0.474*x0) ##########
+##### Standard training #####
+Training time: 193.05444931983948
+Computing the formula for the input layer took 0.016 seconds
+Computing the end formula took 0.004 seconds
+Estimated expression (before simplification): -0.002*x0**2 - 3.487*x0*sin(-1.515*x0**2 + 0.39*x0 + 2.788) - 0.011*x0*sqrt(Abs(-0.106*x0**2 + 0.917*x0 + 1.283)) + 0.022*x0 + 4.846*sin(-1.515*x0**2 + 0.39*x0 + 2.788)*sqrt(Abs(-0.106*x0**2 + 0.917*x0 + 1.283)) + 5.0*sin(-1.515*x0**2 + 0.39*x0 + 2.788) + 0.071*sqrt(Abs(-0.106*x0**2 + 0.917*x0 + 1.283)) - 0.686
+running... let's kill it...
+Simplifying the formula took 0.285 seconds
+Estimated expression: -0.002*x0**2 - 3.487*x0*sin(-1.515*x0**2 + 0.39*x0 + 2.788) - 0.011*x0*sqrt(Abs(-0.106*x0**2 + 0.917*x0 + 1.283)) + 0.022*x0 + 4.846*sin(-1.515*x0**2 + 0.39*x0 + 2.788)*sqrt(Abs(-0.106*x0**2 + 0.917*x0 + 1.283)) + 5.0*sin(-1.515*x0**2 + 0.39*x0 + 2.788) + 0.071*sqrt(Abs(-0.106*x0**2 + 0.917*x0 + 1.283)) - 0.686
+Target expression: -6.21*sin(1.577*x0**2 + 0.474*x0)*sqrt(Abs(1.442*x0**2 + 0.934*x0 + 1.045)) + 0.612*sin(1.577*x0**2 + 0.474*x0)
+Relative l_2-distance: 0.7301192522280744
+L_1 reg: 0.008592393492141942
+Loss: 0.7387116457202163
+##### Classifier informed training ######
+Reduced formula: a12*x0*sin(1.0*a1*x0 + 1.0*a2*x0**2) + a9*sin(1.0*a1*x0 + 1.0*a2*x0**2)*sqrt(Abs(1.0*a3 + 1.0*a4*x0 + 1.0*a5*x0**2))
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 169.90958762168884
+Computing the formula for the input layer took 0.009 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): 2.507*x0*sin(5.577*x0**2 - 2.102*x0) + 0.199381182662758*sin(5.577*x0**2 - 2.102*x0)*sqrt(Abs(x0**2))
+running... let's kill it...
+Simplifying the formula took 0.279 seconds
+Estimated expression: 2.507*x0*sin(5.577*x0**2 - 2.102*x0) + 0.199381182662758*sin(5.577*x0**2 - 2.102*x0)*sqrt(Abs(x0**2))
+Target expression: -6.21*sin(1.577*x0**2 + 0.474*x0)*sqrt(Abs(1.442*x0**2 + 0.934*x0 + 1.045)) + 0.612*sin(1.577*x0**2 + 0.474*x0)
+Relative l_2-distance: 0.9361792423161418
+L_1 reg: 0.006483145379484663
+Loss: 0.9426623876956265
+########## Learning the following function: 5.072*sin(3.342*x0 - 4.031)*sqrt(Abs(0.539*x0**2 - 1.074*x0)) ##########
+##### Standard training #####
+Training time: 181.06176900863647
+Computing the formula for the input layer took 0.014 seconds
+Computing the end formula took 0.004 seconds
+Estimated expression (before simplification): -0.001*x0*sqrt(Abs(1.585*x0**2 - 3.173*x0 + 0.026)) + 0.007*x0 - 2.953*sin(3.342*x0 - 0.891)*sqrt(Abs(1.585*x0**2 - 3.173*x0 + 0.026)) - 0.011*sin(3.342*x0 - 0.891) - 0.001*sqrt(Abs(1.585*x0**2 - 3.173*x0 + 0.026)) + 0.015
+running... let's kill it...
+Simplifying the formula took 0.359 seconds
+Estimated expression: -0.001*x0*sqrt(Abs(1.585*x0**2 - 3.173*x0 + 0.026)) + 0.007*x0 - 2.953*sin(3.342*x0 - 0.891)*sqrt(Abs(1.585*x0**2 - 3.173*x0 + 0.026)) - 0.011*sin(3.342*x0 - 0.891) - 0.001*sqrt(Abs(1.585*x0**2 - 3.173*x0 + 0.026)) + 0.015
+Target expression: 5.072*sin(3.342*x0 - 4.031)*sqrt(Abs(0.539*x0**2 - 1.074*x0))
+Relative l_2-distance: 0.00263655118445528
+L_1 reg: 0.005767527768648529
+Loss: 0.00840407895310381
+##### Classifier informed training ######
+Reduced formula: a12*x0*sin(1.0*a0 + 1.0*a1*x0) + a9*sin(1.0*a0 + 1.0*a1*x0)*sqrt(Abs(1.0*a4*x0 + 1.0*a5*x0**2))
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 327.323543548584
+Computing the formula for the input layer took 0.014 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): -4.357*sin(3.342*x0 - 0.89)*sqrt(Abs(0.73*x0**2 - 1.456*x0))
+running... let's kill it...
+Simplifying the formula took 0.419 seconds
+Estimated expression: -4.357*sin(3.342*x0 - 0.89)*sqrt(Abs(0.73*x0**2 - 1.456*x0))
+Target expression: 5.072*sin(3.342*x0 - 4.031)*sqrt(Abs(0.539*x0**2 - 1.074*x0))
+Relative l_2-distance: 1.720702530396765e-06
+L_1 reg: 0.005796426769525669
+Loss: 0.005798147472056066
+########## Learning the following function: -3.653*sin(2.307*x0**2 - 2.944) ##########
+##### Standard training #####
+Training time: 305.6383867263794
+Computing the formula for the input layer took 0.031 seconds
+Computing the end formula took 0.005 seconds
+Estimated expression (before simplification): 0.381*x0*sin(-2.231*x0**2 + 0.339*x0 + 2.928) + 0.001*x0*sqrt(Abs(0.154*x0**2 + 1.018*x0 + 1.23)) - 2.248*sin(-2.231*x0**2 + 0.339*x0 + 2.928)*sqrt(Abs(0.154*x0**2 + 1.018*x0 + 1.23)) + 5.382*sin(-2.231*x0**2 + 0.339*x0 + 2.928) + 0.008*sqrt(Abs(0.154*x0**2 + 1.018*x0 + 1.23)) + 0.032
+running... let's kill it...
+Simplifying the formula took 0.537 seconds
+Estimated expression: 0.381*x0*sin(-2.231*x0**2 + 0.339*x0 + 2.928) + 0.001*x0*sqrt(Abs(0.154*x0**2 + 1.018*x0 + 1.23)) - 2.248*sin(-2.231*x0**2 + 0.339*x0 + 2.928)*sqrt(Abs(0.154*x0**2 + 1.018*x0 + 1.23)) + 5.382*sin(-2.231*x0**2 + 0.339*x0 + 2.928) + 0.008*sqrt(Abs(0.154*x0**2 + 1.018*x0 + 1.23)) + 0.032
+Target expression: -3.653*sin(2.307*x0**2 - 2.944)
+Relative l_2-distance: 0.7757224868231547
+L_1 reg: 0.007099495510165073
+Loss: 0.7828219823333198
+##### Classifier informed training ######
+Reduced formula: a8*sin(1.0*a0 + 1.0*a2*x0**2)
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 129.7326591014862
+Computing the formula for the input layer took 0.003 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): 3.653*sin(2.307*x0**2 + 0.198)
+running... let's kill it...
+Simplifying the formula took 0.422 seconds
+Estimated expression: 3.653*sin(2.307*x0**2 + 0.198)
+Target expression: -3.653*sin(2.307*x0**2 - 2.944)
+Relative l_2-distance: 7.3805742026357655e-06
+L_1 reg: 0.004324844202222576
+Loss: 0.004332224776425211
+########## Learning the following function: -3.00775414005201*x0*sqrt(Abs(x0**2)) - 2.751*sin(0.231*x0**2 - 1.3) ##########
+##### Standard training #####
+Training time: 538.3870365619659
+Computing the formula for the input layer took 0.004 seconds
+Computing the end formula took 0.005 seconds
+Estimated expression (before simplification): -3.00788087264107*x0*sqrt(Abs(x0**2)) - 2.751*sin(0.231*x0**2 - 1.3)
+running... let's kill it...
+Simplifying the formula took 0.413 seconds
+Estimated expression: -3.00788087264107*x0*sqrt(Abs(x0**2)) - 2.751*sin(0.231*x0**2 - 1.3)
+Target expression: -3.00775414005201*x0*sqrt(Abs(x0**2)) - 2.751*sin(0.231*x0**2 - 1.3)
+Relative l_2-distance: 8.189261347198414e-08
+L_1 reg: 0.004232440604314096
+Loss: 0.0042325224969275675
+##### Classifier informed training ######
+Reduced formula: 1.0*a11*x0*sqrt(Abs(a5*x0**2)) + a8*sin(1.0*a0 + 1.0*a2*x0**2)
+/home/philipp/projects/phyiscalLawLearning/ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction = net(torch.tensor(y, dtype=torch.float, device='cpu'))
+Training time: 417.6483883857727
+Computing the formula for the input layer took 0.003 seconds
+Computing the end formula took 0.001 seconds
+Estimated expression (before simplification): -3.0078878489731*x0*sqrt(Abs(x0**2)) - 2.751*sin(0.231*x0**2 - 1.3)
+running... let's kill it...
+Simplifying the formula took 0.264 seconds
+Estimated expression: -3.0078878489731*x0*sqrt(Abs(x0**2)) - 2.751*sin(0.231*x0**2 - 1.3)
+Target expression: -3.00775414005201*x0*sqrt(Abs(x0**2)) - 2.751*sin(0.231*x0**2 - 1.3)
+Relative l_2-distance: 7.871948314040776e-08
+L_1 reg: 0.00423392115095478
+Loss: 0.00423399987043792
+Standard training solved 9 out of 20.
+Classifier informed training solved 14 out of 20.
+
+Process finished with exit code 0

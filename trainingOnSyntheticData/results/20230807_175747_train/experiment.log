@@ -1,0 +1,335 @@
+INFO:root:Starting the logger.
+INFO:root:Using cuda.
+INFO:root:############### Starting experiment with config file train.ini ###############
+INFO:root:######## Starting with training set size 2000000 out of [2000000] now. ########
+INFO:root:Creating the dataset took 271.904s.
+INFO:root:###### Starting with 100 hidden neurons out of [100, 200, 500, 1000] now. ######
+INFO:root:#### Starting with 100 batches out of [100, 500] now. ####
+INFO:root:Batch size: 20000
+INFO:root:[  100] Training loss: 0.22924950, Validation loss: 0.22323029
+INFO:root:[  200] Training loss: 0.19096464, Validation loss: 0.19281144
+INFO:root:[  300] Training loss: 0.17426095, Validation loss: 0.17067161
+INFO:root:[  400] Training loss: 0.16456998, Validation loss: 0.16278757
+INFO:root:[  500] Training loss: 0.15741007, Validation loss: 0.15876786
+INFO:root:[  600] Training loss: 0.15272941, Validation loss: 0.15530674
+INFO:root:[  700] Training loss: 0.14849469, Validation loss: 0.14736257
+INFO:root:[  800] Training loss: 0.14476742, Validation loss: 0.13985114
+INFO:root:[  900] Training loss: 0.14193018, Validation loss: 0.13837950
+INFO:root:[ 1000] Training loss: 0.13814461, Validation loss: 0.13513874
+INFO:root:[ 1100] Training loss: 0.13504539, Validation loss: 0.13136508
+INFO:root:[ 1200] Training loss: 0.13325904, Validation loss: 0.13572259
+INFO:root:[ 1300] Training loss: 0.12964368, Validation loss: 0.13224560
+INFO:root:[ 1400] Training loss: 0.12770589, Validation loss: 0.12157271
+INFO:root:[ 1500] Training loss: 0.12532998, Validation loss: 0.12314746
+INFO:root:[ 1600] Training loss: 0.12282551, Validation loss: 0.12036694
+INFO:root:[ 1700] Training loss: 0.12091758, Validation loss: 0.11721561
+INFO:root:[ 1800] Training loss: 0.12017698, Validation loss: 0.11718294
+INFO:root:[ 1900] Training loss: 0.11707551, Validation loss: 0.11916690
+INFO:root:[ 2000] Training loss: 0.11535164, Validation loss: 0.11796389
+INFO:root:[ 2100] Training loss: 0.11513206, Validation loss: 0.11484903
+INFO:root:[ 2200] Training loss: 0.11422420, Validation loss: 0.11734524
+INFO:root:[ 2300] Training loss: 0.11249434, Validation loss: 0.10848766
+INFO:root:[ 2400] Training loss: 0.11014101, Validation loss: 0.10829370
+INFO:root:[ 2500] Training loss: 0.11093417, Validation loss: 0.10975178
+INFO:root:[ 2600] Training loss: 0.10847254, Validation loss: 0.10634740
+INFO:root:[ 2700] Training loss: 0.11178353, Validation loss: 0.11003619
+INFO:root:[ 2800] Training loss: 0.10784434, Validation loss: 0.11393224
+INFO:root:[ 2900] Training loss: 0.10545619, Validation loss: 0.10414705
+INFO:root:[ 3000] Training loss: 0.11089875, Validation loss: 0.10657995
+INFO:root:[ 3100] Training loss: 0.10414989, Validation loss: 0.09736693
+INFO:root:[ 3200] Training loss: 0.10410798, Validation loss: 0.09778874
+INFO:root:[ 3300] Training loss: 0.10351854, Validation loss: 0.10050566
+INFO:root:[ 3400] Training loss: 0.10234610, Validation loss: 0.09828611
+INFO:root:[ 3500] Training loss: 0.10323031, Validation loss: 0.10425127
+INFO:root:[ 3600] Training loss: 0.10138032, Validation loss: 0.09664266
+INFO:root:[ 3700] Training loss: 0.10084461, Validation loss: 0.09787095
+INFO:root:[ 3800] Training loss: 0.10502768, Validation loss: 0.10269074
+INFO:root:[ 3900] Training loss: 0.09991768, Validation loss: 0.09881815
+INFO:root:[ 4000] Training loss: 0.10177060, Validation loss: 0.09691183
+INFO:root:[ 4100] Training loss: 0.10625784, Validation loss: 0.11803624
+INFO:root:[ 4200] Training loss: 0.09768882, Validation loss: 0.09643973
+INFO:root:[ 4300] Training loss: 0.09737210, Validation loss: 0.09326976
+INFO:root:[ 4400] Training loss: 0.09675006, Validation loss: 0.09247617
+INFO:root:[ 4500] Training loss: 0.09636520, Validation loss: 0.09613799
+INFO:root:[ 4600] Training loss: 0.09674276, Validation loss: 0.09181207
+INFO:root:[ 4700] Training loss: 0.09964510, Validation loss: 0.09644616
+INFO:root:[ 4800] Training loss: 0.09508872, Validation loss: 0.09128890
+INFO:root:[ 4900] Training loss: 0.09494223, Validation loss: 0.09141896
+INFO:root:[ 5000] Training loss: 0.09425150, Validation loss: 0.09409671
+INFO:root:[ 5100] Training loss: 0.09389752, Validation loss: 0.08774489
+INFO:root:[ 5200] Training loss: 0.09418721, Validation loss: 0.09144580
+INFO:root:[ 5300] Training loss: 0.09367143, Validation loss: 0.09492124
+INFO:root:[ 5400] Training loss: 0.09300944, Validation loss: 0.10157716
+INFO:root:[ 5500] Training loss: 0.09357624, Validation loss: 0.09030095
+INFO:root:[ 5600] Training loss: 0.09222886, Validation loss: 0.08656919
+INFO:root:[ 5700] Training loss: 0.09260965, Validation loss: 0.09670743
+INFO:root:[ 5800] Training loss: 0.09425960, Validation loss: 0.09630053
+INFO:root:[ 5900] Training loss: 0.09120254, Validation loss: 0.08880907
+INFO:root:[ 6000] Training loss: 0.09122593, Validation loss: 0.08614323
+INFO:root:[ 6100] Training loss: 0.09621477, Validation loss: 0.09194706
+INFO:root:[ 6200] Training loss: 0.09126077, Validation loss: 0.09222753
+INFO:root:[ 6300] Training loss: 0.09110133, Validation loss: 0.09167312
+INFO:root:[ 6400] Training loss: 0.09069810, Validation loss: 0.08960370
+INFO:root:[ 6500] Training loss: 0.09084015, Validation loss: 0.09322676
+INFO:root:[ 6600] Training loss: 0.09016726, Validation loss: 0.08716562
+INFO:root:[ 6700] Training loss: 0.09218342, Validation loss: 0.09652727
+INFO:root:[ 6800] Training loss: 0.09034713, Validation loss: 0.09649378
+INFO:root:[ 6900] Training loss: 0.08992339, Validation loss: 0.08669107
+INFO:root:[ 7000] Training loss: 0.08911508, Validation loss: 0.08650070
+INFO:root:[ 7100] Training loss: 0.09458245, Validation loss: 0.08729555
+INFO:root:[ 7200] Training loss: 0.09619129, Validation loss: 0.09511175
+INFO:root:[ 7300] Training loss: 0.08901275, Validation loss: 0.09052083
+INFO:root:[ 7400] Training loss: 0.08966037, Validation loss: 0.10040963
+INFO:root:[ 7500] Training loss: 0.08853755, Validation loss: 0.08693848
+INFO:root:[ 7600] Training loss: 0.08951898, Validation loss: 0.08593423
+INFO:root:[ 7700] Training loss: 0.08840542, Validation loss: 0.08861636
+INFO:root:[ 7800] Training loss: 0.08807143, Validation loss: 0.08587429
+INFO:root:[ 7900] Training loss: 0.08806737, Validation loss: 0.09155504
+INFO:root:[ 8000] Training loss: 0.08807297, Validation loss: 0.08639439
+INFO:root:[ 8100] Training loss: 0.08760597, Validation loss: 0.08921583
+INFO:root:[ 8200] Training loss: 0.08699139, Validation loss: 0.09131961
+INFO:root:[ 8300] Training loss: 0.08745999, Validation loss: 0.08938483
+INFO:root:[ 8400] Training loss: 0.09290437, Validation loss: 0.09040053
+INFO:root:[ 8500] Training loss: 0.08679583, Validation loss: 0.09461809
+INFO:root:[ 8600] Training loss: 0.08723723, Validation loss: 0.08349580
+INFO:root:[ 8700] Training loss: 0.08610919, Validation loss: 0.08455825
+INFO:root:[ 8800] Training loss: 0.08671769, Validation loss: 0.08362310
+INFO:root:[ 8900] Training loss: 0.08596311, Validation loss: 0.08813595
+INFO:root:[ 9000] Training loss: 0.08596712, Validation loss: 0.08482160
+INFO:root:[ 9100] Training loss: 0.08617238, Validation loss: 0.08547822
+INFO:root:[ 9200] Training loss: 0.08525952, Validation loss: 0.09307550
+INFO:root:[ 9300] Training loss: 0.08516200, Validation loss: 0.08715706
+INFO:root:[ 9400] Training loss: 0.08581135, Validation loss: 0.08183029
+INFO:root:[ 9500] Training loss: 0.08647367, Validation loss: 0.08786145
+INFO:root:[ 9600] Training loss: 0.08637177, Validation loss: 0.08336889
+INFO:root:[ 9700] Training loss: 0.08601428, Validation loss: 0.08121187
+INFO:root:[ 9800] Training loss: 0.08474104, Validation loss: 0.08276929
+INFO:root:[ 9900] Training loss: 0.08840499, Validation loss: 0.08532947
+INFO:root:[10000] Training loss: 0.08433364, Validation loss: 0.08057740
+INFO:root:[10100] Training loss: 0.08489327, Validation loss: 0.08474668
+INFO:root:[10200] Training loss: 0.08477597, Validation loss: 0.08138229
+INFO:root:[10300] Training loss: 0.08510873, Validation loss: 0.08953547
+INFO:root:[10400] Training loss: 0.08438054, Validation loss: 0.08260826
+INFO:root:[10500] Training loss: 0.09107784, Validation loss: 0.08574049
+INFO:root:[10600] Training loss: 0.08569129, Validation loss: 0.08329119
+INFO:root:[10700] Training loss: 0.08725563, Validation loss: 0.08384331
+INFO:root:[10800] Training loss: 0.08704298, Validation loss: 0.08570746
+INFO:root:[10900] Training loss: 0.08356694, Validation loss: 0.08240676
+INFO:root:[11000] Training loss: 0.08342329, Validation loss: 0.08582298
+INFO:root:[11100] Training loss: 0.08344403, Validation loss: 0.08398908
+INFO:root:[11200] Training loss: 0.08370818, Validation loss: 0.08280893
+INFO:root:[11300] Training loss: 0.08341840, Validation loss: 0.08380588
+INFO:root:[11400] Training loss: 0.08424012, Validation loss: 0.08333442
+INFO:root:[11500] Training loss: 0.08685927, Validation loss: 0.08105332
+INFO:root:[11600] Training loss: 0.08363147, Validation loss: 0.08039872
+INFO:root:[11700] Training loss: 0.09024216, Validation loss: 0.08302420
+INFO:root:[11800] Training loss: 0.08356793, Validation loss: 0.08220270
+INFO:root:[11900] Training loss: 0.08303158, Validation loss: 0.08110003
+INFO:root:[12000] Training loss: 0.08583160, Validation loss: 0.09490583
+INFO:root:[12100] Training loss: 0.08269130, Validation loss: 0.08352040
+INFO:root:[12200] Training loss: 0.08238142, Validation loss: 0.08056546
+INFO:root:[12300] Training loss: 0.08182188, Validation loss: 0.08646606
+INFO:root:[12400] Training loss: 0.08198369, Validation loss: 0.08142364
+INFO:root:[12500] Training loss: 0.08292674, Validation loss: 0.08038972
+INFO:root:[12600] Training loss: 0.08201450, Validation loss: 0.08181129
+INFO:root:[12700] Training loss: 0.08287982, Validation loss: 0.08983517
+INFO:root:[12800] Training loss: 0.08581180, Validation loss: 0.09609216
+INFO:root:[12900] Training loss: 0.08239234, Validation loss: 0.08140530
+INFO:root:[13000] Training loss: 0.08361651, Validation loss: 0.08161584
+INFO:root:[13100] Training loss: 0.08175060, Validation loss: 0.08129498
+INFO:root:[13200] Training loss: 0.08316699, Validation loss: 0.07952544
+INFO:root:[13300] Training loss: 0.08185248, Validation loss: 0.07880086
+INFO:root:[13400] Training loss: 0.08131954, Validation loss: 0.08034135
+INFO:root:[13500] Training loss: 0.08199795, Validation loss: 0.08282468
+INFO:root:[13600] Training loss: 0.08218970, Validation loss: 0.08160173
+INFO:root:[13700] Training loss: 0.08239248, Validation loss: 0.07743461
+INFO:root:[13800] Training loss: 0.08097664, Validation loss: 0.07995158
+INFO:root:[13900] Training loss: 0.08125645, Validation loss: 0.08088451
+INFO:root:[14000] Training loss: 0.08216611, Validation loss: 0.07999794
+INFO:root:[14100] Training loss: 0.08139243, Validation loss: 0.08174864
+INFO:root:[14200] Training loss: 0.08190039, Validation loss: 0.08467754
+INFO:root:[14300] Training loss: 0.08181020, Validation loss: 0.07896674
+INFO:root:[14400] Training loss: 0.08052426, Validation loss: 0.07832217
+INFO:root:[14500] Training loss: 0.08085184, Validation loss: 0.08100423
+INFO:root:[14600] Training loss: 0.09402287, Validation loss: 0.07814117
+INFO:root:[14700] Training loss: 0.07994047, Validation loss: 0.08593427
+INFO:root:[14800] Training loss: 0.08033820, Validation loss: 0.07958498
+INFO:root:[14900] Training loss: 0.08157932, Validation loss: 0.07671539
+INFO:root:[15000] Training loss: 0.08287676, Validation loss: 0.07937007
+INFO:root:[15100] Training loss: 0.08283051, Validation loss: 0.08447219
+INFO:root:[15200] Training loss: 0.08206922, Validation loss: 0.07969700
+INFO:root:[15300] Training loss: 0.08444351, Validation loss: 0.07823081
+INFO:root:[15400] Training loss: 0.08073009, Validation loss: 0.07741167
+INFO:root:[15500] Training loss: 0.08041891, Validation loss: 0.08066621
+INFO:root:[15600] Training loss: 0.08436899, Validation loss: 0.08791631
+INFO:root:[15700] Training loss: 0.08031544, Validation loss: 0.07977396
+INFO:root:[15800] Training loss: 0.08341796, Validation loss: 0.08701816
+INFO:root:[15900] Training loss: 0.08243849, Validation loss: 0.07911368
+INFO:root:[16000] Training loss: 0.07967429, Validation loss: 0.08195533
+INFO:root:[16100] Training loss: 0.08152960, Validation loss: 0.08596545
+INFO:root:[16200] Training loss: 0.08047909, Validation loss: 0.07984382
+INFO:root:[16300] Training loss: 0.08012556, Validation loss: 0.07748819
+INFO:root:[16400] Training loss: 0.08021408, Validation loss: 0.07784951
+INFO:root:[16500] Training loss: 0.08751937, Validation loss: 0.08187239
+INFO:root:[16600] Training loss: 0.07939413, Validation loss: 0.07845880
+INFO:root:[16700] Training loss: 0.08529400, Validation loss: 0.10001483
+INFO:root:[16800] Training loss: 0.08164479, Validation loss: 0.08156320
+INFO:root:[16900] Training loss: 0.08020591, Validation loss: 0.07944386
+INFO:root:[17000] Training loss: 0.08020783, Validation loss: 0.07764997
+INFO:root:[17100] Training loss: 0.08024194, Validation loss: 0.08776332
+INFO:root:[17200] Training loss: 0.07927987, Validation loss: 0.07613720
+INFO:root:[17300] Training loss: 0.08038755, Validation loss: 0.07549715
+INFO:root:[17400] Training loss: 0.08060083, Validation loss: 0.07759017
+INFO:root:[17500] Training loss: 0.07992850, Validation loss: 0.07660358
+INFO:root:[17600] Training loss: 0.08050812, Validation loss: 0.08292944
+INFO:root:[17700] Training loss: 0.07979851, Validation loss: 0.07692223
+INFO:root:[17800] Training loss: 0.07982680, Validation loss: 0.08730375
+INFO:root:[17900] Training loss: 0.07948851, Validation loss: 0.07675213
+INFO:root:[18000] Training loss: 0.07975067, Validation loss: 0.07823134
+INFO:root:[18100] Training loss: 0.07874519, Validation loss: 0.07832171
+INFO:root:[18200] Training loss: 0.07938486, Validation loss: 0.07975120
+INFO:root:[18300] Training loss: 0.07869538, Validation loss: 0.07960778
+INFO:root:[18400] Training loss: 0.07969871, Validation loss: 0.07653331
+INFO:root:[18500] Training loss: 0.07854728, Validation loss: 0.07377105
+INFO:root:[18600] Training loss: 0.08684799, Validation loss: 0.09943427
+INFO:root:[18700] Training loss: 0.07934012, Validation loss: 0.07593804
+INFO:root:[18800] Training loss: 0.07991245, Validation loss: 0.07748632
+INFO:root:[18900] Training loss: 0.07941539, Validation loss: 0.08978350
+INFO:root:[19000] Training loss: 0.07914420, Validation loss: 0.07654813
+INFO:root:[19100] Training loss: 0.08147233, Validation loss: 0.07589300
+INFO:root:[19200] Training loss: 0.08050569, Validation loss: 0.08407921
+INFO:root:[19300] Training loss: 0.07841341, Validation loss: 0.07899141
+INFO:root:[19400] Training loss: 0.07883955, Validation loss: 0.07942866
+INFO:root:[19500] Training loss: 0.08176621, Validation loss: 0.09252815
+INFO:root:[19600] Training loss: 0.07728098, Validation loss: 0.08402079
+INFO:root:[19700] Training loss: 0.07988228, Validation loss: 0.08596947
+INFO:root:[19800] Training loss: 0.07783874, Validation loss: 0.07648807
+INFO:root:[19900] Training loss: 0.07743841, Validation loss: 0.07585786
+INFO:root:[20000] Training loss: 0.08693274, Validation loss: 0.08459492
+INFO:root:Training the model took 3852.313s.
+INFO:root:Precision score (training data): 0.95414
+INFO:root:Recall score (training data): 0.90282
+INFO:root:F1 score (training data): 0.92777
+INFO:root:Precision score (test data): 0.95346
+INFO:root:Recall score (test data): 0.9009
+INFO:root:F1 score (test data): 0.92644
+INFO:root:Covering score (training data) (quantile cutoff): 0.95305
+INFO:root:Complete cover size (training data) (quantile cutoff): 0.2980611462498702
+INFO:root:Covering score (test data) (quantile cutoff): 0.9526
+INFO:root:Complete cover size (test data) (quantile cutoff): 0.2980067709426832
+INFO:root:Covering score (training data) (0.5 cutoff): 0.79616
+INFO:root:Complete cover size (training data) (0.5 cutoff): 0.17998869105785004
+INFO:root:Covering score (test data) (0.5 cutoff): 0.7948
+INFO:root:Complete cover size (test data) (0.5 cutoff): 0.18063506542526422
+INFO:root:MSE (test data): 0.02228
+INFO:root:BCE (test data): 0.08624
+INFO:root:#### Starting with 500 batches out of [100, 500] now. ####
+INFO:root:Batch size: 4000
+INFO:root:[  100] Training loss: 0.16728647, Validation loss: 0.15898633
+INFO:root:[  200] Training loss: 0.13987860, Validation loss: 0.13710557
+INFO:root:[  300] Training loss: 0.12915468, Validation loss: 0.13054740
+INFO:root:[  400] Training loss: 0.11975860, Validation loss: 0.11683891
+INFO:root:[  500] Training loss: 0.11361785, Validation loss: 0.10986327
+INFO:root:[  600] Training loss: 0.10930084, Validation loss: 0.10860237
+INFO:root:[  700] Training loss: 0.10540470, Validation loss: 0.10448668
+INFO:root:[  800] Training loss: 0.10277441, Validation loss: 0.10217776
+INFO:root:[  900] Training loss: 0.10074360, Validation loss: 0.09874941
+INFO:root:[ 1000] Training loss: 0.09904303, Validation loss: 0.09672726
+INFO:root:[ 1100] Training loss: 0.09706512, Validation loss: 0.09267396
+INFO:root:[ 1200] Training loss: 0.09702993, Validation loss: 0.09273396
+INFO:root:[ 1300] Training loss: 0.09486367, Validation loss: 0.09692562
+INFO:root:[ 1400] Training loss: 0.09366366, Validation loss: 0.09149431
+INFO:root:[ 1500] Training loss: 0.09298270, Validation loss: 0.09415256
+INFO:root:[ 1600] Training loss: 0.09198260, Validation loss: 0.09201956
+INFO:root:[ 1700] Training loss: 0.09063050, Validation loss: 0.08721875
+INFO:root:[ 1800] Training loss: 0.08990803, Validation loss: 0.08961105
+INFO:root:[ 1900] Training loss: 0.08960813, Validation loss: 0.08444956
+INFO:root:[ 2000] Training loss: 0.08904664, Validation loss: 0.08386099
+INFO:root:[ 2100] Training loss: 0.09178213, Validation loss: 0.08554746
+INFO:root:[ 2200] Training loss: 0.08745816, Validation loss: 0.08385094
+INFO:root:[ 2300] Training loss: 0.08667619, Validation loss: 0.08538815
+INFO:root:[ 2400] Training loss: 0.08683362, Validation loss: 0.08131981
+INFO:root:[ 2500] Training loss: 0.08589491, Validation loss: 0.08263534
+INFO:root:[ 2600] Training loss: 0.08568243, Validation loss: 0.08403222
+INFO:root:[ 2700] Training loss: 0.08474649, Validation loss: 0.08312021
+INFO:root:[ 2800] Training loss: 0.08735681, Validation loss: 0.08263131
+INFO:root:[ 2900] Training loss: 0.08435880, Validation loss: 0.08213915
+INFO:root:[ 3000] Training loss: 0.08396508, Validation loss: 0.07977997
+INFO:root:[ 3100] Training loss: 0.08342256, Validation loss: 0.08246366
+INFO:root:[ 3200] Training loss: 0.08282312, Validation loss: 0.08025712
+INFO:root:[ 3300] Training loss: 0.08246495, Validation loss: 0.07628689
+INFO:root:[ 3400] Training loss: 0.08252571, Validation loss: 0.08261468
+INFO:root:[ 3500] Training loss: 0.08310308, Validation loss: 0.08007824
+INFO:root:[ 3600] Training loss: 0.08164269, Validation loss: 0.07783300
+INFO:root:[ 3700] Training loss: 0.08132840, Validation loss: 0.08088823
+INFO:root:[ 3800] Training loss: 0.08154034, Validation loss: 0.08152717
+INFO:root:[ 3900] Training loss: 0.08167775, Validation loss: 0.07704080
+INFO:root:[ 4000] Training loss: 0.08093880, Validation loss: 0.07985748
+INFO:root:[ 4100] Training loss: 0.08044697, Validation loss: 0.07947841
+INFO:root:[ 4200] Training loss: 0.08023332, Validation loss: 0.07598157
+INFO:root:[ 4300] Training loss: 0.08062470, Validation loss: 0.08212017
+INFO:root:[ 4400] Training loss: 0.08082866, Validation loss: 0.07758014
+INFO:root:[ 4500] Training loss: 0.07991869, Validation loss: 0.07972281
+INFO:root:[ 4600] Training loss: 0.08016273, Validation loss: 0.08062050
+INFO:root:[ 4700] Training loss: 0.07952230, Validation loss: 0.07650466
+INFO:root:[ 4800] Training loss: 0.07978914, Validation loss: 0.07660898
+INFO:root:[ 4900] Training loss: 0.08051545, Validation loss: 0.08182679
+INFO:root:[ 5000] Training loss: 0.07894286, Validation loss: 0.07552371
+INFO:root:[ 5100] Training loss: 0.07885146, Validation loss: 0.07504368
+INFO:root:[ 5200] Training loss: 0.07802522, Validation loss: 0.07893682
+INFO:root:[ 5300] Training loss: 0.07816781, Validation loss: 0.07736905
+INFO:root:[ 5400] Training loss: 0.07857335, Validation loss: 0.07464951
+INFO:root:[ 5500] Training loss: 0.07768094, Validation loss: 0.07658122
+INFO:root:[ 5600] Training loss: 0.07804094, Validation loss: 0.07708618
+INFO:root:[ 5700] Training loss: 0.07996856, Validation loss: 0.07483952
+INFO:root:[ 5800] Training loss: 0.07739152, Validation loss: 0.07468720
+INFO:root:[ 5900] Training loss: 0.07759677, Validation loss: 0.07603520
+INFO:root:[ 6000] Training loss: 0.07730994, Validation loss: 0.07885173
+INFO:root:[ 6100] Training loss: 0.07872932, Validation loss: 0.08038044
+INFO:root:[ 6200] Training loss: 0.07695806, Validation loss: 0.07409424
+INFO:root:[ 6300] Training loss: 0.07673035, Validation loss: 0.07551246
+INFO:root:[ 6400] Training loss: 0.07626482, Validation loss: 0.07373250
+INFO:root:[ 6500] Training loss: 0.07643460, Validation loss: 0.07532712
+INFO:root:[ 6600] Training loss: 0.07617657, Validation loss: 0.07265264
+INFO:root:[ 6700] Training loss: 0.07594655, Validation loss: 0.08031214
+INFO:root:[ 6800] Training loss: 0.07665578, Validation loss: 0.08087549
+INFO:root:[ 6900] Training loss: 0.07568763, Validation loss: 0.07743758
+INFO:root:[ 7000] Training loss: 0.07572356, Validation loss: 0.07821435
+INFO:root:[ 7100] Training loss: 0.07554000, Validation loss: 0.07678502
+INFO:root:[ 7200] Training loss: 0.07579677, Validation loss: 0.07444946
+INFO:root:[ 7300] Training loss: 0.07542057, Validation loss: 0.07358595
+INFO:root:[ 7400] Training loss: 0.07584622, Validation loss: 0.07272226
+INFO:root:[ 7500] Training loss: 0.07483433, Validation loss: 0.07400871
+INFO:root:[ 7600] Training loss: 0.07476528, Validation loss: 0.07253520
+INFO:root:[ 7700] Training loss: 0.07478226, Validation loss: 0.07423074
+INFO:root:[ 7800] Training loss: 0.07467247, Validation loss: 0.07216710
+INFO:root:[ 7900] Training loss: 0.07481191, Validation loss: 0.07108150
+INFO:root:[ 8000] Training loss: 0.07418774, Validation loss: 0.07442024
+INFO:root:[ 8100] Training loss: 0.07453229, Validation loss: 0.07221156
+INFO:root:[ 8200] Training loss: 0.07400679, Validation loss: 0.07410995
+INFO:root:[ 8300] Training loss: 0.07423059, Validation loss: 0.07357924
+INFO:root:[ 8400] Training loss: 0.07471953, Validation loss: 0.07003102
+INFO:root:[ 8500] Training loss: 0.07405661, Validation loss: 0.07030881
+INFO:root:[ 8600] Training loss: 0.07388935, Validation loss: 0.07506917
+INFO:root:[ 8700] Training loss: 0.07403331, Validation loss: 0.07161947
+INFO:root:[ 8800] Training loss: 0.07350009, Validation loss: 0.07457110
+INFO:root:[ 8900] Training loss: 0.07425848, Validation loss: 0.07264467
+INFO:root:[ 9000] Training loss: 0.07336601, Validation loss: 0.07161626
+INFO:root:[ 9100] Training loss: 0.07323212, Validation loss: 0.07242572
+INFO:root:[ 9200] Training loss: 0.07331732, Validation loss: 0.07320639
+INFO:root:[ 9300] Training loss: 0.07324367, Validation loss: 0.07186698
+INFO:root:[ 9400] Training loss: 0.07315324, Validation loss: 0.07747906
+INFO:root:[ 9500] Training loss: 0.07260127, Validation loss: 0.07089985
+INFO:root:[ 9600] Training loss: 0.07242006, Validation loss: 0.07454874
+INFO:root:[ 9700] Training loss: 0.07253207, Validation loss: 0.07054888
+INFO:root:[ 9800] Training loss: 0.07234145, Validation loss: 0.07126430
+INFO:root:[ 9900] Training loss: 0.07203988, Validation loss: 0.07152837
+INFO:root:[10000] Training loss: 0.07206406, Validation loss: 0.07135991
+INFO:root:[10100] Training loss: 0.07241188, Validation loss: 0.07331832
+INFO:root:[10200] Training loss: 0.07205979, Validation loss: 0.07087635
+INFO:root:[10300] Training loss: 0.07304417, Validation loss: 0.06997186
+INFO:root:[10400] Training loss: 0.07181355, Validation loss: 0.07107988
+INFO:root:[10500] Training loss: 0.07161365, Validation loss: 0.07155720
+INFO:root:[10600] Training loss: 0.07156020, Validation loss: 0.07044271
+INFO:root:[10700] Training loss: 0.07137510, Validation loss: 0.06889653
+INFO:root:[10800] Training loss: 0.07137523, Validation loss: 0.06767167

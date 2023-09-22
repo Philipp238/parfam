@@ -1,0 +1,5 @@
+,maxiter1,maxiter2,target_noise,feature_noise,optimizer,pruning_iterations,pruning_cut_off,classifier,local_minimizer,maxiter_per_dim_local_minimizer,max_dataset_length,lambda_1,repetitions,parallel,n_processes,lambda_1_cut,lambda_1_piecewise,device,accuracy,time_limit,evaluations_limit,iterative_finetuning,max_n_active_parameters,relative_l2_train,relative_l2_val,success,training_time
+0,100,0,0.0,0.0,basinhopping,1,0.01,None,BFGS,50,500,0.001,1,False,4,0,0,cpu,0.0001,4800,1000000,True,10,0.0012406113171335262,0.0024085821768238596,0.55,2192.94585
+1,100,0,0.0,0.0,basinhopping,1,0.01,None,BFGS,50,1000,0.001,1,False,4,0,0,cpu,0.0001,4800,1000000,True,10,0.0009483478206851933,0.0017308280090756888,0.6,1973.7903999999999
+2,100,0,0.0,0.0,basinhopping,1,0.01,None,BFGS,100,500,0.001,1,False,4,0,0,cpu,0.0001,4800,1000000,True,10,0.0006230760176453817,0.002491748549748503,0.65,1679.8523
+3,100,0,0.0,0.0,basinhopping,1,0.01,None,BFGS,100,1000,0.001,1,False,4,0,0,cpu,0.0001,4800,1000000,True,10,0.0010112399125822083,0.0017092259466613263,0.65,1755.2834500000001

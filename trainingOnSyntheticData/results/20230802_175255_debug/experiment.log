@@ -1,0 +1,67 @@
+INFO:root:Starting the logger.
+INFO:root:Using cpu.
+INFO:root:############### Starting experiment with config file debug.ini ###############
+INFO:root:######## Starting with training set size 100 out of [100, 1000] now. ########
+INFO:root:Creating the dataset took 1883.308s.
+INFO:root:###### Starting with 50 hidden neurons out of [50] now. ######
+INFO:root:#### Starting with 5 batches out of [5] now. ####
+INFO:root:Batch size: 20
+INFO:root:[  100] Training loss: 0.57290244, Validation loss: 0.62552482
+INFO:root:[  200] Training loss: 0.47697758, Validation loss: 0.61429203
+INFO:root:[  300] Training loss: 0.40621433, Validation loss: 0.63397938
+INFO:root:[  400] Training loss: 0.34927654, Validation loss: 0.68748081
+INFO:root:[  500] Training loss: 0.30309351, Validation loss: 0.75549006
+INFO:root:[  600] Training loss: 0.26493768, Validation loss: 0.85366905
+INFO:root:[  700] Training loss: 0.23327056, Validation loss: 0.95734882
+INFO:root:[  800] Training loss: 0.20411741, Validation loss: 1.07578659
+INFO:root:[  900] Training loss: 0.18021921, Validation loss: 1.20880437
+INFO:root:[ 1000] Training loss: 0.15922296, Validation loss: 1.36487007
+INFO:root:Training the model took 10.094s.
+INFO:root:Precision score (training data): 0.95652
+INFO:root:Recall score (training data): 0.93256
+INFO:root:F1 score (training data): 0.94439
+INFO:root:Precision score (test data): 0.67231
+INFO:root:Recall score (test data): 0.5537
+INFO:root:F1 score (test data): 0.60727
+INFO:root:Covering score (training data) (quantile cutoff): 0.34
+INFO:root:Complete cover size (training data) (quantile cutoff): 0.5267379679144385
+INFO:root:Covering score (test data) (quantile cutoff): 0.0897
+INFO:root:Complete cover size (test data) (quantile cutoff): 0.41279010844228237
+INFO:root:Covering score (training data) (0.5 cutoff): 0.78
+INFO:root:Complete cover size (training data) (0.5 cutoff): 0.49184149184149184
+INFO:root:Covering score (test data) (0.5 cutoff): 0.1613
+INFO:root:Complete cover size (test data) (0.5 cutoff): 0.45787070957560727
+INFO:root:MSE (test data): 0.26357
+INFO:root:BCE (test data): 1.25333
+INFO:root:######## Starting with training set size 1000 out of [100, 1000] now. ########
+INFO:root:Creating the dataset took 27.546s.
+INFO:root:###### Starting with 50 hidden neurons out of [50] now. ######
+INFO:root:#### Starting with 5 batches out of [5] now. ####
+INFO:root:Batch size: 200
+INFO:root:[  100] Training loss: 0.60054003, Validation loss: 0.63747418
+INFO:root:[  200] Training loss: 0.55915138, Validation loss: 0.61523283
+INFO:root:[  300] Training loss: 0.52793878, Validation loss: 0.60707760
+INFO:root:[  400] Training loss: 0.49936247, Validation loss: 0.60977232
+INFO:root:[  500] Training loss: 0.47338020, Validation loss: 0.61314619
+INFO:root:[  600] Training loss: 0.44985049, Validation loss: 0.62101126
+INFO:root:[  700] Training loss: 0.42950742, Validation loss: 0.63348466
+INFO:root:[  800] Training loss: 0.41232592, Validation loss: 0.65577412
+INFO:root:[  900] Training loss: 0.39668205, Validation loss: 0.67432660
+INFO:root:[ 1000] Training loss: 0.38280402, Validation loss: 0.69637477
+INFO:root:Training the model took 52.118s.
+INFO:root:Precision score (training data): 0.86342
+INFO:root:Recall score (training data): 0.79127
+INFO:root:F1 score (training data): 0.82578
+INFO:root:Precision score (test data): 0.71231
+INFO:root:Recall score (test data): 0.63641
+INFO:root:F1 score (test data): 0.67222
+INFO:root:Covering score (training data) (quantile cutoff): 0.2
+INFO:root:Complete cover size (training data) (quantile cutoff): 0.4495454545454545
+INFO:root:Covering score (test data) (quantile cutoff): 0.101
+INFO:root:Complete cover size (test data) (quantile cutoff): 0.3629162916291629
+INFO:root:Covering score (training data) (0.5 cutoff): 0.43
+INFO:root:Complete cover size (training data) (0.5 cutoff): 0.493446088794926
+INFO:root:Covering score (test data) (0.5 cutoff): 0.2007
+INFO:root:Complete cover size (test data) (0.5 cutoff): 0.45001585360329754
+INFO:root:MSE (test data): 0.2048
+INFO:root:BCE (test data): 0.65627

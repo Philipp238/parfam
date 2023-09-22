@@ -1,0 +1,85 @@
+INFO:root:Starting the logger.
+INFO:root:Using cpu.
+INFO:root:############### Starting experiment with config file train_local.ini ###############
+INFO:root:######## Starting with training set size 100000 out of [100000] now. ########
+INFO:root:Creating the dataset took 9.811s.
+INFO:root:###### Starting with 100 hidden neurons out of [100, 200] now. ######
+INFO:root:#### Starting with 100 batches out of [100] now. ####
+INFO:root:Batch size: 1000
+INFO:root:[  100] Training loss: 0.37026500, Validation loss: 0.37580737
+INFO:root:[  200] Training loss: 0.32885985, Validation loss: 0.34303263
+INFO:root:[  300] Training loss: 0.31216234, Validation loss: 0.33797872
+INFO:root:[  400] Training loss: 0.30068781, Validation loss: 0.32676211
+INFO:root:[  500] Training loss: 0.29163078, Validation loss: 0.31838673
+INFO:root:[  600] Training loss: 0.28393002, Validation loss: 0.31217733
+INFO:root:[  700] Training loss: 0.27822082, Validation loss: 0.31304669
+INFO:root:[  800] Training loss: 0.27313199, Validation loss: 0.31058782
+INFO:root:[  900] Training loss: 0.26862887, Validation loss: 0.30441207
+INFO:root:[ 1000] Training loss: 0.26457272, Validation loss: 0.30172670
+INFO:root:[ 1100] Training loss: 0.26126221, Validation loss: 0.30172566
+INFO:root:[ 1200] Training loss: 0.25810624, Validation loss: 0.30359644
+INFO:root:[ 1300] Training loss: 0.25529998, Validation loss: 0.29961461
+INFO:root:[ 1400] Training loss: 0.25265900, Validation loss: 0.30378553
+INFO:root:[ 1500] Training loss: 0.25033058, Validation loss: 0.30239311
+INFO:root:[ 1600] Training loss: 0.24791798, Validation loss: 0.30424017
+INFO:root:[ 1700] Training loss: 0.24622586, Validation loss: 0.30573952
+INFO:root:[ 1800] Training loss: 0.24466036, Validation loss: 0.30494893
+INFO:root:[ 1900] Training loss: 0.24243591, Validation loss: 0.30258387
+INFO:root:[ 2000] Training loss: 0.24078225, Validation loss: 0.30619329
+INFO:root:Training the model took 781.077s.
+INFO:root:Precision score (training data): 0.87697
+INFO:root:Recall score (training data): 0.80064
+INFO:root:F1 score (training data): 0.83707
+INFO:root:Precision score (test data): 0.84553
+INFO:root:Recall score (test data): 0.77188
+INFO:root:F1 score (test data): 0.80703
+INFO:root:Covering score (training data) (quantile cutoff): 0.5353
+INFO:root:Complete cover size (training data) (quantile cutoff): 0.25932320994902724
+INFO:root:Covering score (test data) (quantile cutoff): 0.4912
+INFO:root:Complete cover size (test data) (quantile cutoff): 0.2456520474639367
+INFO:root:Covering score (training data) (0.5 cutoff): 0.51063
+INFO:root:Complete cover size (training data) (0.5 cutoff): 0.24757652311850067
+INFO:root:Covering score (test data) (0.5 cutoff): 0.473
+INFO:root:Complete cover size (test data) (0.5 cutoff): 0.2358501963153126
+INFO:root:MSE (test data): 0.08552
+INFO:root:BCE (test data): 0.30843
+INFO:root:###### Starting with 200 hidden neurons out of [100, 200] now. ######
+INFO:root:#### Starting with 100 batches out of [100] now. ####
+INFO:root:Batch size: 1000
+INFO:root:[  100] Training loss: 0.34563995, Validation loss: 0.35973793
+INFO:root:[  200] Training loss: 0.30630560, Validation loss: 0.33360082
+INFO:root:[  300] Training loss: 0.28670013, Validation loss: 0.32720113
+INFO:root:[  400] Training loss: 0.27249489, Validation loss: 0.32540512
+INFO:root:[  500] Training loss: 0.26192578, Validation loss: 0.32586896
+INFO:root:[  600] Training loss: 0.25338327, Validation loss: 0.32420808
+INFO:root:[  700] Training loss: 0.24543620, Validation loss: 0.32670802
+INFO:root:[  800] Training loss: 0.23922432, Validation loss: 0.32869488
+INFO:root:[  900] Training loss: 0.23353905, Validation loss: 0.34272146
+INFO:root:[ 1000] Training loss: 0.22845866, Validation loss: 0.34493718
+INFO:root:[ 1100] Training loss: 0.22419864, Validation loss: 0.34541446
+INFO:root:[ 1200] Training loss: 0.22055558, Validation loss: 0.35046977
+INFO:root:[ 1300] Training loss: 0.21721609, Validation loss: 0.35653654
+INFO:root:[ 1400] Training loss: 0.21439385, Validation loss: 0.36543050
+INFO:root:[ 1500] Training loss: 0.21058418, Validation loss: 0.36644614
+INFO:root:[ 1600] Training loss: 0.20877808, Validation loss: 0.38518935
+INFO:root:[ 1700] Training loss: 0.20613329, Validation loss: 0.38371456
+INFO:root:[ 1800] Training loss: 0.20366496, Validation loss: 0.39063025
+INFO:root:[ 1900] Training loss: 0.20134005, Validation loss: 0.39847675
+INFO:root:[ 2000] Training loss: 0.19976145, Validation loss: 0.40798134
+INFO:root:Training the model took 1367.581s.
+INFO:root:Precision score (training data): 0.90771
+INFO:root:Recall score (training data): 0.83993
+INFO:root:F1 score (training data): 0.8725
+INFO:root:Precision score (test data): 0.83352
+INFO:root:Recall score (test data): 0.7697
+INFO:root:F1 score (test data): 0.80034
+INFO:root:Covering score (training data) (quantile cutoff): 0.6066
+INFO:root:Complete cover size (training data) (quantile cutoff): 0.2763918326974707
+INFO:root:Covering score (test data) (quantile cutoff): 0.4994
+INFO:root:Complete cover size (test data) (quantile cutoff): 0.2444933920704846
+INFO:root:Covering score (training data) (0.5 cutoff): 0.58889
+INFO:root:Complete cover size (training data) (0.5 cutoff): 0.26965380388770155
+INFO:root:Covering score (test data) (0.5 cutoff): 0.4872
+INFO:root:Complete cover size (test data) (0.5 cutoff): 0.2386376964578935
+INFO:root:MSE (test data): 0.09385
+INFO:root:BCE (test data): 0.40333
