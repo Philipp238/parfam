@@ -46,7 +46,7 @@ def r_squared(model, coefficients, x, y):
     return r2score
 
 
-# adds results to the results dictionary
+# adds trained_models to the trained_models dictionary
 def append_results_dict_model_training_parameters(results_dict, training_parameters, model_parameters_dict,
                                                   target_formula, estimated_formula,
                                                   relative_l2_distance_train, relative_l2_distance_val, r_squared_val,
@@ -74,7 +74,7 @@ def append_results_dict_model_training_parameters(results_dict, training_paramet
                         best_formula_reduced, r_squared_val_reduced, n_evaluations)
 
 
-# adds results to the results dictionary
+# adds trained_models to the trained_models dictionary
 def append_results_dict(results_dict, hyperparameters, target_formula, estimated_formula, relative_l2_distance_train,
                         relative_l2_distance_val, r_squared_val, success, training_time, dataset_name,
                         n_active_coefficients, relative_l2_distance_test, r_squared_test, n_active_coefficients_reduced,

@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fdad4d7d-c7da-4291-b042-55b13ae08701" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/results/optimizer comparison/results_combined_analyzed.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trainingOnSyntheticData/results/results_combined.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/benchmark.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/.ipynb_checkpoints/optimizer-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/.ipynb_checkpoints/optimizer-checkpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/dsr_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/dsr_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/operon_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/operon_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/optimization_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/optimization_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/optimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/pysr_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/pysr_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/srbench/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/srbench/benchmark.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/srbench/temp.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/srbench/temp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/srbench/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/srbench/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/srbench/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/srbench/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/test_parfam_np.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/test_parfam_np.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/Exploring the results.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/Exploring the results.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/benchmark.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_121438_philipp_cluster_feynman/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_121438_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_121837_philipp_cluster_feynman/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_121837_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_121908_philipp_cluster_feynman/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_121908_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122320_philipp_cluster_feynman/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122320_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122453_philipp_cluster_feynman/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122453_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122709_philipp_cluster_feynman/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122709_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122819_philipp_cluster_strogatz/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122819_philipp_cluster_strogatz/philipp_cluster_strogatz.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122819_philipp_cluster_strogatz/results.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122819_philipp_cluster_strogatz/summary_algorithms.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_122819_philipp_cluster_strogatz/summary_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_142711_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_142711_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_142935_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_142935_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143003_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143003_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143010_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143010_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143023_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143023_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143041_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143041_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143124_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230927_143124_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124107_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124107_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124134_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124134_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124159_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124159_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124216_debug_philipp/debug_philipp.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124216_debug_philipp/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124216_debug_philipp/results.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124216_debug_philipp/summary_algorithms.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/20230928_124216_debug_philipp/summary_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/results_for_the_paper/optimizer comparison/modelparametersearch_perfect/optimizer_comparison_accuracy_solution_rate.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/results_for_the_paper/optimizer comparison/modelparametersearch_perfect/optimizer_comparison_accuracy_solution_rate.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/results_for_the_paper/optimizer comparison/modelparametersearch_perfect/optimizer_comparison_symbolic_recovery_rate.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/results_for_the_paper/optimizer comparison/modelparametersearch_perfect/optimizer_comparison_symbolic_recovery_rate.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/results_for_the_paper/optimizer comparison/modelparametersearch_perfect/optimizer_comparison_symbolic_recovery_rate_n_evaluations.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/results/results_for_the_paper/optimizer comparison/modelparametersearch_perfect/optimizer_comparison_symbolic_recovery_rate_n_evaluations.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/Explore results.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/Explore results.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/config/debug.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/config/debug.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/config/train.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/config/train.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/config/train_local.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/config/train_local.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174223_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174223_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174223_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174223_debug/Loss_training_set_size_100_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174223_debug/debug.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174223_debug/debug.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174223_debug/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174223_debug/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174223_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174223_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174223_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174223_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174223_debug/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174223_debug/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174628_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174628_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174628_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174628_debug/Loss_training_set_size_100_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174628_debug/debug.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174628_debug/debug.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174628_debug/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174628_debug/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174628_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174628_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174628_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174628_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174628_debug/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174628_debug/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174851_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174851_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174851_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174851_debug/Loss_training_set_size_100_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174851_debug/debug.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174851_debug/debug.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174851_debug/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174851_debug/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174851_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174851_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174851_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174851_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_174851_debug/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_174851_debug/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_175255_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_175255_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_175255_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_175255_debug/Loss_training_set_size_100_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_175255_debug/debug.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_175255_debug/debug.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_175255_debug/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_175255_debug/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_175255_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_175255_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_175255_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_175255_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_175255_debug/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_175255_debug/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_182940_train_local/Loss_training_set_size_100000_n_batches_100_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_182940_train_local/Loss_training_set_size_100000_n_batches_100_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_182940_train_local/Loss_training_set_size_100000_n_batches_100_h_200.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_182940_train_local/Loss_training_set_size_100000_n_batches_100_h_200.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_182940_train_local/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_182940_train_local/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_182940_train_local/model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_182940_train_local/model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_182940_train_local/model_training_set_size_100000_hidden_neurons_200_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_182940_train_local/model_training_set_size_100000_hidden_neurons_200_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_182940_train_local/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_182940_train_local/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230802_182940_train_local/train_local.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230802_182940_train_local/train_local.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230803_162736_train_local/Loss_training_set_size_100000_n_batches_100_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230803_162736_train_local/Loss_training_set_size_100000_n_batches_100_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230803_162736_train_local/Loss_training_set_size_100000_n_batches_100_h_200.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230803_162736_train_local/Loss_training_set_size_100000_n_batches_100_h_200.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230803_162736_train_local/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230803_162736_train_local/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230803_162736_train_local/model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230803_162736_train_local/model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230803_162736_train_local/model_training_set_size_100000_hidden_neurons_200_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230803_162736_train_local/model_training_set_size_100000_hidden_neurons_200_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230803_162736_train_local/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230803_162736_train_local/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230803_162736_train_local/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230803_162736_train_local/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230803_162736_train_local/train_local.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230803_162736_train_local/train_local.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230804_110046_train_local/Loss_training_set_size_100000_n_batches_100_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230804_110046_train_local/Loss_training_set_size_100000_n_batches_100_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230804_110046_train_local/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230804_110046_train_local/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230804_110046_train_local/model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230804_110046_train_local/model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230804_110046_train_local/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230804_110046_train_local/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230804_110046_train_local/train_local.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230804_110046_train_local/train_local.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_121105_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_121105_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_121105_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_121105_debug/Loss_training_set_size_100_n_batches_5_h_50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_121105_debug/debug.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_121105_debug/debug.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_121105_debug/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_121105_debug/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_121105_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_121105_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_121105_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_121105_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_121105_debug/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_121105_debug/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_122502_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_122502_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_122502_train/Loss_training_set_size_2000000_n_batches_500_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_122502_train/Loss_training_set_size_2000000_n_batches_500_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_122502_train/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_122502_train/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_122502_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_122502_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_122502_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_500.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_122502_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_500.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_122502_train/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_122502_train/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_122502_train/train.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_122502_train/train.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_175747_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_175747_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_175747_train/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_175747_train/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_175747_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_175747_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_175747_train/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_175747_train/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_175747_train/train.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_175747_train/train.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_1000.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_1000.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_200.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_200.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_500.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_500.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_200.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_200.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_500.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_500.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_500.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_500.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_500.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_500.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_500_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_500_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_500_n_batches_500.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_500_n_batches_500.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230807_213046_train/train.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230807_213046_train/train.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230907_170446_train/Loss_training_set_size_2000000_n_batches_500_h_200.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230907_170446_train/Loss_training_set_size_2000000_n_batches_500_h_200.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230907_170446_train/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230907_170446_train/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230907_170446_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_500.pt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230907_170446_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_500.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230907_170446_train/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230907_170446_train/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/results/20230907_170446_train/train.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/trained_models/20230907_170446_train/train.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/test_classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ParFamTorch/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamTorch/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ReParFam/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ReParFam/benchmark.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ReParFam/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ReParFam/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForNet/ReParFam/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ReParFam/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/parfam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/parfam.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/benchmark.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_140955_philipp_cluster_bfgs/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_140955_philipp_cluster_bfgs/philipp_cluster_bfgs.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_140955_philipp_cluster_bfgs/results.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_140955_philipp_cluster_bfgs/summary_algorithms.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_140955_philipp_cluster_bfgs/summary_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_141007_philipp_cluster_basinhopping/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_141007_philipp_cluster_basinhopping/philipp_cluster_basinhopping.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_141007_philipp_cluster_basinhopping/results.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_141007_philipp_cluster_basinhopping/summary_algorithms.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230914_141007_philipp_cluster_basinhopping/summary_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_144909_philipp_cluster_dualannealing/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_144909_philipp_cluster_dualannealing/philipp_cluster_dualannealing.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_144909_philipp_cluster_dualannealing/results.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_144909_philipp_cluster_dualannealing/summary_algorithms.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_144909_philipp_cluster_dualannealing/summary_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_161624_philipp_cluster_basinhopping/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_161624_philipp_cluster_basinhopping/philipp_cluster_basinhopping.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_161624_philipp_cluster_basinhopping/results.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_161624_philipp_cluster_basinhopping/summary_algorithms.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230920_161624_philipp_cluster_basinhopping/summary_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230921_094625_philipp_cluster_lbfgs/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230921_094625_philipp_cluster_lbfgs/philipp_cluster_lbfgs.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230921_094625_philipp_cluster_lbfgs/results.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230921_094625_philipp_cluster_lbfgs/summary_algorithms.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/20230921_094625_philipp_cluster_lbfgs/summary_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/optimizer_comparison_accuracy_solution_rate.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/results/optimizer comparison/optimizer_comparison_accuracy_solution_rate.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/optimizer_comparison_symbolic_recovery_rate.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/results/optimizer comparison/optimizer_comparison_symbolic_recovery_rate.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/optimizer_comparison_symbolic_recovery_rate_n_evaluations.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/results_combined.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/optimizer comparison/results_combined.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/.ipynb_checkpoints/Classification-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/.ipynb_checkpoints/Explore results-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/.ipynb_checkpoints/Test basinhopping-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_125708_results_iter_1000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_125708_results_iter_1000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_142011_results_iter_1000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_142011_results_iter_1000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_163746_results_iter_100.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_163746_results_iter_100.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_171749_results_iter_500.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_171749_results_iter_500.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_172056_results_iter_100.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230809_172056_results_iter_100.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230810_095849_results_iter_500.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230810_095849_results_iter_500.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230810_115227_results_iter_5000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230810_161526_results_iter_5000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230811_144228_results_iter_100.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230811_144228_results_iter_100.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230811_152333_results_iter_50.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230811_155210_results_iter_50.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230811_162935_results_iter_50.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230811_170837_results_iter_1000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230812_000614_results_iter_500.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/20230813_115038_results_iter_2000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/Classification.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/Explore results.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/Regression.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/Test basinhopping.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/config/debug.ini" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/config/debug.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/config/train.ini" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/config/train.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/config/train_local.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174223_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174223_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174223_debug/debug.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174223_debug/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174223_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174223_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174223_debug/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174628_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174628_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174628_debug/debug.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174628_debug/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174628_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174628_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174628_debug/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174851_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174851_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174851_debug/debug.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174851_debug/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174851_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174851_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_174851_debug/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_175255_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_175255_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_175255_debug/debug.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_175255_debug/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_175255_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_175255_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_175255_debug/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_182940_train_local/Loss_training_set_size_100000_n_batches_100_h_100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_182940_train_local/Loss_training_set_size_100000_n_batches_100_h_200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_182940_train_local/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_182940_train_local/model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_182940_train_local/model_training_set_size_100000_hidden_neurons_200_n_batches_100.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_182940_train_local/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230802_182940_train_local/train_local.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230803_162736_train_local/Loss_training_set_size_100000_n_batches_100_h_100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230803_162736_train_local/Loss_training_set_size_100000_n_batches_100_h_200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230803_162736_train_local/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230803_162736_train_local/model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230803_162736_train_local/model_training_set_size_100000_hidden_neurons_200_n_batches_100.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230803_162736_train_local/notes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230803_162736_train_local/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230803_162736_train_local/train_local.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230804_110046_train_local/Loss_training_set_size_100000_n_batches_100_h_100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230804_110046_train_local/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230804_110046_train_local/model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230804_110046_train_local/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230804_110046_train_local/train_local.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_121105_debug/Loss_training_set_size_1000_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_121105_debug/Loss_training_set_size_100_n_batches_5_h_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_121105_debug/debug.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_121105_debug/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_121105_debug/model_training_set_size_1000_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_121105_debug/model_training_set_size_100_hidden_neurons_50_n_batches_5.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_121105_debug/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_122502_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_122502_train/Loss_training_set_size_2000000_n_batches_500_h_100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_122502_train/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_122502_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_122502_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_500.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_122502_train/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_122502_train/train.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_175747_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_175747_train/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_175747_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_175747_train/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_175747_train/train.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_1000.png" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_1000.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_200.png" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_200.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_500.png" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_100_h_500.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_200.png" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_200.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_500.png" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/Loss_training_set_size_2000000_n_batches_500_h_500.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/experiment.log" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/experiment.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_500.pt" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_100_n_batches_500.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_500.pt" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_500.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_500_n_batches_100.pt" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_500_n_batches_100.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_500_n_batches_500.pt" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_2000000_hidden_neurons_500_n_batches_500.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230807_213046_train/train.ini" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/trained_models/20230807_213046_train/train.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230907_170446_train/Loss_training_set_size_2000000_n_batches_500_h_200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230907_170446_train/experiment.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230907_170446_train/model_training_set_size_2000000_hidden_neurons_200_n_batches_500.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230907_170446_train/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/results/20230907_170446_train/train.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainingOnSyntheticData/test_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/trainingOnSyntheticData/test_classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2Vl0xi469Kr3h7zyKnkOKeeMe4Z" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/philipp/projects/phyiscalLawLearning/parfam/trainingOnSyntheticData"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/trainingOnSyntheticData" />
+      <recent name="$PROJECT_DIR$/../ForNet/ParFamTorch/trainingOnSyntheticData/config" />
+      <recent name="$PROJECT_DIR$/results/optimizer comparison" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/trainingOnSyntheticData/results" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fdad4d7d-c7da-4291-b042-55b13ae08701" name="Changes" comment="" />
+      <created>1695395607574</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695395607574</updated>
+    </task>
+    <servers />
+  </component>
+</project>

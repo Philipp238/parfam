@@ -175,7 +175,7 @@ def hyperparameter_training(x, y, target_expr, training_parameters, model_parame
         mask = None
         n_params_active = n_params
     else:
-        net_path = os.path.join('trainingOnSyntheticData/results', training_parameters['classifier'])
+        net_path = os.path.join('trainingOnSyntheticData/trained_models', training_parameters['classifier'])
         net = torch.load(net_path, map_location=torch.device(training_parameters['device']))
         prediction = net(torch.tensor(y, dtype=torch.float, device=training_parameters['device']))
         mask = prediction >= 0.2
@@ -484,7 +484,7 @@ def run_jobs_in_parallel_old_pool(x, y, target_expr, model_parameter_list, train
     pool.close()
     pool.join()
 
-    # Check the results and stop all processes if necessary
+    # Check the trained_models and stop all processes if necessary
     for result in results:
         if result is not None:
             relative_l2_distance_train, relative_l2_distance_val, formula, training_time = result
@@ -888,7 +888,7 @@ def model_parameter_search(x, y, target_expr, model_parameters_max, training_par
     else:
         model_parameter_list = [model_parameters_perfect] * training_parameters['repetitions']
     # Set logging
-    directory = 'results'
+    directory = 'trained_models'
     logging.basicConfig(filename=os.path.join(directory, 'experiment.log'), level=logging.INFO)
 
     t_0 = time()

@@ -43,7 +43,7 @@ def init():
         underscore = '_'
     else:
         underscore = ''
-    directory = os.path.join('results', datetime_ + underscore + experiment_name)
+    directory = os.path.join('trained_models', datetime_ + underscore + experiment_name)
     pathlib.Path(directory).mkdir(parents=True, exist_ok=True)
     print(f'Creating directory {directory}')
     # Initialise logging
@@ -158,7 +158,7 @@ def perform_experiments(n_experiments, dataset_names, model_parameters_dict, tra
                                                                                   config=config,
                                                                                   model_parameters_perfect=model_parameters_perfect)
 
-                # Save results
+                # Save trained_models
                 logging.info(f"Target formula: {target_formula}")
                 logging.info(f"Estimated formula: {estimated_formula}, Training time: {training_time}")
                 logging.info(
@@ -177,8 +177,8 @@ def perform_experiments(n_experiments, dataset_names, model_parameters_dict, tra
                                                               best_formula_reduced, r_squared_val_reduced,
                                                               n_evaluations)
                 results_df = pd.DataFrame(results_dict)
-                results_df.to_csv(os.path.join(directory, 'results.csv'))
-                # What is saved in summary results?
+                results_df.to_csv(os.path.join(directory, 'trained_models.csv'))
+                # What is saved in summary trained_models?
                 lst = list(training_parameters_dict[0].keys())
                 # Function to convert lists to tuples in results_df: otherwise hash error -> list
                 convert_list_to_tuple = lambda x: tuple(x) if isinstance(x, list) else x

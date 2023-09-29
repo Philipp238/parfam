@@ -434,10 +434,10 @@ def learning_random_functions(net):
     results_dict['estimated_formula'] = []
     results_dict['training_time'] = []
     for i in range(test_set_size):
-        model = ParFamTorch(n_input=1, degree_input_polynomials=degree_input_polynomials,
-                            degree_output_polynomials=degree_output_polynomials, width=width,
+        model = ParFamTorch(n_input=1, degree_input_numerator=degree_input_polynomials,
+                            degree_output_numerator=degree_output_polynomials, width=width,
                             functions=functions, function_names=function_names, enforce_function=enforce_function,
-                            degree_output_polynomials_specific=degree_output_polynomials_specific)
+                            degree_output_numerator_specific=degree_output_polynomials_specific)
 
         target_expr = model.get_formula(params[i], verbose=False)
 
@@ -493,13 +493,13 @@ if __name__ == '__main__':
     dataset_size = 2000000
     hidden_neurons = 200
     n_batches = 500
-    net_path = (f'trainingOnSyntheticData/results/20230807_213046_train/model_training_set_size_{dataset_size}_'
+    net_path = (f'trainingOnSyntheticData/trained_models/20230807_213046_train/model_training_set_size_{dataset_size}_'
                 f'hidden_neurons_{hidden_neurons}_n_batches_{n_batches}.pt')
 
-    # net_path = (f'trainingOnSyntheticData/results/20230804_110046_train_local/'
+    # net_path = (f'trainingOnSyntheticData/trained_models/20230804_110046_train_local/'
     #            f'model_training_set_size_100000_hidden_neurons_100_n_batches_100.pt')
 
-    # net_path = f'optimization/trainingOnSyntheticData/results/20230510_171529_train/model_training_set_size_' \
+    # net_path = f'optimization/trainingOnSyntheticData/trained_models/20230510_171529_train/model_training_set_size_' \
     #            f'2000000_hidden_neurons_200_n_batches_100.pt'
 
     net = torch.load(net_path, map_location=torch.device('cpu'))
