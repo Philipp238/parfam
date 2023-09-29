@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdad4d7d-c7da-4291-b042-55b13ae08701" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config_files/debug.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/benchmark.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/.ipynb_checkpoints/optimizer-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/.ipynb_checkpoints/optimizer-checkpoint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/dsr_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ParFamNP/optimization/test_optimization_techniques/dsr_test.py" afterDir="false" />
@@ -164,157 +163,8 @@
       <change beforePath="$PROJECT_DIR$/../ForNet/ReParFam/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ReParFam/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForNet/ReParFam/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ForNet/ReParFam/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/parfam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/parfam.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Explore datasets.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exploring the results.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Optimizing_code.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/benchmark.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/explore_results_hillary.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123756_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123756_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123756_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123756_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123756_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123915_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123915_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123915_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123915_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123915_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123934_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123934_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123934_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123934_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_123934_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124006_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124006_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124006_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124006_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124006_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124054_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124054_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124054_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124054_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124054_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124115_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124115_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124115_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124115_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124115_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124131_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124131_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124131_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124131_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124131_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124155_philipp_cluster_strogatz/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124155_philipp_cluster_strogatz/philipp_cluster_strogatz.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124155_philipp_cluster_strogatz/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124155_philipp_cluster_strogatz/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/20230831_124155_philipp_cluster_strogatz/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/results_combined.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/With noise/results_combined_analyzed.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230908_104028_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230908_104028_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230908_104028_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230908_104028_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230908_104028_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074127_philipp_cluster_strogatz/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074127_philipp_cluster_strogatz/philipp_cluster_strogatz.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074127_philipp_cluster_strogatz/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074127_philipp_cluster_strogatz/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074127_philipp_cluster_strogatz/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074312_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074312_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074312_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074312_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074312_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074625_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074625_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074625_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074625_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_074625_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081246_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081246_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081246_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081246_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081246_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081306_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081306_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081306_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081306_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/20230911_081306_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/results_combined.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/200 iteration/results_combined_analyzed.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_104929_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_104929_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_104929_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_104929_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_104929_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105021_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105021_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105021_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105021_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105021_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105049_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105049_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105049_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105049_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105049_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105116_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105116_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105116_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105116_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105116_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105441_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105441_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105441_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105441_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105441_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105518_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105518_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105518_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105518_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105518_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105630_philipp_cluster_feynman/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105630_philipp_cluster_feynman/philipp_cluster_feynman.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105630_philipp_cluster_feynman/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105630_philipp_cluster_feynman/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105630_philipp_cluster_feynman/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105801_philipp_cluster_strogatz/experiment.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105801_philipp_cluster_strogatz/philipp_cluster_strogatz.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105801_philipp_cluster_strogatz/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105801_philipp_cluster_strogatz/summary_algorithms.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/20230825_105801_philipp_cluster_strogatz/summary_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/results_best_hp.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/results_combined.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Without noise/results_combined_analyzed.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/results_combined.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/optimizer comparison/results_combined_analyzed.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/.ipynb_checkpoints/Philipp srbench_groundtruth_results-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/.ipynb_checkpoints/srbench_groundtruth_results-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/Philipp srbench_groundtruth_results.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Accuracy-Solution-by-Algorithm.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Accuracy-Solution-by-Algorithm.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Accuracy-Solution-by-Algorithm_Data-Group.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Accuracy-Solution-by-Algorithm_Data-Group.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Accuracy-Solution-by-Algorithm_Data-Group_without_legend.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Accuracy-Solution-by-Algorithm_without_legend.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-R2-Test-by-Algorithm.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-R2-Test-by-Algorithm_Data-Group.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Symbolic-Solution-Rate-(pct)-by-Algorithm.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Symbolic-Solution-Rate-(pct)-by-Algorithm.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Symbolic-Solution-Rate-(pct)-by-Algorithm_Data-Group.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/results/plots/figs/cat-pointplot-Symbolic-Solution-Rate-(pct)-by-Algorithm_Data-Group.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/pairgrid_r2_test_model_size_training-time-(s)_.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/pairgrid_r2_test_model_size_training-time-(s)_Feynman.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/pairgrid_r2_test_model_size_training-time-(s)_Strogatz.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/pairgrid_r2_test_model_size_training-time-(s)_mean.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/results/plots/figs/pairgrid_r2_test_model_size_training-time-(s)_mean.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/pairgrid_r2_test_model_size_training-time-(s)_median.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/results/plots/figs/pairgrid_r2_test_model_size_training-time-(s)_median.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/figs/pareto_plot_r2_test_rank_model_size_rank.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/results_parfam.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/plots/results_parfam.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/srbench_groundtruth_results.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/results/plots/srbench_groundtruth_results.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/plots/symbolic_dataset_results_sum.csv.gz" beforeDir="false" afterPath="$PROJECT_DIR$/results/plots/symbolic_dataset_results_sum.csv.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_testing_classifier.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_classifier.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parfam_torch.py" beforeDir="false" afterPath="$PROJECT_DIR$/parfam_torch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +190,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/philipp/projects/phyiscalLawLearning/parfam/trainingOnSyntheticData/train.py"
+    "last_opened_file_path": "/home/philipp/projects/phyiscalLawLearning/parfam"
   }
 }]]></component>
   <component name="RecentsManager">

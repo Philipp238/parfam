@@ -754,6 +754,21 @@ class Evaluator:
 
     def __init__(self, x, y, model, lambda_0, lambda_1, n_params, lambda_mixed=0, lambda_denom=0,
                  n_best_coefficients=10, mask=None, lambda_05=None, lambda_1_cut=None, lambda_1_piecewise=None):
+        """
+        :param x: The feature matrix
+        :param y: The target variable
+        :param model: An instance of ParFamTorch
+        :param lambda_0: Regularization parameter for the "0-norm"
+        :param lambda_1: Regularization parameter for the 1-norm
+        :param n_params: Number of parameters of the ParFamTorch model
+        :param lambda_mixed: Regularization parameter for the "mixed norm" (not recommended)
+        :param lambda_denom: Regularization parameter for the denominator (not recommended)
+        :param n_best_coefficients: How many of the best coefficients should be safed (deprecated feature)
+        :param mask: Mask in case some of the coefficients should be set to 0
+        :param lambda_05: Regularization parameter for the "0.5-norm" (not recommended)
+        :param lambda_1_cut: Regularization parameter for the "cutoff norm" (not recommended)
+        :param lambda_1_piecewise: Regularization parameter for the "piecewise norm" (not recommended)
+        """
         self.x = x
         self.y = y
         self.model = model
