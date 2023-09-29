@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/results/20230929_131353_debug/results.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/results/Without noise/results_combined_analyzed.csv">
           <value>
             <Attribute>

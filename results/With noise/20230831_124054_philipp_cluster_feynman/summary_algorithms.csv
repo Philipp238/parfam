@@ -1,2 +1,0 @@
-,maxiter1,maxiter2,target_noise,feature_noise,optimizer,pruning_iterations,pruning_cut_off,classifier,local_minimizer,maxiter_per_dim_local_minimizer,max_dataset_length,lambda_1,repetitions,parallel,n_processes,lambda_1_cut,lambda_1_piecewise,device,accuracy,time_limit,evaluations_limit,iterative_finetuning,max_n_active_parameters,relative_l2_train,relative_l2_val,success,training_time
-0,100,0,0.01,0.0,basinhopping,1,0.01,None,BFGS,100,1000,0.001,1,False,4,0,0.0,cpu,0.0001,4800,1000000,True,10,0.019270332831759593,0.02093685966593588,0.3888888888888889,3306.7296666666666

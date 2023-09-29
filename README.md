@@ -60,11 +60,13 @@ The config file `feynman.ini` has to be stored in the folder `config_files` and 
 3. the training parameters.
 
 The most important thing that has to be customized in the setting is the variable `path_pmlb` which must be set to the
-path of the pmlb directory on your machine.
+path of the pmlb directory on your machine. To process these results see the notebook `Process the results.ipynb` and to
+visualize them to obtain the figures as shown in the paper, follow the notebook 
+`results/plots/srbench_groundtruth_results.ipynb`.
 
 To run the experiments for the optimizer comparison set the variable `comparison_subset` in the config file to
 `True` and choose the optimizer you want to test. 
-All our results are saved in the `results` folder.
+All our results are saved in the `results` folder. 
 
 The results and the code to train and test DL-ParFam can be found in the folder `trainingOnSyntheticData`.
 The pre-trained model used in the paper and some additional ones can be found in the folder 
@@ -75,7 +77,8 @@ python trainingOnSyntheticData/train.py -c train.ini
 ```
 
 Here `train.ini` is a config file stored in the folder `trainingOnSyntheticData/config` in which you can configure the 
-synthetic data, the neural network and its optimization procedure.
+synthetic data, the neural network and its optimization procedure. To analyze them see the notebook 
+`trainingOnSyntheticData/Exploring results.ipynb`. 
 
 
 ## References

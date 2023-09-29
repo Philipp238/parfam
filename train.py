@@ -13,7 +13,6 @@ from sklearn.model_selection import train_test_split
 import ast
 
 from parfam_torch import ParFamTorch, Evaluator
-from reparfam import ReParFam
 from utils import add_noise, relative_l2_distance, r_squared, is_tuple_sorted
 
 sys.path.append(os.path.dirname(os.getcwd()))
