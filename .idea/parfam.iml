@@ -5,5 +5,8 @@
     <orderEntry type="jdk" jdkName="srbench" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="ForNet" />
+    <orderEntry type="module" module-name="DL-ParFam" />
+    <orderEntry type="module" module-name="scripts" />
+    <orderEntry type="module" module-name="handyScripts" />
   </component>
 </module>
