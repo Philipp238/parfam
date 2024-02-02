@@ -70,18 +70,6 @@ All our results are saved in the `results` folder.
 
 The notebook 'expressivity.ipynb' contains our calculation in Section 2.2.
 
-The results and the code to train and test DL-ParFam can be found in the folder `trainingOnSyntheticData`.
-The pre-trained model used in the paper and some additional ones can be found in the folder 
-`trainingOnSyntheticData/trained_models`. To train a new one run the command
-
-```commandline
-python trainingOnSyntheticData/train.py -c train.ini
-```
-
-Here `train.ini` is a config file stored in the folder `trainingOnSyntheticData/config` in which you can configure the 
-synthetic data, the neural network and its optimization procedure. To analyze them see the notebook 
-`trainingOnSyntheticData/Exploring results.ipynb`. 
-
 
 ## References
 
