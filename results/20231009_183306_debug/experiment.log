@@ -1,0 +1,79 @@
+INFO:root:Starting the logger.
+INFO:root:##########1 out of 3 datasets: feynman_III_10_19##########
+INFO:root:Feature shape: (100000, 4), target shape: (100000,)
+INFO:root:###1 out of 1 Hyperparameter combinations ###
+INFO:root:Training parameters: {'model': 'ParFamTorch', 'maxiter1': 20, 'maxiter2': 0, 'target_noise': 0.0, 'feature_noise': 0.0, 'optimizer': 'bfgs', 'pruning_iterations': 1, 'pruning_cut_off': 0.01, 'classifier': None, 'local_minimizer': 'BFGS', 'maxiter_per_dim_local_minimizer': 50, 'max_dataset_length': 500, 'lambda_1': 0.01, 'repetitions': 1, 'parallel': False, 'n_processes': 4, 'lambda_1_cut': 0, 'lambda_1_piecewise': 0, 'device': 'cpu', 'accuracy': 0.0001, 'time_limit': 1000, 'evaluations_limit': 100000, 'iterative_finetuning': True, 'max_n_active_parameters': 10, 'lambda_1_finetuning': 0.01, 'seed': 1}
+INFO:root:Sequential computation
+INFO:root:Number parameters: 15
+INFO:root:Number parameters active: 15
+INFO:root:Number of evaluations: 3050
+INFO:root:Training parameters: {'model': 'ParFamTorch', 'maxiter1': 20, 'maxiter2': 0, 'target_noise': 0.0, 'feature_noise': 0.0, 'optimizer': 'bfgs', 'pruning_iterations': 1, 'pruning_cut_off': 0.01, 'classifier': None, 'local_minimizer': 'BFGS', 'maxiter_per_dim_local_minimizer': 50, 'max_dataset_length': 500, 'lambda_1': 0.01, 'repetitions': 1, 'parallel': False, 'n_processes': 4, 'lambda_1_cut': 0, 'lambda_1_piecewise': 0, 'device': 'cpu', 'accuracy': 0.0001, 'time_limit': 1000, 'evaluations_limit': 100000, 'iterative_finetuning': True, 'max_n_active_parameters': 10, 'lambda_1_finetuning': 0.01, 'seed': 1}
+INFO:root:Model parameters: {'degree_input_polynomials': 0, 'degree_output_polynomials': 2, 'functions': [], 'function_names': [], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': None, 'degree_output_polynomials_denominator_specific': None, 'enforce_function': False, 'maximal_potence': 3}
+INFO:root:Relative l2 distance train: 0.03953075829791751
+INFO:root:Relative l2 distance validation: 0.037685389390164054
+INFO:root:Training time: 6.600084543228149
+INFO:root:Cumulative training time: 6.742776393890381
+INFO:root:Cumulative number of evaluations: 3050
+INFO:root:New best relative l2 distance validation: 0.037685389390164054
+INFO:root:Number parameters: 11
+INFO:root:Number parameters active: 11
+INFO:root:Number of evaluations: 2996
+INFO:root:Training parameters: {'model': 'ParFamTorch', 'maxiter1': 20, 'maxiter2': 0, 'target_noise': 0.0, 'feature_noise': 0.0, 'optimizer': 'bfgs', 'pruning_iterations': 1, 'pruning_cut_off': 0.01, 'classifier': None, 'local_minimizer': 'BFGS', 'maxiter_per_dim_local_minimizer': 50, 'max_dataset_length': 500, 'lambda_1': 0.01, 'repetitions': 1, 'parallel': False, 'n_processes': 4, 'lambda_1_cut': 0, 'lambda_1_piecewise': 0, 'device': 'cpu', 'accuracy': 0.0001, 'time_limit': 1000, 'evaluations_limit': 100000, 'iterative_finetuning': True, 'max_n_active_parameters': 10, 'lambda_1_finetuning': 0.01, 'seed': 1}
+INFO:root:Model parameters: {'degree_input_polynomials': 1, 'degree_output_polynomials': 1, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': False, 'maximal_potence': 3}
+INFO:root:Relative l2 distance train: 0.4391703395845034
+INFO:root:Relative l2 distance validation: 0.4441327453762589
+INFO:root:Training time: 4.15132737159729
+INFO:root:Cumulative training time: 11.11067008972168
+INFO:root:Cumulative number of evaluations: 6046
+INFO:root:Number parameters: 6
+INFO:root:Number parameters active: 6
+INFO:root:Number of evaluations: 2083
+INFO:root:Training parameters: {'model': 'ParFamTorch', 'maxiter1': 20, 'maxiter2': 0, 'target_noise': 0.0, 'feature_noise': 0.0, 'optimizer': 'bfgs', 'pruning_iterations': 1, 'pruning_cut_off': 0.01, 'classifier': None, 'local_minimizer': 'BFGS', 'maxiter_per_dim_local_minimizer': 50, 'max_dataset_length': 500, 'lambda_1': 0.01, 'repetitions': 1, 'parallel': False, 'n_processes': 4, 'lambda_1_cut': 0, 'lambda_1_piecewise': 0, 'device': 'cpu', 'accuracy': 0.0001, 'time_limit': 1000, 'evaluations_limit': 100000, 'iterative_finetuning': True, 'max_n_active_parameters': 10, 'lambda_1_finetuning': 0.01, 'seed': 1}
+INFO:root:Model parameters: {'degree_input_polynomials': 1, 'degree_output_polynomials': 1, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': True, 'maximal_potence': 3}
+INFO:root:Relative l2 distance train: 0.3957909612601989
+INFO:root:Relative l2 distance validation: 0.3902272377116859
+INFO:root:Training time: 2.4910073280334473
+INFO:root:Cumulative training time: 13.736538171768188
+INFO:root:Cumulative number of evaluations: 8129
+INFO:root:Number parameters: 21
+INFO:root:Number parameters active: 21
+INFO:root:Number of evaluations: 4001
+INFO:root:Training parameters: {'model': 'ParFamTorch', 'maxiter1': 20, 'maxiter2': 0, 'target_noise': 0.0, 'feature_noise': 0.0, 'optimizer': 'bfgs', 'pruning_iterations': 1, 'pruning_cut_off': 0.01, 'classifier': None, 'local_minimizer': 'BFGS', 'maxiter_per_dim_local_minimizer': 50, 'max_dataset_length': 500, 'lambda_1': 0.01, 'repetitions': 1, 'parallel': False, 'n_processes': 4, 'lambda_1_cut': 0, 'lambda_1_piecewise': 0, 'device': 'cpu', 'accuracy': 0.0001, 'time_limit': 1000, 'evaluations_limit': 100000, 'iterative_finetuning': True, 'max_n_active_parameters': 10, 'lambda_1_finetuning': 0.01, 'seed': 1}
+INFO:root:Model parameters: {'degree_input_polynomials': 2, 'degree_output_polynomials': 1, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': False, 'maximal_potence': 3}
+INFO:root:Relative l2 distance train: 0.18809538764734826
+INFO:root:Relative l2 distance validation: 0.18916548061581223
+INFO:root:Training time: 5.647885322570801
+INFO:root:Cumulative training time: 19.534964084625244
+INFO:root:Cumulative number of evaluations: 12130
+INFO:root:Number parameters: 16
+INFO:root:Number parameters active: 16
+INFO:root:Number of evaluations: 4590
+INFO:root:Training parameters: {'model': 'ParFamTorch', 'maxiter1': 20, 'maxiter2': 0, 'target_noise': 0.0, 'feature_noise': 0.0, 'optimizer': 'bfgs', 'pruning_iterations': 1, 'pruning_cut_off': 0.01, 'classifier': None, 'local_minimizer': 'BFGS', 'maxiter_per_dim_local_minimizer': 50, 'max_dataset_length': 500, 'lambda_1': 0.01, 'repetitions': 1, 'parallel': False, 'n_processes': 4, 'lambda_1_cut': 0, 'lambda_1_piecewise': 0, 'device': 'cpu', 'accuracy': 0.0001, 'time_limit': 1000, 'evaluations_limit': 100000, 'iterative_finetuning': True, 'max_n_active_parameters': 10, 'lambda_1_finetuning': 0.01, 'seed': 1}
+INFO:root:Model parameters: {'degree_input_polynomials': 2, 'degree_output_polynomials': 1, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': True, 'maximal_potence': 3}
+INFO:root:Relative l2 distance train: 0.16309020898980678
+INFO:root:Relative l2 distance validation: 0.16261927094601253
+INFO:root:Training time: 6.060167074203491
+INFO:root:Cumulative training time: 25.84406852722168
+INFO:root:Cumulative number of evaluations: 16720
+INFO:root:Number parameters: 25
+INFO:root:Number parameters active: 25
+INFO:root:Number of evaluations: 5107
+INFO:root:Training parameters: {'model': 'ParFamTorch', 'maxiter1': 20, 'maxiter2': 0, 'target_noise': 0.0, 'feature_noise': 0.0, 'optimizer': 'bfgs', 'pruning_iterations': 1, 'pruning_cut_off': 0.01, 'classifier': None, 'local_minimizer': 'BFGS', 'maxiter_per_dim_local_minimizer': 50, 'max_dataset_length': 500, 'lambda_1': 0.01, 'repetitions': 1, 'parallel': False, 'n_processes': 4, 'lambda_1_cut': 0, 'lambda_1_piecewise': 0, 'device': 'cpu', 'accuracy': 0.0001, 'time_limit': 1000, 'evaluations_limit': 100000, 'iterative_finetuning': True, 'max_n_active_parameters': 10, 'lambda_1_finetuning': 0.01, 'seed': 1}
+INFO:root:Model parameters: {'degree_input_polynomials': 1, 'degree_output_polynomials': 2, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': False, 'maximal_potence': 3}
+INFO:root:Relative l2 distance train: 0.036877385403853616
+INFO:root:Relative l2 distance validation: 0.038114210803735796
+INFO:root:Training time: 15.4937584400177
+INFO:root:Cumulative training time: 41.541534662246704
+INFO:root:Cumulative number of evaluations: 21827
+INFO:root:Number parameters: 10
+INFO:root:Number parameters active: 10
+INFO:root:Number of evaluations: 3129
+INFO:root:Training parameters: {'model': 'ParFamTorch', 'maxiter1': 20, 'maxiter2': 0, 'target_noise': 0.0, 'feature_noise': 0.0, 'optimizer': 'bfgs', 'pruning_iterations': 1, 'pruning_cut_off': 0.01, 'classifier': None, 'local_minimizer': 'BFGS', 'maxiter_per_dim_local_minimizer': 50, 'max_dataset_length': 500, 'lambda_1': 0.01, 'repetitions': 1, 'parallel': False, 'n_processes': 4, 'lambda_1_cut': 0, 'lambda_1_piecewise': 0, 'device': 'cpu', 'accuracy': 0.0001, 'time_limit': 1000, 'evaluations_limit': 100000, 'iterative_finetuning': True, 'max_n_active_parameters': 10, 'lambda_1_finetuning': 0.01, 'seed': 1}
+INFO:root:Model parameters: {'degree_input_polynomials': 1, 'degree_output_polynomials': 2, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': True, 'maximal_potence': 3}
+INFO:root:Relative l2 distance train: 0.08028978979392067
+INFO:root:Relative l2 distance validation: 0.09013830916437679
+INFO:root:Training time: 7.436608076095581
+INFO:root:Cumulative training time: 49.126967668533325
+INFO:root:Cumulative number of evaluations: 24956
+INFO:root:Number parameters: 35
+INFO:root:Number parameters active: 35
