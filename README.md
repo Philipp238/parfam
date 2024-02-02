@@ -68,7 +68,7 @@ To run the experiments for the optimizer comparison set the variable `comparison
 `True` and choose the optimizer you want to test. 
 All our results are saved in the `results` folder. 
 
-The notebook 'expressivity.ipynb' contains our calculation in Section 2.2.
+The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
 
 
 ## References
