@@ -13,7 +13,8 @@ from sklearn.model_selection import train_test_split
 import ast
 
 from parfam_torch import ParFamTorch, Evaluator
-from utils import add_noise, relative_l2_distance, r_squared, is_tuple_sorted
+# from reparfam import ReParFam
+from utils import add_noise, relative_l2_distance, r_squared, is_tuple_sorted, function_dict, function_name_dict
 
 sys.path.append(os.path.dirname(os.getcwd()))
 from multiprocessing import Process, Event, Manager, Lock
@@ -31,11 +32,12 @@ import itertools
 #
 # print(f'Using {device} (file: {__file__}))')
 
-function_dict = {'sqrt': lambda x: torch.sqrt(torch.abs(x)),
-                 'exp': lambda x: torch.minimum(torch.exp(x), np.exp(10) + torch.abs(x)),
-                 'cos': torch.cos, 'sin': torch.sin}
-function_name_dict = {'sqrt': lambda x: sympy.sqrt(sympy.Abs(x)), 'exp': sympy.exp, 'cos': sympy.cos, 'sin': sympy.sin}
 
+def extend_function_dict(extension_function_dict, extension_function_name_dict):
+    global function_dict
+    global function_name_dict
+    function_dict = {**function_dict, **extension_function_dict}
+    function_name_dict = {**function_name_dict, **extension_function_name_dict} 
 
 def make_unpickable(model_parameters):
     function_names_str = model_parameters['functions']
@@ -179,7 +181,9 @@ def hyperparameter_training(x, y, target_expr, training_parameters, model_parame
         prediction = net(torch.tensor(y, dtype=torch.float, device=training_parameters['device']))
         mask = prediction >= 0.2
         n_params_active = sum(mask)
+    logging.info(f'Number parameters: {n_params}')
     print(f'Number parameters: {n_params}')
+    logging.info(f'Number parameters active: {n_params_active}')
     print(f'Number parameters active: {n_params_active}')
     evaluator = Evaluator(x_train, y_train, lambda_0=0, lambda_1=lambda_1, model=model, mask=mask,
                           n_params=n_params, lambda_1_cut=lambda_1_cut, lambda_1_piecewise=lambda_1_piecewise)
@@ -824,7 +828,7 @@ def evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, 
             formula = model.get_formula(best_coefficients, decimals=i, verbose=False)
             if str(formula) != '0':
                 break
-    return n_active_coefficients, relative_l2_distance_test, r_squared_test, formula, r_squared_val
+    return n_active_coefficients, relative_l2_distance_test, r_squared_test, formula, r_squared_val, best_coefficients
 
 
 def evaluate_test(best_model_parameters, x_train, y_train, x_test, y_test, device, best_coefficients, cutoff, retrain,
@@ -867,7 +871,7 @@ def evaluate_test(best_model_parameters, x_train, y_train, x_test, y_test, devic
     return n_active_coefficients, relative_l2_distance_test, r_squared_test, formula, r_squared_val
 
 
-def model_parameter_search(x, y, target_expr, model_parameters_max, training_parameters, accuracy, config,
+def model_parameter_search(x, y, target_expr, model_parameters_max, training_parameters, accuracy, config, logging_to_file=True,
                            model_parameters_perfect=None):
     np.random.seed(training_parameters['seed'])
     torch.manual_seed(training_parameters['seed'])
@@ -887,9 +891,11 @@ def model_parameter_search(x, y, target_expr, model_parameters_max, training_par
     else:
         model_parameter_list = [model_parameters_perfect] * training_parameters['repetitions']
     # Set logging
-    directory = 'trained_models'
-    logging.basicConfig(filename=os.path.join(directory, 'experiment.log'), level=logging.INFO)
-
+    if logging_to_file:
+        directory = 'trained_models'
+        logging.basicConfig(filename=os.path.join(directory, 'experiment.log'), level=logging.INFO)
+    else:
+        logging.basicConfig(level=logging.INFO)
     t_0 = time()
     try:
         # Start running jobs in parallel (not up to date, please choose the sequential computation)
@@ -934,7 +940,7 @@ def model_parameter_search(x, y, target_expr, model_parameters_max, training_par
     # Now evaluate after cutting off "large" parameters and finetuning
     if training_parameters['iterative_finetuning']:
         n_active_coefficients_reduced, relative_l2_distance_test_reduced, r_squared_test_reduced, best_formula_reduced, \
-            r_squared_val_reduced = evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, x_test,
+            r_squared_val_reduced, best_coefficients_reduced = evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, x_test,
                                                                        y_test, training_parameters['device'],
                                                                        best_coefficients, True,
                                                                        lambda_1=training_parameters[
@@ -957,4 +963,4 @@ def model_parameter_search(x, y, target_expr, model_parameters_max, training_par
     return best_relative_l2_distance_train, best_relative_l2_distance_val, r_squared_val, best_formula, t_1 - t_0, \
         n_active_coefficients, relative_l2_distance_test, r_squared_test, n_active_coefficients_reduced, \
         relative_l2_distance_test_reduced, r_squared_test_reduced, best_formula_reduced, r_squared_val_reduced, \
-        n_evaluations
+        n_evaluations, best_model_parameters, best_coefficients, best_coefficients_reduced

@@ -11,6 +11,9 @@ from train import model_parameter_search, function_dict, function_name_dict
 from pmlb import fetch_data
 import datetime
 
+import ngyuen
+
+
 # import tracemalloc
 
 def init():
@@ -85,7 +88,7 @@ def init_results_dict(model_parameters_dict, training_parameters_dict):
 def perform_experiments(n_experiments, dataset_names, model_parameters_dict, training_parameters_dict,
                         config, directory, path_pmlb_datasets):
     results_dict = init_results_dict(model_parameters_dict, training_parameters_dict)
-    if config['META']['random_equations'] == 'True':
+    if config['META']['dataset'] == 'random-equations':
         x_random = torch.arange(-10, 10, 0.1)
         x_random = x_random.reshape((len(x_random), 1))
         functions = []
@@ -114,7 +117,7 @@ def perform_experiments(n_experiments, dataset_names, model_parameters_dict, tra
                                                            n_functions_max=n_functions_max)
     for _ in range(n_experiments):
         for i, dataset_name in enumerate(dataset_names):
-            if config['META']['random_equations'] == 'True':
+            if config['META']['dataset'] == 'random-equations':
                 x = x_random
                 y = y_random[i]
                 model = ParFamTorch(n_input=1, degree_input_numerator=degree_input_polynomials,
@@ -123,6 +126,20 @@ def perform_experiments(n_experiments, dataset_names, model_parameters_dict, tra
                                     enforce_function=enforce_function,
                                     degree_output_numerator_specific=degree_output_polynomials_specific)
                 target_formula = model.get_formula(params_random[i], verbose=False)
+            elif config['META']['dataset'] == 'nguyen':
+                if dataset_name == 11:
+                    logging.info(f'Skip dataset 11 since we cannot learn it and it takes too much time.')
+                    continue
+                x, y, target_formula = ngyuen.nguyen(str(dataset_name), config['META']['bigger_range'] == 'True')
+                if dataset_name in [7, 8, 11, 15, 16]:
+                    model_parameters_dict['function_names'] = ['exp', 'sin', 'sqrt', 'log']
+                else:
+                    model_parameters_dict['function_names'] = ['exp', 'sin']
+                model_parameters_dict['max_deg_output_polynomials_specific'] = [1 for _ in
+                                                                                range(len(model_parameters_dict[
+                                                                                              'function_names']))]
+                model_parameters_dict['max_deg_output_polynomials_denominator_specific'] = [1 for _ in range(len(
+                    model_parameters_dict['function_names']))]
             else:
                 x, y = fetch_data(dataset_name, return_X_y=True, local_cache_dir=path_pmlb_datasets)
                 target_formula = get_formula(dataset_name)
@@ -150,13 +167,11 @@ def perform_experiments(n_experiments, dataset_names, model_parameters_dict, tra
                 # Train model
                 accuracy = training_parameters["accuracy"] + 1.5 * training_parameters["target_noise"]
                 relative_l2_distance_train, relative_l2_distance_val, r_squared_val, estimated_formula, training_time, \
-                    n_active_coefficients, relative_l2_distance_test, r_squared_test, n_active_coefficients_reduced, \
-                    relative_l2_distance_test_reduced, r_squared_test_reduced, best_formula_reduced, \
-                    r_squared_val_reduced, n_evaluations = model_parameter_search(x, y, target_formula,
-                                                                                  model_parameters_dict,
-                                                                                  training_parameters, accuracy,
-                                                                                  config=config,
-                                                                                  model_parameters_perfect=model_parameters_perfect)
+                n_active_coefficients, relative_l2_distance_test, r_squared_test, n_active_coefficients_reduced, \
+                relative_l2_distance_test_reduced, r_squared_test_reduced, best_formula_reduced, \
+                r_squared_val_reduced, n_evaluations, best_model_parameters, best_coefficients, \
+                best_coefficients_reduced = model_parameter_search(x, y, target_formula, model_parameters_dict, training_parameters,
+                                                                   accuracy, config=config, model_parameters_perfect=model_parameters_perfect)
 
                 # Save results
                 logging.info(f"Target formula: {target_formula}")
@@ -209,10 +224,10 @@ if __name__ == '__main__':
     training_parameters_dict = get_hyperparameters_combination(training_parameters_dict)
 
     n_experiments = 1
-    random_equations = config['META']['random_equations']
-    if random_equations == 'True':
+    dataset = config['META']['dataset']
+    if dataset == 'random-equations':
         dataset_names = range(int(config['META']['n_equations']))
-    else:
+    elif dataset == 'srbench':
         start_experiment = int(config['META']['start_experiment'])
         end_experiment = int(config['META']['end_experiment'])
         if eval(config['META']['comparison_subset']):
@@ -223,6 +238,19 @@ if __name__ == '__main__':
             logging.info(f'Comparison subset: {dataset_names}')
         else:
             dataset_names = regression_dataset_names[start_experiment:end_experiment]  # 120 feynman dataset begins
+    elif dataset == 'srbench-eql':
+        start_experiment = int(config['META']['start_experiment'])
+        end_experiment = int(config['META']['end_experiment'])
+        regression_dataset_names_df = pd.read_csv('eql_datasets', names=['Index', 'Name',
+                                                                         'Formula'])  # df_summary.query('task=="regression"')['dataset'].tolist()
+        regression_dataset_names = regression_dataset_names_df['Name'].tolist()
+        dataset_names = regression_dataset_names[start_experiment:end_experiment]
+    elif dataset == 'nguyen':
+        start_experiment = int(config['META']['start_experiment'])
+        end_experiment = int(config['META']['end_experiment'])
+        dataset_names = range(start_experiment, end_experiment)
+    else:
+        raise NotImplementedError(f'Dataset name {dataset} not implemented.')
 
     perform_experiments(n_experiments, dataset_names, model_parameters_dict, training_parameters_dict,
                         config, directory, path_pmlb_datasets)

@@ -1,7 +1,7 @@
 import numpy as np
 import sympy
 from sympy import symbols
-from scipy.optimize import basinhopping
+from scipy.optimize import dual_annealing, basinhopping
 import matplotlib.pyplot as plt
 import torch
 
@@ -9,6 +9,8 @@ from itertools import product
 import copy
 import time
 import multiprocessing
+
+
 # from torchmetrics import R2Score
 
 
@@ -144,7 +146,6 @@ class ParFamTorch:
         assert len(self.degree_output_denominator_specific) == self.n_input + self.width * len(
             self.functions)
         assert len(self.degree_input_denominator_specific) == self.n_input
-
 
         if self.degree_input_denominator > 0:
             self.monomial_list_input_denominator = ParFamTorch.list_monomials(self.n_input,
@@ -420,6 +421,22 @@ class ParFamTorch:
             denominator_indices = slice(-self.n_coefficients_last_layer_denominator, None)
             coefficients[denominator_indices] /= torch.norm(coefficients[denominator_indices], p=2)
         return coefficients
+
+    def get_normalized_regularization(self, coefficients, p):
+        reg = 0
+        for i, function in enumerate(self.width * self.functions):
+            if self.degree_input_denominator > 0 and self.normalize_denom:
+                denominator_indices = slice(
+                    i * self.n_coefficients_first_layer + self.n_coefficients_first_layer_numerator, (
+                            i + 1) * self.n_coefficients_first_layer)
+                reg += torch.norm(
+                    coefficients[denominator_indices] / torch.norm(coefficients[denominator_indices], p=2), p=p)
+
+        if self.degree_output_denominator > 0 and self.normalize_denom:
+            denominator_indices = slice(-self.n_coefficients_last_layer_denominator, None)
+            reg += torch.norm(coefficients[denominator_indices] / torch.norm(coefficients[denominator_indices], p=2),
+                              p=p)
+        return reg
 
     def stabilize_denominator(self, denominator):
         denominator[torch.abs(denominator) < 10 ** (-5)] = 10 ** (-5)
@@ -823,6 +840,7 @@ class Evaluator:
         n_active_parameters = torch.sum(torch.abs(self.coefficients_current) > 0.01)
         reg_0 = self.lambda_0 * n_active_parameters
         reg_1 = self.lambda_1 * torch.norm(self.coefficients_current, p=1)
+        # reg_1 = self.lambda_1 * self.model.get_normalized_regularization(self.coefficients_current, p=1)
         reg_1_piecewise = 0
         if self.lambda_1_piecewise:
             reg_1_piecewise += torch.norm(
@@ -853,7 +871,9 @@ class Evaluator:
             reg_3 = self.lambda_denom * self.model.denominator_reg(self.coefficients_current)
         else:
             reg_3 = 0
+
         self.loss_current = rel_l2_dist + reg_0 + reg_1 + reg_2 + reg_3 + reg_05 + reg_1_cut + reg_1_piecewise
+        # self.loss_current = (rel_l2_dist) * (1 + reg_1)
         if False:
             self.l2_dist_list.append(rel_l2_dist)
             self.reg_list.append(reg_0 + reg_1)
@@ -967,8 +987,7 @@ def get_active_coefficients(coefficients, model, x):
                 break
     return a
 
-
-def dev_training(device):
+def test_parfam(device):
     np.random.seed(12345)
     torch.manual_seed(12345)
     print(f'Using {device}')
@@ -1010,6 +1029,71 @@ def dev_training(device):
     print(f'Training time: {t_1 - t_0}')
     if not test_model:
         model.testing_mode()
+
+def dev_training(device):
+    # np.random.seed(12345)
+    # torch.manual_seed(12345)
+    print(f'Using {device}')
+    a = 5 * torch.randn(1)
+    x = np.arange(0, 5, 0.2)
+    # x = np.sort(np.random.uniform(-1.2, 5, 100))
+    x = x.reshape(len(x), 1)
+    # x = np.random.uniform(-3, 3, 200).reshape(100, 2)
+    print(x.shape)
+    # print(x)
+    x = torch.tensor(x, device=device)
+    test_model = False
+
+    def func(a, x, module):
+        # Good approximations with both, however, never yields a simple formula
+        # return module.sin((a[0] * x + 1) / (0.1 * x + 2))
+        # return module.sin((a[0] * x + 1) / (0.1 * x))  # Works for lambda_1=0.1, lambda_denom=0 (not = 1)
+        # return module.sin((a[0] * x))  # Works for lambda_1=0.1, lambda_denom=1
+        return a[0] * x / (1+x)
+        # return 0.2 * module.sin(a[0] * x) / x
+        # return 0.5 * x / (x + 1)  # Only works when using normalize_denom=True and lambda_1>=0.3
+        # return module.log(x + 1.4) + module.log(x ** 2 + 1.3)
+        # return module.sin(x ** 2) * module.cos(x) - 1
+        # return module.sin(x[0]) + module.sin(x[1]**2)
+
+    if x.shape[1] == 1:
+        y = func(a, x, np).squeeze(1)
+        x_sym = sympy.symbols('x')
+    else:
+        y = func(a, x.T, np)
+        x_sym = []
+        for i in range(x.shape[1]):
+            x_sym.append(sympy.symbols(f'x{i}'))
+    target_expr = func(a, x_sym, sympy)
+    print(f'Target formula: {target_expr}')
+
+    functions = [] # [torch.sin] * 2  # [lambda x: torch.log(torch.abs(x) + 0.000001)] * 2
+    function_names = [] # [sympy.sin] * 2  # [lambda x: sympy.log(sympy.Abs(x) + 0.000001)] * 2
+    degree_specific = [1 for _ in functions]
+    model = ParFamTorch(n_input=x.shape[1], degree_input_numerator=0, degree_output_numerator=1, width=1,
+                        functions=functions, function_names=function_names, maximal_potence=3,
+                        degree_output_numerator_specific=degree_specific, enforce_function=False,
+                        degree_input_denominator=0, degree_output_denominator=1, normalize_denom=True,
+                        degree_output_denominator_specific=degree_specific, device=device)
+
+    n_params = model.get_number_parameters()
+    print(f'Number parameters: {n_params}')
+    evaluator = Evaluator(x, y, model=model, lambda_0=0, lambda_1=0.0001, lambda_denom=0, n_params=n_params)
+    model.prepare_input_monomials(x)
+
+    t_0 = time.time()
+    x0 = np.random.randn(n_params)
+    ret = basinhopping(evaluator.loss_func, niter=10, x0=x0, minimizer_kwargs={'jac': evaluator.gradient})
+    t_1 = time.time()
+    print(f'Training time: {t_1 - t_0}')
+    if not test_model:
+        model.testing_mode()
+
+    y_pred = model.predict(torch.tensor(ret.x, device=device), x).cpu().detach().numpy()
+    # plt.plot(x, y, '+', label='Samples')
+    # plt.plot(x, y_pred, label='Prediction')
+    # plt.legend()
+    # plt.show()
 
     print(f'Coefficients: {ret.x}')
     print(
@@ -1177,7 +1261,6 @@ def dev_training_mask(device):
 
     mask = [i % 2 == 0 for i in range(n_params)]
     # mask = None
-
 
     evaluator = Evaluator(x, y, model=model, lambda_0=0, lambda_1=0.001, lambda_denom=0, n_params=n_params, mask=mask)
     model.prepare_input_monomials(x)
@@ -1404,11 +1487,11 @@ def dev_training_lbfgs():
 
 if __name__ == '__main__':
     # np.random.seed(12345)
-    dev_training_lbfgs()
-    # dev_training('cpu')
+    # dev_training_lbfgs()
+    dev_training('cpu')
     # dev_training_jit()
     # dev_training_pruning()
     # dev_data_generation(ensure_uniqueness=True)
     # dev_data_generation_comparison()
     # dev_batch_prediction()
-    #dev_training_mask('cpu')
+    # dev_training_mask('cpu')

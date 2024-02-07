@@ -1,7 +1,10 @@
+import time
 import os
 import pandas as pd
 import numpy as np
+import itertools
 from itertools import product
+import torch
 import sympy
 # from torcheval.metrics import R2Score
 # from torchmetrics import R2Score
@@ -14,6 +17,95 @@ from parfam_torch import ParFamTorch
 # Gets real formula of regression problem: only works for feynman so far
 # feynman_formulas = pd.read_csv(os.path.join(os.path.dirname(__file__), "feynman_formulas"), names=['Index', 'Name', 'Formula'])
 feynman_formulas = pd.read_csv(os.path.join(os.path.dirname(__file__), "datasets"), names=['Index', 'Name', 'Formula'])
+
+function_dict = {'sqrt': lambda x: torch.sqrt(torch.abs(x)),
+                 'exp': lambda x: torch.minimum(torch.exp(x), np.exp(10) + torch.abs(x)),
+                 'log': lambda x: torch.log(torch.abs(x) + 0.000001),
+                 'cos': torch.cos, 'sin': torch.sin}
+function_name_dict = {'sqrt': lambda x: sympy.sqrt(sympy.Abs(x)), 'exp': sympy.exp, 'cos': sympy.cos, 'sin': sympy.sin,
+                      'log': lambda x: sympy.log(sympy.Abs(x) + 0.000001)}
+
+
+def get_complete_model_parameter_list(model_parameters_max, iterate_polynomials=False):
+    max_deg_input = model_parameters_max['max_deg_input']
+    max_deg_output = model_parameters_max['max_deg_output']
+    max_deg_input_denominator = model_parameters_max['max_deg_input_denominator']
+    max_deg_output_denominator = model_parameters_max['max_deg_output_denominator']
+    function_names = model_parameters_max['function_names']
+    functions = model_parameters_max['function_names']
+    maximal_n_functions = model_parameters_max['maximal_n_functions']
+    max_deg_output_polynomials_specific = model_parameters_max['max_deg_output_polynomials_specific']
+    max_deg_output_polynomials_denominator_specific = model_parameters_max[
+        'max_deg_output_polynomials_denominator_specific']
+
+    model_parameter_list = []
+    # Start with checking if it is a polynomial
+    if iterate_polynomials:
+        for d_output in range(0, max_deg_output + 1):
+            model_parameters = {'degree_input_polynomials': 0, 'degree_output_polynomials': d_output, 'functions': [],
+                                'function_names': [], 'width': 1, 'degree_input_denominator': 0,
+                                'degree_output_denominator': 0,
+                                'degree_output_polynomials_specific': None,
+                                'degree_output_polynomials_denominator_specific': None,
+                                'enforce_function': False, 'maximal_potence': model_parameters_max['maximal_potence']}
+            model_parameter_list.append(model_parameters)
+    else:
+        model_parameters = {'degree_input_polynomials': 0, 'degree_output_polynomials': max_deg_output, 'functions': [],
+                            'function_names': [], 'width': 1, 'degree_input_denominator': 0,
+                            'degree_output_denominator': 0,
+                            'degree_output_polynomials_specific': None,
+                            'degree_output_polynomials_denominator_specific': None,
+                            'enforce_function': False, 'maximal_potence': model_parameters_max['maximal_potence']}
+        model_parameter_list.append(model_parameters)
+
+    # Continue with checking if it is a rational function
+    for d_output_denom in range(1, max_deg_output_denominator + 1):
+        for d_output in range(1, max_deg_output + 1):
+            model_parameters = {'degree_input_polynomials': 0, 'degree_output_polynomials': d_output,
+                                'functions': [],
+                                'function_names': [], 'width': 1, 'degree_input_denominator': 0,
+                                'degree_output_denominator': d_output_denom,
+                                'degree_output_polynomials_specific': None,
+                                'degree_output_polynomials_denominator_specific': None,
+                                'enforce_function': False,
+                                'maximal_potence': model_parameters_max['maximal_potence']}
+            model_parameter_list.append(model_parameters)
+    # Try one function at a time while building up the polynomial degrees
+    for n_functions in range(1, maximal_n_functions + 1):
+        for d_output_denom in range(max_deg_output_denominator + 1):
+            for d_output in range(1, max_deg_output + 1):
+                for d_input_denom in range(max_deg_input_denominator + 1):
+                    for d_input in range(1, max_deg_input + 1):
+                        for function_indices in set(itertools.combinations(list(range(len(functions))) * n_functions,
+                                                                           n_functions)):
+                            if not is_tuple_sorted(function_indices):
+                                # This ensures that we do not check any combination more than once
+                                continue
+                            for enforce_function in [False, True]:
+                                functions_ = []
+                                function_names_ = []
+                                deg_output_polynomials_specific = []
+                                deg_output_polynomials_denominator_specific = []
+                                for i in function_indices:
+                                    functions_.append(functions[i])
+                                    function_names_.append(function_names[i])
+                                    deg_output_polynomials_specific.append(max_deg_output_polynomials_specific[i])
+                                    deg_output_polynomials_denominator_specific.append(
+                                        max_deg_output_polynomials_denominator_specific[i])
+                                model_parameters = {'degree_input_polynomials': d_input,
+                                                    'degree_output_polynomials': d_output,
+                                                    'functions': functions_, 'function_names': function_names_,
+                                                    'width': 1,
+                                                    'degree_input_denominator': d_input_denom,
+                                                    'degree_output_denominator': d_output_denom,
+                                                    'degree_output_polynomials_specific': deg_output_polynomials_specific,
+                                                    'degree_output_polynomials_denominator_specific': deg_output_polynomials_denominator_specific,
+                                                    'enforce_function': enforce_function,
+                                                    'maximal_potence': model_parameters_max['maximal_potence']
+                                                    }
+                                model_parameter_list.append(model_parameters)
+
+    return model_parameter_list
 
 
 def is_tuple_sorted(t):
