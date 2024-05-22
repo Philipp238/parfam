@@ -26,7 +26,7 @@ evaluator = Evaluator(x, y, model=model, lambda_0=0, lambda_1=0.001, lambda_deno
 model.prepare_input_monomials(x)
 x0 = np.random.randn(n_params)
 ret = basinhopping(evaluator.loss_func, niter=5, x0=x0, minimizer_kwargs={'jac': evaluator.gradient})
-coefficients = torch.tensor(ret.x, device=device))
+coefficients = torch.tensor(ret.x, device=device)
 ````
 
 Running `parfam_torch.py` will start the computation of a simple test function, to see if everything has been installed 
@@ -68,11 +68,7 @@ To run the experiments for the optimizer comparison set the variable `comparison
 `True` and choose the optimizer you want to test. 
 All our results are saved in the `results` folder. 
 
-<<<<<<< HEAD
-The notebook 'expressivity.ipynb' contains our calculation in Section 2.2.
-=======
 The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
->>>>>>> 04aa8ac7ba73da04bf24b78fa6c166abb557f423
 
 
 ## References

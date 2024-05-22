@@ -1,0 +1,6 @@
+*/.ipynb_checkpoints/*
+.idea/
+*/__pycache__/*
+trainingOnSyntheticData/data/*
+trainingOnSyntheticData/results/*
+model_endtoend.pt
