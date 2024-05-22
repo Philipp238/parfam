@@ -97,8 +97,13 @@ dataset = srsd
 ````
 in the config file and set the variable *path_srsd* to the path to the SRSD dataset one is interested in.
 
+## Retrain DL-ParFam
 
-For the experiments on Nguyen, choose the parameter in feynman.ini to 
+To train your own pre-trained network for DL-ParFam, you have to run
+````
+python trainingOnSyntheticData/train.py -c train_model_parameters.ini
+````
+which will save the trained model in a subdirectory of trainingOnSyntheticData/results/.
 
 
 The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
