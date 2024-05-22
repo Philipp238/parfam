@@ -90,8 +90,19 @@ parameter to
 ````
 model_parameter_search = pretrained
 ````
+For the experiments on SRSD, it is necessary to download the data sets from https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_easy
+and https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_medium and set 
+````
+dataset = srsd
+````
+in the config file and set the variable *path_srsd* to the path to the SRSD dataset one is interested in.
+
+
+For the experiments on Nguyen, choose the parameter in feynman.ini to 
+
 
 The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
+
 
 
 ## References
