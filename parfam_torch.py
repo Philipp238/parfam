@@ -1166,7 +1166,8 @@ class ParFamTorch:
 class Evaluator:
 
     def __init__(self, x, y, model, lambda_0, lambda_1, n_params, lambda_mixed=0, lambda_denom=0,
-                 n_best_coefficients=10, mask=None, lambda_05=None, lambda_1_cut=None, lambda_1_piecewise=None):
+                 n_best_coefficients=10, mask=None, lambda_05=None, lambda_1_cut=None, lambda_1_piecewise=None,
+                 custom_loss=None):
         """
         :param x: The feature matrix
         :param y: The target variable
@@ -1211,6 +1212,7 @@ class Evaluator:
             self.n_active_coefficients = sum(mask)
             self.best_coefficients = np.inf * np.ones((n_best_coefficients, self.n_active_coefficients))
         self.evaluations = 0
+        self.custom_loss = custom_loss
 
     # def convert_evaluator_variables_to_module(self, module):
     #    self.x = convert_to_module(self.x, module, device=self.device)
@@ -1285,28 +1287,19 @@ class Evaluator:
         return 0
 
     def gradient(self, _):
-        # The if-query should be unnecessary. Test later for specific solver....
-        # if np.linalg.norm(coefficients - self.coefficients_current.detach().numpy()) > 1e-3:
-        #     coefficients = convert_to_module(coefficients, torch)
-        #     coefficients.requires_grad_()
-        #     self.loss_current = self.loss_func_torch(coefficients)
         self.loss_current.backward()
         return convert_to_module(self.coefficients_current.grad, np, device=self.device)
 
     def loss_func(self, coefficients):
-        # self.coefficients_current = convert_to_module(coefficients, torch, device=self.device)
         self.coefficients_current = torch.from_numpy(coefficients).to(self.device)
         self.coefficients_current.requires_grad_()
-        self.loss_func_torch()
+        if self.custom_loss is None:
+            self.loss_func_torch()
+        else:            
+            y_pred = self.model.predict(self.coefficients_current, self.x)
+            loss = self.custom_loss(y_pred)
+            self.loss_current = loss
         return (self.loss_current).cpu().detach().numpy()
-
-    # def loss_func(self, coefficients):
-    #     self.coefficients_current = convert_to_module(coefficients, torch)
-    #     self.coefficients_current.requires_grad_()
-    #     self.loss_func_torch()
-    #     self.loss_current.backward()
-    #     gradient = convert_to_module(self.coefficients_current.grad, np)
-    #     return convert_to_module(self.loss_current, np), gradient
 
     def plot_training_statistics(self, width, height):
         fig, axs = plt.subplots(2, 2, figsize=(width, height))

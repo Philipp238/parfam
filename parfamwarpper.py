@@ -55,19 +55,19 @@ class ParFamWrapper:
             model_parameters_max['maximal_potence'] = maximal_potence
         else:
             model_parameters_fix = {}
-            model_parameters_fix['degree_output_polynomials'] = degree_output_numerator
-            model_parameters_fix['degree_input_polynomials'] = degree_input_numerator
-            model_parameters_fix['degree_input_denominator'] = degree_input_denominator
-            model_parameters_fix['degree_output_denominator'] = degree_output_denominator
-            model_parameters_fix['function_names'] = self.function_names_str
-            model_parameters_fix['degree_output_polynomials_specific'] = degree_output_numerator_specific
-            model_parameters_fix['degree_output_polynomials_denominator_specific'] = degree_output_denominator_specific
-            model_parameters_fix['maximal_potence'] = maximal_potence
-            model_parameters_fix['width'] = 1
-            model_parameters_fix['enforce_function'] = enforce_function
+            model_parameters_fix['degree_output_polynomials'] = str(degree_output_numerator)
+            model_parameters_fix['degree_input_polynomials'] = str(degree_input_numerator)
+            model_parameters_fix['degree_input_denominator'] = str(degree_input_denominator)
+            model_parameters_fix['degree_output_denominator'] = str(degree_output_denominator)
+            model_parameters_fix['function_names'] = str(self.function_names_str)
+            model_parameters_fix['degree_output_polynomials_specific'] = str(degree_output_numerator_specific)
+            model_parameters_fix['degree_output_polynomials_denominator_specific'] = str(degree_output_denominator_specific)
+            model_parameters_fix['maximal_potence'] = str(maximal_potence)
+            model_parameters_fix['width'] = str(1)
+            model_parameters_fix['enforce_function'] = str(enforce_function)
             self.config['MODELPARAMETERSFIX'] = model_parameters_fix
         
-        
+
         self.device = device
         # if iterate:
         #     self.model_parameter_list = get_complete_model_parameter_list(self.model_parameters_max, iterate_polynomials=True)
@@ -77,7 +77,7 @@ class ParFamWrapper:
     def fit(self, x, y, time_limit=1000, evaluations_limit=1000000, max_n_active_parameters=10, seed=None, 
             maxiter1=100, optimizer='basinhopping', maxiter_per_dim_local_minimizer=100, lambda_1=0.0001,
             lambda_1_piecewise=0.0, lambda_1_cut=0.0, local_minimizer='bfgs', lambda_1_finetuning=0.01,
-            iterative_finetuning=True):
+            iterative_finetuning=True, normalization=False, enforce_function_iterate="Both", custom_loss=None):
 
         
         assert x.shape[0] == len(y)
@@ -105,6 +105,8 @@ class ParFamWrapper:
         self.training_parameters['lambda_1_finetuning'] = lambda_1_finetuning
         self.training_parameters['iterative_finetuning'] = iterative_finetuning
         self.training_parameters['pruning_iterations'] = 1
+        self.training_parameters['normalization'] = normalization
+        self.training_parameters['enforce_function_iterate'] = enforce_function_iterate
         
         self.relative_l2_distance_train, self.relative_l2_distance_val, self.r_squared_val, self.formula, self.training_time, \
         self.n_active_coefficients, self.relative_l2_distance_test, self.r_squared_test, self.n_active_coefficients_reduced, \
@@ -113,9 +115,19 @@ class ParFamWrapper:
         self.coefficients_reduced = model_parameter_search(x, y, None, self.model_parameters_max, 
                                                             training_parameters=self.training_parameters, accuracy=0.001, 
                                                             config=self.config, model_parameters_perfect=None,
-                                                            logging_to_file=False)
+                                                            logging_to_file=False, custom_loss=custom_loss)
         
         self.model = setup_model(self.best_model_parameters, n_input=x.shape[1], device=self.device, model='ParFamTorch')
+        
+    def get_formula(self, input_names, decimals=3):
+        assert len(input_names) == self.n_input
+        
+        self.model.input_names = input_names
+        formula_reduced = self.model.get_formula(self.coefficients_reduced, decimals=decimals, verbose=False)
+        
+        return formula_reduced 
+        
+        
         
     def predict(self, x, reduced=True):
         if reduced:
@@ -124,7 +136,7 @@ class ParFamWrapper:
             coefficients = self.coefficients
         y = self.model.predict(x=x, coefficients=coefficients)
         return y
-        
+
     def finetune(self, x, y, cutoff, max_dataset_length=5000):
         x_train, x_val, y_train, y_val = train_test_split(x, y, train_size=0.8, test_size=0.2)
         new_coeffs = finetune_coeffs(x_train, y_train, self.coefficients_reduced, self.model, cutoff, lambda_1=0.01, max_dataset_length=max_dataset_length)
@@ -137,9 +149,9 @@ class ParFamWrapper:
         print(f'If you want to use the new coefficients call parfam.set_coefficients(coefficients)')
         return new_coeffs
     
-    def set_coefficients(self, coefficients):
+    def set_coefficients(self, coefficients, decimals=3):
         self.coefficients_reduced = coefficients
-        self.formula_reduced = self.model.get_formula(self.coefficients_reduced, decimals=3, verbose=False)
+        self.formula_reduced = self.model.get_formula(self.coefficients_reduced, decimals=decimals, verbose=False)
             
 if __name__ == '__main__':
     import sympy
@@ -193,7 +205,7 @@ if __name__ == '__main__':
     
 
     y_pred = parfam.predict(x).cpu().detach().numpy()
-    
+        
     if x.shape[1] == 1:
         plt.plot(x, y, '+', label='Samples')
         plt.plot(x, y_pred, label='Prediction')
@@ -211,4 +223,7 @@ if __name__ == '__main__':
     
     print(parfam.coefficients_reduced)
     parfam.finetune(x, y, cutoff=0.5, max_dataset_length=5000)    
+    
+    print('Formula with variable a')
+    print(parfam.get_formula(input_names=[sympy.Symbol('a')], decimals=5))
     

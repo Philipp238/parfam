@@ -169,7 +169,7 @@ def train_lbfgs(evaluator, n_params_active, maxiter, coefficients=None):
 
 
 # trains a model with given hyperparameters
-def hyperparameter_training(x, y, target_expr, training_parameters, model_parameters, seed, verbose=True):
+def hyperparameter_training(x, y, target_expr, training_parameters, model_parameters, seed, verbose=True, custom_loss=None):
     if verbose:
         print('##### Training #####')
     # Hyperparameters
@@ -210,7 +210,8 @@ def hyperparameter_training(x, y, target_expr, training_parameters, model_parame
     logging.info(f'Number parameters active: {n_params_active}')
     print(f'Number parameters active: {n_params_active}')
     evaluator = Evaluator(x_train, y_train, lambda_0=0, lambda_1=lambda_1, model=model, mask=mask,
-                          n_params=n_params, lambda_1_cut=lambda_1_cut, lambda_1_piecewise=lambda_1_piecewise)
+                          n_params=n_params, lambda_1_cut=lambda_1_cut, lambda_1_piecewise=lambda_1_piecewise,
+                          custom_loss=custom_loss)
     coefficients_ = training(model, evaluator, x_train, y_train, n_params_active, maxiter=maxiter1, initial_temp=50000,
                              maxfun=10 ** 9, no_local_search=False, optimizer=optimizer,
                              maxiter_per_dim_local_minimizer=maxiter_per_dim_local_minimizer,
@@ -549,7 +550,8 @@ def get_model_parameter_list(model_parameters_max, config, training_parameters, 
     
     if config['META']['model_parameter_search'] == 'No':
         # One specific set of model parameters, which will be used instead of the hyperparameter search
-        model_parameters_fix = dict(config.items("MODELPARAMETERSFIX"))
+        # model_parameters_fix = dict(config.items("MODELPARAMETERSFIX"))
+        model_parameters_fix = config["MODELPARAMETERSFIX"]
         model_parameters_fix = {key: ast.literal_eval(model_parameters_fix[key]) for key in
                                 model_parameters_fix.keys()}
         model_parameters_fix['functions'] = model_parameters_fix['function_names']
@@ -1331,7 +1333,7 @@ def train_pysr(x, y, target_expr, training_parameters, accuracy):
     return model, training_time
 
 
-def run_jobs_sequentially(x, y, target_expr, model_parameter_list, seed, training_parameters, accuracy):
+def run_jobs_sequentially(x, y, target_expr, model_parameter_list, seed, training_parameters, accuracy, custom_loss=None):
     best_relative_l2_distance_train, best_relative_l2_distance_val, best_formula, best_training_time = None, np.inf, None, None
     best_r_squared_val, best_coefficients, best_model_parameters = None, None, None
     cumulative_n_evaluations = 0
@@ -1343,7 +1345,7 @@ def run_jobs_sequentially(x, y, target_expr, model_parameter_list, seed, trainin
         logging.info(f'Model parameters: {model_parameters}')
         relative_l2_distance_train, relative_l2_distance_val, r_squared_val, training_time, coefficients, n_evaluations = \
             hyperparameter_training(x, y, target_expr, training_parameters, copy.deepcopy(model_parameters), seed,
-                                    verbose=True)
+                                    verbose=True, custom_loss=custom_loss)
         t_1 = time()
         if cumulative_training_time + t_1 - t_0 > time_limit:
             logging.info(f"Terminate proccess, the time limit of {time_limit}s was reached")
@@ -1571,8 +1573,7 @@ def min_max_normalization(data, dim, new_min, new_max):
     return data
 
 def model_parameter_search(x, y, target_expr, model_parameters_max, training_parameters, accuracy, config,
-                           logging_to_file=True,
-                           model_parameters_perfect=None, dataset_name=None):
+                           logging_to_file=True, model_parameters_perfect=None, dataset_name=None, custom_loss=None):
     seed = training_parameters['seed']
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -1728,7 +1729,8 @@ def model_parameter_search(x, y, target_expr, model_parameters_max, training_par
                                                                                                        model_parameter_list,
                                                                                                        seed,
                                                                                                        training_parameters,
-                                                                                                       accuracy)
+                                                                                                       accuracy, 
+                                                                                                       custom_loss)
     except Exception as e:
         # print(f'Exception {e}')
         logging.critical(e, exc_info=True)
