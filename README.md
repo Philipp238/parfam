@@ -114,6 +114,7 @@ The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
 
 [1] Philipp Scholl, Katharina Bieker, Hillary Hauger, Gitta Kutyniok. "ParFam - (Neural Guided) Symbolic Regression based on Global Continuous
 Optimization". https://arxiv.org/abs/2310.05537 (2023).
+
 [2] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, 
 Michael Kommenda, and Jason H. Moore. "Contemporary symbolic regression methods and their relative performance." 
 arXiv preprint arXiv:2107.14351 (2021).
