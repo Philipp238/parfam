@@ -1,7 +1,7 @@
 ## Prerequisites
 
 This repository contains the code accompanying the paper "ParFam - (Neural Guided) Symbolic Regression using Global Continuous
-Optimization", which investigates a new symbolic regression method leveraging the structure of common physical laws.
+Optimization" [1], which investigates a new symbolic regression method leveraging the structure of common physical laws.
 
 The code is implemented in Python 3 and requires the packages specified in ``requirements.txt``.
 
@@ -67,7 +67,7 @@ for arbitrary mathematical functions which can be specified in `dev_training` di
 
 ## Reproduce experiments
 
-To run the experiments from Section 3 on the SRBench ground-truth problems [1] you first have to download the Feynman 
+To run the experiments from Section 3 on the SRBench ground-truth problems [2] you first have to download the Feynman 
 and Strogatz data sets by downloading https://github.com/EpistasisLab/pmlb. After completing this use the command
 
 ````
@@ -112,6 +112,8 @@ The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
 
 ## References
 
-[1] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, 
+[1] Philipp Scholl, Katharina Bieker, Hillary Hauger, Gitta Kutyniok. "ParFam - (Neural Guided) Symbolic Regression based on Global Continuous
+Optimization". https://arxiv.org/abs/2310.05537 (2023).
+[2] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, 
 Michael Kommenda, and Jason H. Moore. "Contemporary symbolic regression methods and their relative performance." 
 arXiv preprint arXiv:2107.14351 (2021).
