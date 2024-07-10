@@ -1,13 +1,13 @@
 ## Prerequisites
 
-This repository contains the code accompanying the paper "ParFam - Symbolic Regression using Global Continuous
-Optimization", which investigates a new symbolic regression method leveraging the structure of common physical laws.
+This repository contains the code accompanying the paper "ParFam - (Neural Guided) Symbolic Regression using Global Continuous
+Optimization" [1], which investigates a new symbolic regression method leveraging the structure of common physical laws.
 
 The code is implemented in Python 3 and requires the packages specified in ``requirements.txt``.
 
 ## Usage
 
-For applications it is usually enough to use the wrapper `ParFamWrapper` in `parfamwrapper.py` by simply calling
+For applications, it is usually enough to use the wrapper `ParFamWrapper` in `parfamwrapper.py` by simply calling
 
 ````
 parfam = ParFamWrapper(iterate=True, functions=functions, function_names=function_names)
@@ -22,7 +22,7 @@ and it can be used for predictions using
 ````
 y_pred = parfam.predict(x).
 ````
-A more thourough introduction with some examples is schon in `example.ipynb`
+A more thourough introduction with some examples is shown in `example.ipynb`
 
 ## Structure
 
@@ -32,7 +32,7 @@ set and obtain the loss function as specified in Equation (2) in "ParFam - Symbo
 Optimization":
 $$L(\theta)=\frac{1}{N}\sum_{i=1}^N\left(y_i-f_\theta(x_i)\right)^2+ \lambda R(\theta)$$
 
-The formula is learned by calling any optimizer on the loss function defiend by the `Evaluator` class. An example using 
+The formula is learned by calling any optimizer on the loss function defined by the `Evaluator` class. An example using 
 basinhopping:
 ````
 model = ParFamTorch(n_input=1, degree_input_numerator=2, degree_output_numerator=2, width=1,
@@ -65,7 +65,9 @@ These base functionalities are all included in the function `dev_training`, whic
 function to test if the installation worked and can be used to gain familiarity with the framework. It tests the process
 for arbitrary mathematical functions which can be specified in `dev_training` directly. 
 
-To run the experiments from Section 3.1 on the SRBench ground-truth problems [1] you first have to download the Feynman 
+## Reproduce experiments
+
+To run the experiments from Section 3 on the SRBench ground-truth problems [2] you first have to download the Feynman 
 and Strogatz data sets by downloading https://github.com/EpistasisLab/pmlb. After completing this use the command
 
 ````
@@ -79,19 +81,40 @@ The config file `feynman.ini` has to be stored in the folder `config_files` and 
 3. the training parameters.
 
 The most important thing that has to be customized in the setting is the variable `path_pmlb` which must be set to the
-path of the pmlb directory on your machine. To process these results see the notebook `Process the results.ipynb` and to
-visualize them to obtain the figures as shown in the paper, follow the notebook 
-`results/plots/srbench_groundtruth_results.ipynb`.
+path of the pmlb directory on your machine. By specifying 
+````
+model_parameter_search = Complete
+````
+the base algorithm ParFam with the extensive model parameter search will be started. To switch to DL-ParFam, change this 
+parameter to
+````
+model_parameter_search = pretrained
+````
+For the experiments on SRSD, it is necessary to download the data sets from https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_easy
+and https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_medium and set 
+````
+dataset = srsd
+````
+in the config file and set the variable *path_srsd* to the path to the SRSD dataset one is interested in.
 
-To run the experiments for the optimizer comparison set the variable `comparison_subset` in the config file to
-`True` and choose the optimizer you want to test. 
-All our results are saved in the `results` folder. 
+## Retrain DL-ParFam
+
+To train your own pre-trained network for DL-ParFam, you have to run
+````
+python trainingOnSyntheticData/train.py -c train_model_parameters.ini
+````
+which will save the trained model in a subdirectory of trainingOnSyntheticData/results/.
+
 
 The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
 
 
+
 ## References
 
-[1] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, 
+[1] Philipp Scholl, Katharina Bieker, Hillary Hauger, Gitta Kutyniok. "ParFam - (Neural Guided) Symbolic Regression based on Global Continuous
+Optimization". https://arxiv.org/abs/2310.05537 (2023).
+
+[2] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, 
 Michael Kommenda, and Jason H. Moore. "Contemporary symbolic regression methods and their relative performance." 
 arXiv preprint arXiv:2107.14351 (2021).

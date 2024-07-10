@@ -21,7 +21,7 @@ def init():
 
     # Initialize parser
     parser = argparse.ArgumentParser(description="Debugging")
-    parser.add_argument('-c', '--config', help='Name of the config file:', default='hillary.ini')
+    parser.add_argument('-c', '--config', help='Name of the config file:', default='debug.ini')
     args = parser.parse_args()
 
     cwd = os.getcwd()  # Get current working directory
@@ -85,8 +85,9 @@ def init_results_dict(model_parameters_dict, training_parameters_dict):
 # Performs experiments for all datasets in dataset_names and hyperparameters in hyperparameters_dict:
 #### n_experiment: number of how often the experiment is repeated
 #### accuracy: determines wether the experiment was a success or not
-def perform_experiments(n_experiments, dataset_names, model_parameters_dict, training_parameters_dict,
+def perform_experiments(n_experiments, seed, dataset_names, model_parameters_dict, training_parameters_dict,
                         config, directory, path_pmlb_datasets):
+    np.random.seed(seed)    
     results_dict = init_results_dict(model_parameters_dict, training_parameters_dict)
     if config['META']['dataset'] == 'random-equations':
         x_random = torch.arange(-10, 10, 0.1)
@@ -140,6 +141,12 @@ def perform_experiments(n_experiments, dataset_names, model_parameters_dict, tra
                                                                                               'function_names']))]
                 model_parameters_dict['max_deg_output_polynomials_denominator_specific'] = [1 for _ in range(len(
                     model_parameters_dict['function_names']))]
+            elif config['META']['dataset'] == 'srsd':
+                data = np.loadtxt(os.path.join(config['META']['path_srsd'], 'train', dataset_name + '.txt'), delimiter=' ')
+                x, y = data[:, :-1], data[:,-1]
+                with open(os.path.join(config['META']['path_srsd'], 'supp_info.json')) as jsonfile:
+                    text = json.load(jsonfile)
+                    target_formula = text[dataset_name]['sympy_eq_str']
             else:
                 x, y = fetch_data(dataset_name, return_X_y=True, local_cache_dir=path_pmlb_datasets)
                 target_formula = get_formula(dataset_name)
@@ -156,6 +163,7 @@ def perform_experiments(n_experiments, dataset_names, model_parameters_dict, tra
             # x,y,target_formula = experiment_data(1000,"test")
             logging.info(f'##########{i + 1} out of {len(dataset_names)} datasets: {dataset_name}##########')
             print(f'##########{i + 1} out of {len(dataset_names)} datasets: {dataset_name}##########')
+            logging.info(f'Time: {datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}')
             logging.info(f"Feature shape: {x.shape}, target shape: {y.shape}")
             # if x.shape[1] > 30:
             #     logging.info(f"Number of features {x.shape[1]} is bigger than 30, skip to next dataset")
@@ -171,8 +179,9 @@ def perform_experiments(n_experiments, dataset_names, model_parameters_dict, tra
                 relative_l2_distance_test_reduced, r_squared_test_reduced, best_formula_reduced, \
                 r_squared_val_reduced, n_evaluations, best_model_parameters, best_coefficients, \
                 best_coefficients_reduced = model_parameter_search(x, y, target_formula, model_parameters_dict, training_parameters,
-                                                                   accuracy, config=config, model_parameters_perfect=model_parameters_perfect)
-
+                                                                   accuracy, config=config, model_parameters_perfect=model_parameters_perfect,
+                                                                   dataset_name=dataset_name)
+                
                 # Save results
                 logging.info(f"Target formula: {target_formula}")
                 logging.info(f"Estimated formula: {estimated_formula}, Training time: {training_time}")
@@ -223,15 +232,18 @@ if __name__ == '__main__':
                                 training_parameters_dict.keys()}
     training_parameters_dict = get_hyperparameters_combination(training_parameters_dict)
 
+    start_experiment = int(config['META']['start_experiment'])
+    end_experiment = int(config['META']['end_experiment'])
+    
     n_experiments = 1
+    seed = int(config['META']['seed'])
     dataset = config['META']['dataset']
     if dataset == 'random-equations':
         dataset_names = range(int(config['META']['n_equations']))
     elif dataset == 'srbench':
-        start_experiment = int(config['META']['start_experiment'])
-        end_experiment = int(config['META']['end_experiment'])
+
         if eval(config['META']['comparison_subset']):
-            np.random.seed(123456)
+            np.random.seed(seed)
             feynman_indices = [i for i in range(120, 239) if not i in [179, 188, 193, 220]]
             dataset_names = [regression_dataset_names[i] for i in
                              np.sort(np.random.choice(feynman_indices, 15, replace=False))]
@@ -239,20 +251,20 @@ if __name__ == '__main__':
         else:
             dataset_names = regression_dataset_names[start_experiment:end_experiment]  # 120 feynman dataset begins
     elif dataset == 'srbench-eql':
-        start_experiment = int(config['META']['start_experiment'])
-        end_experiment = int(config['META']['end_experiment'])
         regression_dataset_names_df = pd.read_csv('eql_datasets', names=['Index', 'Name',
                                                                          'Formula'])  # df_summary.query('task=="regression"')['dataset'].tolist()
         regression_dataset_names = regression_dataset_names_df['Name'].tolist()
         dataset_names = regression_dataset_names[start_experiment:end_experiment]
     elif dataset == 'nguyen':
-        start_experiment = int(config['META']['start_experiment'])
-        end_experiment = int(config['META']['end_experiment'])
         dataset_names = range(start_experiment, end_experiment)
+    elif dataset == 'srsd':
+        data_path = config['META']['path_srsd']
+        dataset_names = os.listdir(os.path.join(data_path, 'train'))[start_experiment:end_experiment]
+        dataset_names = [dataset_name[:-4] for dataset_name in dataset_names]  # remove .txt
     else:
         raise NotImplementedError(f'Dataset name {dataset} not implemented.')
 
-    perform_experiments(n_experiments, dataset_names, model_parameters_dict, training_parameters_dict,
+    perform_experiments(n_experiments, seed, dataset_names, model_parameters_dict, training_parameters_dict,
                         config, directory, path_pmlb_datasets)
 
     logging.info(f'Finished the experiment on {datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}')

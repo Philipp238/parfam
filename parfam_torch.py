@@ -9,8 +9,7 @@ from itertools import product
 import copy
 import time
 import multiprocessing
-
-
+import torch.nn.functional as F
 # from torchmetrics import R2Score
 
 
@@ -46,7 +45,7 @@ class ParFamTorch:
                  function_names=[], input_names=None, degree_input_numerator_specific=None,
                  degree_output_numerator_specific=None, degree_input_denominator=0, degree_output_denominator=0,
                  degree_input_denominator_specific=None, normalize_denom=True, maximal_potence=3,
-                 degree_output_denominator_specific=None, enforce_function=False, device='cpu'):
+                 degree_output_denominator_specific=None, enforce_function=False, device='cpu', stabilize_denominator=True):
         '''
         :param n_input: Number of input variables (the data should be in the form (number data points, n_input))
         :param degree_input_numerator: The degree of the numerator polynomials which are the input to the base functions
@@ -117,17 +116,17 @@ class ParFamTorch:
         assert len(self.degree_output_numerator_specific) == self.n_input + self.width * len(
             self.functions)
         assert len(self.degree_input_numerator_specific) == self.n_input
-
-        self.monomial_list_input = ParFamTorch.list_monomials(self.n_input, self.degree_input_numerator,
+        self.monomial_list_input_numerator = ParFamTorch.list_monomials(self.n_input, self.degree_input_numerator,
                                                               self.degree_input_numerator_specific)
-        self.monomial_list_output = ParFamTorch.list_monomials(self.n_input + self.width * len(functions),
+        self.monomial_list_output_numerator = ParFamTorch.list_monomials(self.n_input + self.width * len(functions),
                                                                self.degree_output_numerator,
                                                                self.degree_output_numerator_specific)
         if self.enforce_function and len(self.functions) > 0:
-            self.monomial_list_output = [monomial for monomial in self.monomial_list_output if
+            self.monomial_list_output_numerator = [monomial for monomial in self.monomial_list_output_numerator if
                                          sum(monomial[self.n_input:]) > 0]
 
         # Denominator
+        self.stabilize = stabilize_denominator
         if degree_input_denominator_specific:
             if degree_input_denominator_specific is None:
                 self.degree_input_denominator_specific = self.n_input * [
@@ -160,13 +159,13 @@ class ParFamTorch:
         else:
             self.monomial_list_output_denominator = []
         self.normalize_denom = normalize_denom
-        self.n_coefficients_first_layer_numerator = len(self.monomial_list_input)
+        self.n_coefficients_first_layer_numerator = len(self.monomial_list_input_numerator)
         self.n_coefficients_first_layer_denominator = len(self.monomial_list_input_denominator)
-        self.n_coefficients_first_layer = len(self.monomial_list_input) + len(self.monomial_list_input_denominator)
-        self.n_coefficients_last_layer_numerator = len(self.monomial_list_output)
+        self.n_coefficients_first_layer = len(self.monomial_list_input_numerator) + len(self.monomial_list_input_denominator)
+        self.n_coefficients_last_layer_numerator = len(self.monomial_list_output_numerator)
         self.n_coefficients_last_layer_denominator = len(self.monomial_list_output_denominator)
-        self.n_coefficients_last_layer = len(self.monomial_list_output) + len(self.monomial_list_output_denominator)
-        self.input_monomials = None
+        self.n_coefficients_last_layer = len(self.monomial_list_output_numerator) + len(self.monomial_list_output_denominator)
+        self.input_monomials_numerator = None
         self.input_monomials_denominator = None
         self.output_monomials_dict = None
         self.output_monomials_denominator_dict = None
@@ -177,6 +176,7 @@ class ParFamTorch:
             self.input_names = input_names
 
     def get_formula(self, coefficients, decimals=3, verbose=False):
+        # Coefficients should be either Tensors or Sympy Symbols; the following transforms numpy arrays to torch tensors
         if type(coefficients) == 'numpy':
             coefficients = torch.tensor(coefficients, device=self.device)
         if len(self.function_names) != len(self.functions):
@@ -192,12 +192,12 @@ class ParFamTorch:
             numerator = ParFamTorch._get_symbolic_polynomial(self.n_input, self.input_names,
                                                              self.degree_input_numerator, current_coefficients,
                                                              self.degree_input_numerator_specific,
-                                                             self.monomial_list_input, decimals=decimals)
+                                                             self.monomial_list_input_numerator, decimals=decimals)
             if self.degree_input_denominator > 0:
                 current_coefficients = coefficients[i * self.n_coefficients_first_layer
                                                     + self.n_coefficients_first_layer_numerator:
                                                     (i + 1) * self.n_coefficients_first_layer]
-                if self.normalize_denom:
+                if self.normalize_denom and torch.is_tensor(current_coefficients):
                     current_coefficients = current_coefficients / torch.norm(current_coefficients)
                 denominator = ParFamTorch._get_symbolic_polynomial(self.n_input, self.input_names,
                                                                    self.degree_input_denominator, current_coefficients,
@@ -206,8 +206,11 @@ class ParFamTorch:
                                                                    decimals=decimals)
             else:
                 denominator = 1.0
-            if isinstance(denominator, float) and abs(denominator) < 10 ** (-4):
+            if isinstance(denominator, float) and abs(denominator) < 10 ** (-4) and self.stabilize:
                 denominator = 10 ** (-4)
+            if (~ torch.is_tensor(denominator)) and denominator==0 and numerator==0:
+                # Symbolic inputs and denominator and numerator are 0
+                denominator = 1.0
             feature_name = function_name(numerator / denominator)
             feature_names.append(feature_name)
         t_1 = time.time()
@@ -223,10 +226,10 @@ class ParFamTorch:
         numerator = ParFamTorch._get_symbolic_polynomial(len(feature_names), feature_names,
                                                          self.degree_output_numerator,
                                                          current_coefficients, self.degree_output_numerator_specific,
-                                                         multiindices=self.monomial_list_output, decimals=decimals)
+                                                         multiindices=self.monomial_list_output_numerator, decimals=decimals)
         if self.degree_output_denominator > 0:
             current_coefficients = coefficients[-self.n_coefficients_last_layer_denominator:]
-            if self.normalize_denom:
+            if self.normalize_denom and torch.is_tensor(current_coefficients):
                 current_coefficients = current_coefficients / torch.norm(current_coefficients)
             denominator = ParFamTorch._get_symbolic_polynomial(len(feature_names), feature_names,
                                                                self.degree_output_denominator,
@@ -289,17 +292,17 @@ class ParFamTorch:
 
         for i, multiindex in enumerate(multiindices):
             coefficient = coefficients[i]
-            if isinstance(coefficient, float) and np.abs(coefficient) < 0.000000001:  # 10**(-decimals)
+            if isinstance(coefficient, float) and np.abs(coefficient) < 10**(-decimals):  # 10**(-decimals)
                 continue
-            if isinstance(coefficient, torch.Tensor) and torch.abs(coefficient) < 0.000000001:  # 10**(-decimals)
+            if isinstance(coefficient, torch.Tensor) and torch.abs(coefficient) < 10**(-decimals):  # 10**(-decimals)
                 continue
             monomial = 1
             for j, index in enumerate(multiindex):
                 monomial *= input_names[j] ** index
             if isinstance(coefficient, float):
-                formula += np.round(coefficient, decimals=3) * monomial
+                formula += np.round(coefficient, decimals=decimals) * monomial
             elif isinstance(coefficient, torch.Tensor):
-                formula += np.round(coefficient.cpu().detach().numpy(), decimals=3) * monomial
+                formula += np.round(coefficient.cpu().detach().numpy(), decimals=decimals) * monomial
             else:
                 formula += coefficient * monomial
         return formula
@@ -310,18 +313,18 @@ class ParFamTorch:
     def prepare_input_monomials(self, x):
         # Convert x to torch tensor if x is a numpy array
         # x = convert_to_module(x, torch, device=self.device)
-        self.input_monomials = ParFamTorch._evaluate_monomial_features_v1(x, self.monomial_list_input,
+        self.input_monomials_numerator = ParFamTorch._evaluate_monomial_features_v1(x, self.monomial_list_input_numerator,
                                                                           device=self.device)
         if self.degree_input_denominator > 0:
             self.input_monomials_denominator = \
                 ParFamTorch._evaluate_monomial_features_v1(x, self.monomial_list_input_denominator, device=self.device)
-        self.output_monomials_dict = self._compute_output_monomial_features_dict(x, self.monomial_list_output)
+        self.output_monomials_dict = self._compute_output_monomial_features_dict(x, self.monomial_list_output_numerator)
         if self.degree_output_denominator > 0:
             self.output_monomials_denominator_dict = \
                 self._compute_output_monomial_features_dict(x, self.monomial_list_output_denominator)
 
     def testing_mode(self):
-        self.input_monomials = None
+        self.input_monomials_numerator = None
         self.input_monomials_denominator = None
         self.output_monomials_dict = None
         self.output_monomials_denominator_dict = None
@@ -329,11 +332,11 @@ class ParFamTorch:
     def predict(self, coefficients, x, symbolic=False):
         # x = convert_to_module(x, torch, device=self.device)
         # coefficients = convert_to_module(coefficients, torch, device=self.device)
-        if self.input_monomials is None:
-            input_monomials = ParFamTorch._evaluate_monomial_features_v1(x, self.monomial_list_input,
+        if self.input_monomials_numerator is None:
+            input_monomials = ParFamTorch._evaluate_monomial_features_v1(x, self.monomial_list_input_numerator,
                                                                          device=self.device)
         else:
-            input_monomials = copy.copy(self.input_monomials)
+            input_monomials = copy.copy(self.input_monomials_numerator)
         if self.input_monomials_denominator is None and self.degree_input_denominator > 0:
             input_monomials_denominator = ParFamTorch._evaluate_monomial_features_v1(x,
                                                                                      self.monomial_list_input_denominator,
@@ -343,29 +346,32 @@ class ParFamTorch:
         hidden_layer = torch.zeros((x.shape[0], x.shape[1] + self.width * len(self.functions)), device=self.device)
         hidden_layer[:, :x.shape[1]] = x
         feature_number = x.shape[1]
-        for i, function in enumerate(self.width * self.functions):
+        for i, function in enumerate(self.width * self.functions): # input numerator
             current_coefficients = coefficients[
                                    i * self.n_coefficients_first_layer: i * self.n_coefficients_first_layer
                                                                         + self.n_coefficients_first_layer_numerator]
             numerator = ParFamTorch._evaluate_polynomial_v2(inputs=x, coefficients=current_coefficients,
-                                                            multiindices=self.monomial_list_input,
+                                                            multiindices=self.monomial_list_input_numerator,
                                                             monomial_features=input_monomials, device=self.device)
-            if self.degree_input_denominator > 0:
+            if self.degree_input_denominator > 0: # input denominator
                 current_coefficients = coefficients[
                                        i * self.n_coefficients_first_layer + self.n_coefficients_first_layer_numerator:
                                        (i + 1) * self.n_coefficients_first_layer]
-                if self.normalize_denom:
+                if self.normalize_denom and torch.linalg.norm(current_coefficients) > 0:
                     current_coefficients = current_coefficients / torch.linalg.norm(current_coefficients)
                 denominator = ParFamTorch._evaluate_polynomial_v2(inputs=x, coefficients=current_coefficients,
                                                                   multiindices=self.monomial_list_input_denominator,
                                                                   monomial_features=input_monomials_denominator,
                                                                   device=self.device)
-                denominator = self.stabilize_denominator(denominator)
+                if self.stabilize:
+                    denominator = self.stabilize_denominator(denominator)
             else:
-                denominator = 1
+                # New code (seems necessary if we generate data for DL-ParFam and have to ): 
+                denominator = torch.tensor([1.0], device=self.device, dtype=numerator.dtype)
 
             try:
-                hidden_layer[:, feature_number + i] = function(numerator / denominator)
+                if torch.linalg.norm(denominator) > 0:
+                    hidden_layer[:, feature_number + i] = function(numerator / denominator)
             except Exception as e:
                 pass
         if self.degree_output_denominator > 0:
@@ -374,7 +380,7 @@ class ParFamTorch:
         else:
             current_coefficients = coefficients[-self.n_coefficients_last_layer:]
         numerator = ParFamTorch._evaluate_polynomial_v2(inputs=hidden_layer, coefficients=current_coefficients,
-                                                        multiindices=self.monomial_list_output,
+                                                        multiindices=self.monomial_list_output_numerator,
                                                         monomial_features=None, n_input=self.n_input,
                                                         monomial_features_dict=self.output_monomials_dict,
                                                         device=self.device)
@@ -387,7 +393,8 @@ class ParFamTorch:
                                                               monomial_features=None, n_input=self.n_input,
                                                               monomial_features_dict=self.output_monomials_denominator_dict,
                                                               device=self.device)
-            denominator = self.stabilize_denominator(denominator)
+            if self.stabilize:
+                denominator = self.stabilize_denominator(denominator)
         else:
             denominator = 1
         return numerator / denominator
@@ -454,14 +461,94 @@ class ParFamTorch:
             current_coefficients = coefficients[-self.n_coefficients_last_layer_denominator:]
             reg += (torch.norm(current_coefficients) - 1) ** 2
         return reg
+       
+    def predict_batch_x_params(self, coefficients, x):
+        assert coefficients.shape[1] == x.shape[2]
+        batch_size = coefficients.shape[1]
+        if self.input_monomials_numerator is None:
+            input_monomials = ParFamTorch._evaluate_monomial_features_v1_batch_x_params(x, self.monomial_list_input_numerator,
+                                                                         device=self.device)
+        else:
+            input_monomials = copy.copy(self.input_monomials_numerator)
+            
+        if self.input_monomials_denominator is None and self.degree_input_denominator > 0:
+            input_monomials_denominator = ParFamTorch._evaluate_monomial_features_v1_batch_x_params(x,
+                                                                                     self.monomial_list_input_denominator,
+                                                                                     device=self.device)
+        else:
+            input_monomials_denominator = copy.copy(self.input_monomials_denominator)
+        
+        hidden_layer = torch.zeros(x.shape[0], x.shape[1] + self.width * len(self.functions), batch_size, device=self.device)
+        hidden_layer[:, :x.shape[1]] = x
+        feature_number = x.shape[1]
+        for i, function in enumerate(self.width * self.functions):
+            current_coefficients = coefficients[i * self.n_coefficients_first_layer: i * self.n_coefficients_first_layer
+                                                                        + self.n_coefficients_first_layer_numerator]
+            numerator = ParFamTorch._evaluate_polynomial_v2_batch_x_params(inputs=x, coefficients=current_coefficients,
+                                                            multiindices=self.monomial_list_input_numerator,
+                                                            monomial_features=input_monomials, device=self.device)
+            if self.degree_input_denominator > 0:
+                current_coefficients = coefficients[
+                                       i * self.n_coefficients_first_layer + self.n_coefficients_first_layer_numerator:
+                                       (i + 1) * self.n_coefficients_first_layer]
+                if self.normalize_denom:
+                    current_coefficients = F.normalize(current_coefficients, dim=0)
+                denominator = ParFamTorch._evaluate_polynomial_v2_batch_x_params(inputs=x, coefficients=current_coefficients,
+                                                                  multiindices=self.monomial_list_input_denominator,
+                                                                  monomial_features=input_monomials_denominator,
+                                                                  device=self.device)
+                if self.stabilize:
+                    denominator = self.stabilize_denominator(denominator)
+            else:
+                denominator = 1
+
+            try:
+                hidden_layer[:, feature_number + i] = function(numerator / denominator)
+                # What was the reason for this? For now (for creating data without singularities in the domain),
+                # it seems like it causes us problems, because we want to have 
+                # nan here actually to filter out these values specifically.
+                # hidden_layer[hidden_layer.isnan()] = 0
+                #
+                # The reason actually was the following: Falls wir nun häufiger den Fall haben, dass alle Koeffizienten im Nenner 0 sind 
+                # (passiert bei den Daten fürs Lernen der Maske), dann bekommen wir hier immer den Wert nan. So instead we will be doing the 
+                # following:
+                if self.degree_input_denominator > 0:hidden_layer[:, feature_number + i, torch.norm(current_coefficients, dim=0) == 0] = 10**12 
+                    
+            except Exception as e:
+                print(f'Caught exception {e} while running predict_batch_x_params')
+
+        if self.degree_output_denominator > 0:
+            current_coefficients = coefficients[
+                                   -self.n_coefficients_last_layer:-self.n_coefficients_last_layer_denominator]
+        else:
+            current_coefficients = coefficients[-self.n_coefficients_last_layer:]
+        numerator = ParFamTorch._evaluate_polynomial_v2_batch_x_params(inputs=hidden_layer, coefficients=current_coefficients,
+                                                        multiindices=self.monomial_list_output_numerator,
+                                                        monomial_features=None, n_input=self.n_input,
+                                                        batch_size=batch_size,
+                                                        device=self.device)
+        if self.degree_output_denominator > 0:
+            current_coefficients = coefficients[-self.n_coefficients_last_layer_denominator:]
+            if self.normalize_denom:
+                current_coefficients = F.normalize(current_coefficients, dim=0)
+            denominator = ParFamTorch._evaluate_polynomial_v2_batch_x_params(inputs=hidden_layer, coefficients=current_coefficients,
+                                                              multiindices=self.monomial_list_output_denominator,
+                                                              monomial_features=None, n_input=self.n_input,
+                                                              batch_size=batch_size,
+                                                              device=self.device)
+            if self.stabilize:
+                denominator = self.stabilize_denominator(denominator)
+        else:
+            denominator = 1
+        return numerator / denominator
 
     def predict_batch(self, coefficients, x, symbolic=False):
         batch_size = coefficients.shape[1]
-        if self.input_monomials is None:
-            input_monomials = ParFamTorch._evaluate_monomial_features_v1(x, self.monomial_list_input,
+        if self.input_monomials_numerator is None:
+            input_monomials = ParFamTorch._evaluate_monomial_features_v1(x, self.monomial_list_input_numerator,
                                                                          device=self.device)
         else:
-            input_monomials = copy.copy(self.input_monomials)
+            input_monomials = copy.copy(self.input_monomials_numerator)
         hidden_layer = np.zeros((x.shape[0], x.shape[1] + self.width * len(self.functions), batch_size))
         hidden_layer[:, :x.shape[1]] = np.repeat(x.reshape(*x.shape, 1), batch_size, axis=2)
         feature_number = x.shape[1]
@@ -470,12 +557,12 @@ class ParFamTorch:
                                    i * self.n_coefficients_first_layer: (i + 1) * self.n_coefficients_first_layer]
             hidden_layer[:, feature_number + i] = function(
                 ParFamTorch._evaluate_polynomial_v2(inputs=x, coefficients=current_coefficients,
-                                                    multiindices=self.monomial_list_input,
+                                                    multiindices=self.monomial_list_input_numerator,
                                                     monomial_features=input_monomials, device=self.device))
 
         current_coefficients = coefficients[-self.n_coefficients_last_layer:]
         output = ParFamTorch._evaluate_polynomial_v2(inputs=hidden_layer, coefficients=current_coefficients,
-                                                     multiindices=self.monomial_list_output,
+                                                     multiindices=self.monomial_list_output_numerator,
                                                      monomial_features=None, batch_size=batch_size, device=self.device)
         return output
 
@@ -485,7 +572,7 @@ class ParFamTorch:
             active_feature_coefficients = []
             if feature < n_features:
                 continue
-            for i, index in enumerate(self.monomial_list_output):
+            for i, index in enumerate(self.monomial_list_output_numerator):
                 active_feature_coefficients.append(index[feature] > 0)
             if sum(np.abs(coefficients[-self.n_coefficients_last_layer:][active_feature_coefficients]) > 0.01) > 1:
                 penalty += torch.norm(
@@ -503,7 +590,7 @@ class ParFamTorch:
         input_coefficients = np.zeros(self.n_coefficients_first_layer * self.width * len(self.functions))
         output_coefficients = np.zeros(self.n_coefficients_last_layer)
 
-        monomial_list_output_lists = [list(multi_index) for multi_index in self.monomial_list_output]
+        monomial_list_output_lists = [list(multi_index) for multi_index in self.monomial_list_output_numerator]
 
         # Get the active output monomials
         n_functions = 1 + np.random.randint(n_functions_max)
@@ -612,7 +699,7 @@ class ParFamTorch:
 
         active_output_monomials_indices = []
         for output_polynomial in active_output_monomials:
-            index = self.monomial_list_output.index(tuple(output_polynomial))
+            index = self.monomial_list_output_numerator.index(tuple(output_polynomial))
             active_output_monomials_indices.append(index)
             output_coefficients[index] = 1
 
@@ -637,7 +724,124 @@ class ParFamTorch:
                 input_coefficients[active_input_partition * self.n_coefficients_first_layer + chosen_coeff] = 1
         return np.concatenate([input_coefficients, output_coefficients])
 
-    def get_random_coefficients(self, n_functions_max=3):
+    def __str__(self):
+        string = ''
+        string += f'Degree input numerator: {self.degree_input_numerator} \n'
+        string += f'Degree output numerator: {self.degree_output_numerator} \n'
+        string += f'Degree input denominator: {self.degree_input_denominator} \n'
+        string += f'Degree output denominator: {self.degree_output_denominator} \n'
+        string += f'Functions: {self.function_names} \n'
+        return string
+
+    def get_random_indices_output(self, monomial_list_output, n_functions_max, most_complex_function, use_base_functions,
+                                  require_constant=False, min_order_numerator=None):
+        if not most_complex_function:
+            only_one_function = torch.tensor([(torch.tensor(monomial[self.n_input:]) > 0).sum() <= 1 for 
+                                            monomial in monomial_list_output], dtype=torch.float)
+            n_functions = min(1 + np.random.randint(n_functions_max), len(only_one_function))
+            indices = torch.multinomial(only_one_function, n_functions, replacement=False)
+        else:
+            # How many coefficients should be active?
+            n_functions = min(1 + np.random.randint(n_functions_max), len(monomial_list_output))
+            # Is it necessary to use any of the base functions?
+            if use_base_functions:
+                # Highest degree
+                highest_degree = max([(torch.tensor(monomial)).sum() for monomial in monomial_list_output])
+            else:
+                # Highest degree without using any of the base functions
+                highest_degree = max([(torch.tensor(monomial)).sum() for monomial in monomial_list_output 
+                                      if (torch.tensor(monomial[self.n_input:]) > 0).sum() == 0])
+            if (len(self.functions) > 0) and use_base_functions:
+                # If one base function is used, make sure to select one, the degree can be ignored here
+                base_functions = torch.tensor([(torch.tensor(monomial[self.n_input:]) > 0).sum() >= 1 for 
+                                            monomial in monomial_list_output], dtype=torch.float)
+                indices = torch.multinomial(base_functions, 1)
+                # Check if the degree of this monomial has the maximal degree
+                full_degree = sum(monomial_list_output[indices]) == highest_degree
+            else:
+                indices = None
+                full_degree = False
+            if use_base_functions:
+                valid_indices = torch.ones(len(monomial_list_output), dtype=torch.float)
+            else:
+                valid_indices = torch.tensor([(torch.tensor(monomial[self.n_input:]) > 0).sum() < 1 for 
+                                            monomial in monomial_list_output], dtype=torch.float)
+            if not full_degree:
+                # First ensure that we also incorporate the highest degree monomial and not the base function again
+                highest_degree_monomials = torch.tensor([((torch.tensor(monomial)).sum() == highest_degree) 
+                                                         # and (torch.tensor(monomial[self.n_input:]) > 0).sum() == 0 
+                                                         for monomial in monomial_list_output], 
+                                                        dtype=torch.float)
+                highest_degree_monomials *= valid_indices
+                indices_extra = torch.multinomial(highest_degree_monomials, 1)
+                if indices:
+                    indices = torch.cat([indices, indices_extra])
+                else:
+                    indices = indices_extra
+            if len(indices) < n_functions:
+                # Sample the rest of the functions without any restraints, except that it is not the already chosen coefficient
+                remaining_functions = torch.tensor([i not in indices.tolist() 
+                                                    # and (torch.tensor(monomial[self.n_input:]) > 0).sum() == 0
+                                                    for i, monomial in enumerate(monomial_list_output)],
+                                                   dtype=torch.float)
+                remaining_functions *= valid_indices
+                indices_extra = torch.multinomial(remaining_functions, n_functions - len(indices))
+                indices = torch.cat([indices, indices_extra])
+        if require_constant:
+            indices = torch.cat([indices, torch.tensor([0], dtype=torch.int)])
+        # Are there variables that can be cancelled in the rational function?
+        if min_order_numerator != None and sum(min_order_numerator)>0:
+            min_order_denominator = [self.degree_output_denominator for _ in range(self.n_input+len(self.functions))]
+            for chosen_index in indices:
+                for i in range(self.n_input+len(self.functions)):
+                    min_order_denominator[i] = min(min_order_denominator[i], self.monomial_list_output_denominator[chosen_index][i])
+            cancelling_variables = []
+            for i in range(self.n_input+len(self.functions)):
+                if (min_order_numerator[i] > 0) and (min_order_denominator[i] > 0):
+                    cancelling_variables.append(i)
+            if len(cancelling_variables) == self.n_input+len(self.functions):
+                indices = torch.cat([indices, torch.tensor([0], dtype=torch.int)])
+            elif len(cancelling_variables) > 0:
+                # Only use a index referring to a monomial which does not involve any of the cancelling variables
+                valid_indices = torch.tensor([1.0 if max([monomial[variable] for variable in cancelling_variables])==0 else 0.0
+                                              for monomial in monomial_list_output], dtype=torch.float)
+                remaining_functions = torch.tensor([i not in indices.tolist() for i, monomial in enumerate(monomial_list_output)],
+                                                   dtype=torch.float)
+                valid_indices *= remaining_functions
+                indices_extra = torch.multinomial(valid_indices, 1)
+                indices = torch.cat([indices, indices_extra])
+        return indices
+
+
+    def get_random_indices_input(self, input_coefficients, monomial_list_input, most_complex_function, avoid_only_constant, index, require_constant):
+        max_n_coeffs = len(monomial_list_input)
+        n_coeffs = 1 + np.random.randint(max_n_coeffs)
+        if not most_complex_function:
+            # denominator coefficients
+            if (n_coeffs == 1) and avoid_only_constant:
+                # make sure that not only the coefficient for the constant term is chosen, if the numerator is already constant
+                indices = np.random.choice(range(max_n_coeffs - 1), size=n_coeffs) + 1
+            else:
+                indices = np.random.choice(range(max_n_coeffs), size=n_coeffs,
+                                                replace=False)
+        else:
+            highest_degree = max([(torch.tensor(monomial)).sum() for monomial in monomial_list_input])
+            highest_degree_monomials = torch.tensor([((torch.tensor(monomial)).sum() == highest_degree) for monomial in monomial_list_input], 
+                                                        dtype=torch.float)
+            indices = torch.multinomial(highest_degree_monomials, 1)
+            if len(indices) < n_coeffs:
+                # Sample the rest of the functions without any restraints, except that it is not the already chosen coefficient
+                remaining_functions = torch.tensor([i not in indices.tolist() for i, monomial in enumerate(monomial_list_input)],
+                                                   dtype=torch.float)
+                indices_extra = torch.multinomial(remaining_functions, n_coeffs - len(indices))
+                indices = torch.cat([indices, indices_extra])
+        for chosen_index in indices:
+            input_coefficients[index + chosen_index] = 1
+        if require_constant:
+            input_coefficients[index] = 1
+        return input_coefficients
+
+    def get_random_coefficients(self, n_functions_max=3, most_complex_function=False):
         """
         Get random coefficients, which relate to meaningful functions.
         :param n_functions_max: Number of features to be used, i.e., at most n_functions_max output coefficients are
@@ -648,14 +852,164 @@ class ParFamTorch:
         output_coefficients = np.zeros(self.n_coefficients_last_layer)
 
         # Get the active output coefficients
+        if self.enforce_function or (self.degree_output_denominator == 0):
+            use_base_functions_in_numerator = True
+        else:
+            # 50:50 to use the base function in the numerator or in the denominator
+            use_base_functions_in_numerator = 1 == np.random.binomial(1, 0.5) 
+        active_output_numerator_monomials_indices = self.get_random_indices_output(self.monomial_list_output_numerator,
+                                                                                    n_functions_max, most_complex_function, use_base_functions_in_numerator)
+        if self.degree_output_denominator > 0:
+            # Require the constant coefficient to be used if all monomials consist out of all input variables for the numerator
+            min_order_numerator = [self.degree_output_numerator for _ in range(self.n_input+len(self.functions))]
+            for chosen_index in active_output_numerator_monomials_indices:
+                for i in range(self.n_input+len(self.functions)):
+                    min_order_numerator[i] = min(min_order_numerator[i], self.monomial_list_output_numerator[chosen_index][i])
+            # require_constant = min_order_numerator > 0
+                
+            active_output_denominator_monomials_indices = self.get_random_indices_output(self.monomial_list_output_denominator, 
+                                                                                            n_functions_max, most_complex_function,
+                                                                                            not use_base_functions_in_numerator,
+                                                                                            # require_constant,
+                                                                                            min_order_numerator=min_order_numerator)
+        
+        for output_index in active_output_numerator_monomials_indices:
+            output_coefficients[output_index] = 1
+        if self.degree_output_denominator > 0:
+            for output_index in active_output_denominator_monomials_indices:
+                output_coefficients[output_index + self.n_coefficients_last_layer_numerator] = 1
+
+        # Get the related output monomials
+        active_output_monomials = [self.monomial_list_output_numerator[index] for index in active_output_numerator_monomials_indices]
+        if self.degree_output_denominator > 0:
+            active_output_monomials += [self.monomial_list_output_denominator[index] for index in active_output_denominator_monomials_indices]
+        
+        # Get the partitions in the input layer which is related to the active functions
+        active_input_partitions = set()
+        dict_active_output_monomials = {}
+        for i, multi_index in enumerate(active_output_monomials):
+            for index, multiplicity in enumerate(multi_index):
+                if index < self.n_input or multiplicity == 0:
+                    continue
+                # Check if there is any input feature which is used with more than one different degree, e.g.,
+                # sin(P_1(x)) and sin(P_1(x))^2
+                # By restricting the potence of the functions, this step is not important.
+                if index in dict_active_output_monomials.keys():
+                    if dict_active_output_monomials[index] == multiplicity:
+                        active_input_partitions.add(index - self.n_input)
+                    else:
+                        # remove the coefficient if this relates to an already used feature, but with a different degree
+                        # this time
+                        if i < len(active_output_numerator_monomials_indices):
+                            output_coefficients[active_output_numerator_monomials_indices[i]] = 0
+                        else:
+                            output_coefficients[active_output_denominator_monomials_indices[i-len(active_output_numerator_monomials_indices)]] = 0
+                else:
+                    dict_active_output_monomials[index] = multiplicity
+                    active_input_partitions.add(index - self.n_input)
+
+        # Select randomly the active coefficients in the partitions
+        for active_input_partition in active_input_partitions:
+            avoid_only_constant = self.degree_input_denominator == 0
+            index = active_input_partition * self.n_coefficients_first_layer
+            input_coefficients = self.get_random_indices_input(input_coefficients, self.monomial_list_input_numerator, most_complex_function, 
+                                                                avoid_only_constant=avoid_only_constant, index=index, require_constant=False)
+            if self.degree_input_denominator > 0:
+                # Require the constant coefficient to be used if all monomials consist out of all input variables for the numerator
+                min_order_numerator = self.degree_input_numerator
+                for chosen_index in range(self.n_coefficients_first_layer_numerator):
+                    if input_coefficients[index + chosen_index] == 1:
+                        min_order_numerator = min(min_order_numerator, min(self.monomial_list_input_numerator[chosen_index]))
+                require_constant = min_order_numerator > 0
+                
+                # Avoid constants if only the constant value in the numerator was selected
+                avoid_only_constant == (input_coefficients[index] == 1) and (input_coefficients[index+1:index+self.n_coefficients_first_layer_numerator] == 0)
+                index = active_input_partition * self.n_coefficients_first_layer + self.n_coefficients_first_layer_numerator
+                input_coefficients = self.get_random_indices_input(input_coefficients, self.monomial_list_input_denominator, most_complex_function, 
+                                                                    avoid_only_constant=avoid_only_constant, index=index, require_constant=require_constant)            
+                
+        return np.concatenate([input_coefficients, output_coefficients])
+
+
+    def get_random_coefficients_numerator(self, n_functions_max=3):
+        """
+        Get random coefficients, which relate to meaningful functions.
+        :param n_functions_max: Number of features to be used, i.e., at most n_functions_max output coefficients are
+                                non-zero
+        :return: numpy array, which gives the coefficients
+        """
+        input_coefficients = np.zeros(self.n_coefficients_first_layer * self.width * len(self.functions))
+        output_coefficients = np.zeros(self.n_coefficients_last_layer)
+
+        # TODO: Only choose monomial indices in which one 
+        # Get the active output coefficients
         n_functions = 1 + np.random.randint(n_functions_max)
-        active_output_monomials_indices = np.random.choice(range(len(self.monomial_list_output)), size=n_functions,
+        only_one_function = torch.tensor([(torch.tensor(monomial[self.n_input:]) > 0).sum() <= 1 for monomial in self.monomial_list_output_numerator], dtype=torch.float)
+        active_output_monomials_indices = torch.multinomial(only_one_function, n_functions, replacement=False)
+        
+        for output_index in active_output_monomials_indices:
+            output_coefficients[output_index] = 1
+
+        # Get the related output monomials
+        active_output_monomials = [self.monomial_list_output_numerator[index] for index in active_output_monomials_indices]
+        
+        # Get the partitions in the input layer which is related to the active functions
+        active_input_partitions = set()
+        dict_active_output_monomials = {}
+        for i, multi_index in enumerate(active_output_monomials):
+            for index, multiplicity in enumerate(multi_index):
+                if index < self.n_input or multiplicity == 0:
+                    continue
+                # Check if there is any input feature which is used with more than one different degree, e.g.,
+                # sin(P_1(x)) and sin(P_1(x))^2
+                # By restricting the potence of the functions, this step is not important.
+                if index in dict_active_output_monomials.keys():
+                    if dict_active_output_monomials[index] == multiplicity:
+                        active_input_partitions.add(index - self.n_input)
+                    else:
+                        # remove the coefficient if this relates to an already used feature, but with a different degree
+                        # this time
+                        output_coefficients[active_output_monomials_indices[i]] = 0
+                else:
+                    dict_active_output_monomials[index] = multiplicity
+                    active_input_partitions.add(index - self.n_input)
+
+        # Select randomly the active coefficients in the partitions
+        for active_input_partition in active_input_partitions:
+            n_coeffs = 1 + np.random.randint(self.n_coefficients_first_layer)
+            if n_coeffs == 1:
+                # make sure that not only the coefficient for the constant term is chosen
+                chosen_coeffs = np.random.choice(range(self.n_coefficients_first_layer - 1), size=n_coeffs) + 1
+            else:
+                chosen_coeffs = np.random.choice(range(self.n_coefficients_first_layer), size=n_coeffs,
+                                                 replace=False)
+            for chosen_coeff in chosen_coeffs:
+                input_coefficients[active_input_partition * self.n_coefficients_first_layer + chosen_coeff] = 1
+        return np.concatenate([input_coefficients, output_coefficients])
+
+
+
+    def get_random_coefficients_old(self, n_functions_max=3):
+        """
+        Get random coefficients, which relate to meaningful functions.
+        :param n_functions_max: Number of features to be used, i.e., at most n_functions_max output coefficients are
+                                non-zero
+        :return: numpy array, which gives the coefficients
+        """
+        input_coefficients = np.zeros(self.n_coefficients_first_layer * self.width * len(self.functions))
+        output_coefficients = np.zeros(self.n_coefficients_last_layer)
+
+        # TODO: Only choose monomial indices in which one 
+        # Get the active output coefficients
+        n_functions = 1 + np.random.randint(n_functions_max)
+        active_output_monomials_indices = np.random.choice(range(len(self.monomial_list_output_numerator)), size=n_functions,
                                                            replace=False)
         for output_index in active_output_monomials_indices:
             output_coefficients[output_index] = 1
 
-        # Get the related input coefficients
-        active_output_monomials = [self.monomial_list_output[index] for index in active_output_monomials_indices]
+        # Get the related output monomials
+        active_output_monomials = [self.monomial_list_output_numerator[index] for index in active_output_monomials_indices]
+        
         # Get the partitions in the input layer which is related to the active functions
         active_input_partitions = set()
         dict_active_output_monomials = {}
@@ -704,6 +1058,15 @@ class ParFamTorch:
         else:
             # Batches, so we use the matrix-vector product over the left-most indices
             return torch.einsum('ij...,j...->i...', monomial_features, coefficients)
+
+    @staticmethod
+    def _evaluate_polynomial_v2_batch_x_params(inputs, coefficients, multiindices, device, monomial_features=None, batch_size=1,
+                                monomial_features_dict=None, n_input=None):
+        if monomial_features is None:
+            monomial_features = ParFamTorch._evaluate_monomial_features_v1_batch_x_params(inputs, multiindices, batchsize=batch_size,
+                                                                           monomial_features_dict=monomial_features_dict,
+                                                                           n_input=n_input, device=device)
+        return torch.einsum('ijk, jk->ik', monomial_features, coefficients)
 
     @staticmethod
     def list_monomials_uniform_degree(n_input, degree, device):
@@ -756,6 +1119,39 @@ class ParFamTorch:
         return monomial_features
 
     @staticmethod
+    def _evaluate_monomial_features_v1_batch_x_params(inputs, multiindices, device, batchsize=1, monomial_features_dict=None,
+                                       n_input=None):
+        if len(inputs.shape) == 3:
+            batchsize = inputs.shape[2]
+            monomial_features = torch.ones((inputs.shape[0], len(multiindices), batchsize), dtype=torch.float64,
+                                           device=device)
+        else:
+            monomial_features = torch.ones((inputs.shape[0], len(multiindices)), dtype=torch.float64, device=device)
+
+        if monomial_features_dict is None:
+            for i, multiindex in enumerate(multiindices):
+                for j, index in enumerate(multiindex):
+                    if index == 0:
+                        continue
+                    elif index == 1:
+                        monomial_features[:, i] *= inputs[:, j]
+                    else:
+                        monomial_features[:, i] *= inputs[:, j] ** index
+        else:
+            for i, multiindex in enumerate(multiindices):
+                reduced_multiindex_input = multiindex[:n_input]
+                reduced_multiindex_func = multiindex[n_input:]
+                monomial_features[:, i] = monomial_features_dict[reduced_multiindex_input]
+                for j, index in enumerate(reduced_multiindex_func):
+                    if index == 0:
+                        continue
+                    elif index == 1:
+                        monomial_features[:, i] *= inputs[:, j + n_input]
+                    else:
+                        monomial_features[:, i] *= inputs[:, j + n_input] ** index
+        return monomial_features
+
+    @staticmethod
     def get_monomial_mask(n_input, degree):
         half_degree = int(torch.ceil(degree / 2))
         inputs = torch.ones((1, n_input)) * 2
@@ -770,7 +1166,8 @@ class ParFamTorch:
 class Evaluator:
 
     def __init__(self, x, y, model, lambda_0, lambda_1, n_params, lambda_mixed=0, lambda_denom=0,
-                 n_best_coefficients=10, mask=None, lambda_05=None, lambda_1_cut=None, lambda_1_piecewise=None):
+                 n_best_coefficients=10, mask=None, lambda_05=None, lambda_1_cut=None, lambda_1_piecewise=None,
+                 custom_loss=None):
         """
         :param x: The feature matrix
         :param y: The target variable
@@ -815,6 +1212,7 @@ class Evaluator:
             self.n_active_coefficients = sum(mask)
             self.best_coefficients = np.inf * np.ones((n_best_coefficients, self.n_active_coefficients))
         self.evaluations = 0
+        self.custom_loss = custom_loss
 
     # def convert_evaluator_variables_to_module(self, module):
     #    self.x = convert_to_module(self.x, module, device=self.device)
@@ -889,28 +1287,19 @@ class Evaluator:
         return 0
 
     def gradient(self, _):
-        # The if-query should be unnecessary. Test later for specific solver....
-        # if np.linalg.norm(coefficients - self.coefficients_current.detach().numpy()) > 1e-3:
-        #     coefficients = convert_to_module(coefficients, torch)
-        #     coefficients.requires_grad_()
-        #     self.loss_current = self.loss_func_torch(coefficients)
         self.loss_current.backward()
         return convert_to_module(self.coefficients_current.grad, np, device=self.device)
 
     def loss_func(self, coefficients):
-        # self.coefficients_current = convert_to_module(coefficients, torch, device=self.device)
         self.coefficients_current = torch.from_numpy(coefficients).to(self.device)
         self.coefficients_current.requires_grad_()
-        self.loss_func_torch()
+        if self.custom_loss is None:
+            self.loss_func_torch()
+        else:            
+            y_pred = self.model.predict(self.coefficients_current, self.x)
+            loss = self.custom_loss(y_pred)
+            self.loss_current = loss
         return (self.loss_current).cpu().detach().numpy()
-
-    # def loss_func(self, coefficients):
-    #     self.coefficients_current = convert_to_module(coefficients, torch)
-    #     self.coefficients_current.requires_grad_()
-    #     self.loss_func_torch()
-    #     self.loss_current.backward()
-    #     gradient = convert_to_module(self.coefficients_current.grad, np)
-    #     return convert_to_module(self.loss_current, np), gradient
 
     def plot_training_statistics(self, width, height):
         fig, axs = plt.subplots(2, 2, figsize=(width, height))
@@ -947,8 +1336,12 @@ class Evaluator:
                 if loss.requires_grad:
                     loss.backward()
                 return loss
+            try:
+                optimizer.step(closure)
+            except Exception as e:
+                print(f'Caught exception: {e}')
+                break
 
-            optimizer.step(closure)
         # ret = basinhopping(evaluator.gradient, niter=50, x0=x0, minimizer_kwargs={'jac': True})
         t_1 = time.time()
         if verbose:
@@ -1344,7 +1737,7 @@ def dev_data_generation_comparison():
                                    functions=functions, function_names=function_names)
 
         n_params = target_model.get_number_parameters()
-        a = 5 * torch.random.randn(n_params)
+        a = 5 * torch.randn(n_params)
         switch = target_model.get_random_coefficients(n_functions_max=3)
         a = switch * a
 
@@ -1392,19 +1785,42 @@ def dev_data_generation_comparison():
 
 
 def dev_batch_prediction():
-    x = torch.random.randn(100, 2)
+    x = torch.randn(100, 2, dtype=torch.float64)
 
     functions = [torch.sin, torch.cos]
     function_names = [sympy.sin, sympy.cos]
-    model = ParFamTorch(n_input=1, degree_input_numerator=1, degree_output_numerator=2, width=1,
+    model = ParFamTorch(n_input=x.shape[1], degree_input_numerator=1, degree_output_numerator=2, width=1,
                         functions=functions, function_names=function_names)
 
     n_params = model.get_number_parameters()
     model.prepare_input_monomials(x)
-    coefficients = torch.random.randn(n_params, 3)
+    coefficients = torch.randn(n_params, 3, dtype=torch.float64)
 
     y_batch = model.predict_batch(coefficients, x)
     y = model.predict(coefficients[:, 1], x)
+
+    print(f'Difference in prediction: {torch.linalg.norm(y - y_batch[:, 1], ord=2)}')
+
+    plt.plot(y, label='Single prediction')
+    plt.plot(y_batch[:, 1], label='Batch prediction')
+    plt.legend()
+    plt.show()
+
+def dev_batch_x_params_prediction():
+    batchsize = 5
+    x = torch.randn(100, 2, batchsize, dtype=torch.float64)
+
+    functions = [torch.sin, torch.cos]
+    function_names = [sympy.sin, sympy.cos]
+    model = ParFamTorch(n_input=x.shape[1], degree_input_numerator=1, degree_output_numerator=2, width=1,
+                        functions=functions, function_names=function_names)
+
+    n_params = model.get_number_parameters()
+    # model.prepare_input_monomials(x)
+    coefficients = torch.randn(n_params, batchsize, dtype=torch.float64)
+
+    y_batch = model.predict_batch_x_params(coefficients, x)
+    y = model.predict(coefficients[:, 1], x[:,:,1])
 
     print(f'Difference in prediction: {torch.linalg.norm(y - y_batch[:, 1], ord=2)}')
 
@@ -1488,10 +1904,10 @@ def dev_training_lbfgs():
 if __name__ == '__main__':
     # np.random.seed(12345)
     # dev_training_lbfgs()
-    dev_training('cpu')
+    # dev_training('cpu')
     # dev_training_jit()
     # dev_training_pruning()
     # dev_data_generation(ensure_uniqueness=True)
-    # dev_data_generation_comparison()
-    # dev_batch_prediction()
-    # dev_training_mask('cpu')
+    dev_data_generation_comparison()
+    # dev_batch_x_params_prediction()
+    #dev_training_mask('cpu')
