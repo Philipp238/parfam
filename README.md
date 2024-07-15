@@ -22,7 +22,7 @@ and it can be used for predictions using
 ````
 y_pred = parfam.predict(x).
 ````
-A more thourough introduction with some examples is shown in `example.ipynb`
+A more thorough introduction with some examples is shown in `example.ipynb`
 
 ## Structure
 
@@ -56,7 +56,7 @@ respective constructors. To obtain the function given the coefficients run the c
 model.get_formula(ret.x, decimals=10)
 ````
 which returns the formula as a `sympy` function. This can be used to predict new inputs, however, it is recommended to 
-avoid `sympy` for evaluation and instead keep everything in pytorch by running
+avoid `sympy` for evaluation and instead, keep everything in pytorch by running
 ````
 model.predict(ret.x, x)
 ````
@@ -64,6 +64,10 @@ model.predict(ret.x, x)
 These base functionalities are all included in the function `dev_training`, which should run by starting the main 
 function to test if the installation worked and can be used to gain familiarity with the framework. It tests the process
 for arbitrary mathematical functions which can be specified in `dev_training` directly. 
+
+## Plots
+
+To analyze the results shown in [1] and redo the plots, run the cells in `results/srbench_groundtruth_results.ipynb`, which builds up on the code from [2].
 
 ## Reproduce experiments
 
@@ -107,8 +111,6 @@ which will save the trained model in a subdirectory of trainingOnSyntheticData/r
 
 
 The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
-
-
 
 ## References
 
