@@ -118,4 +118,4 @@ The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
 
 [2] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, 
 Michael Kommenda, and Jason H. Moore. "Contemporary symbolic regression methods and their relative performance." 
-arXiv preprint arXiv:2107.14351 (2021).
+Conference on Neural Information Processing Systems (NeurIPS). 2021. [arxiv](https://arxiv.org/abs/2107.14351).
