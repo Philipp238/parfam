@@ -22,12 +22,12 @@ and it can be used for predictions using
 ````
 y_pred = parfam.predict(x).
 ````
-A more thorough introduction with some examples is shown in `example.ipynb`
+A more thorough introduction with some examples is shown in `example.ipynb`. There, many of the necessary hyperparameters are described.
 
 ## Structure
 
-The `parfam_torch.py` module contains the main work of this repository: The `ParFamTorch` class which defines the ParFam
-algorithm and the `Evaluator` class which provides the framework to evaluate the learned coefficients for a given data 
+The `parfam_torch.py` module contains the main work of this repository: The `ParFamTorch` class, which defines the ParFam
+algorithm, and the `Evaluator` class, which provides the framework to evaluate the learned coefficients for a given data 
 set and obtain the loss function as specified in Equation (2) in "ParFam - Symbolic Regression using Global Continuous
 Optimization":
 $$L(\theta)=\frac{1}{N}\sum_{i=1}^N\left(y_i-f_\theta(x_i)\right)^2+ \lambda R(\theta)$$
@@ -116,6 +116,4 @@ The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
 
 [1] Philipp Scholl, Katharina Bieker, Hillary Hauger, and Gitta Kutyniok. "ParFam--Symbolic Regression Based on Continuous Global Optimization." International Conference on Representation Learning (ICLR). 2025. [arXiv](https://arxiv.org/abs/2310.05537).
 
-[2] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, 
-Michael Kommenda, and Jason H. Moore. "Contemporary symbolic regression methods and their relative performance." 
-Conference on Neural Information Processing Systems (NeurIPS). 2021. [arxiv](https://arxiv.org/abs/2107.14351).
+[2] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, Michael Kommenda, and Jason H. Moore. "Contemporary symbolic regression methods and their relative performance." Conference on Neural Information Processing Systems (NeurIPS). 2021. [arxiv](https://arxiv.org/abs/2107.14351).
