@@ -22,7 +22,7 @@ and it can be used for predictions using
 ````
 y_pred = parfam.predict(x).
 ````
-A more thorough introduction with some examples is shown in `example.ipynb`. There, many of the necessary hyperparameters are described.
+A more thorough introduction with some examples is shown in `example.ipynb`. There, many of the necessary hyperparameters are described which might be necessary for indepth experiments, since the parametric family used by per default in *parfam.fit(x,y)* is rather small.
 
 ## Structure
 
