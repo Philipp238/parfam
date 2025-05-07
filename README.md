@@ -19,7 +19,7 @@ This will use the default/small configuration specifified in this [config file](
 parfam = ParFamWrapper(config_name='big', iterate=True, functions=functions, function_names=function_names)
 parfam.fit(x, y)
 ````
-All extra parameters that are handed over to ParFamWrapper (such as functions/function_names) or to parfam.fit (such as time_limit), overwrite the values specified in the config files. See also [example.ipynb](example.ipynb) for more possible hyperparameters.
+Note that these are the same settings used in the paper for the Feynman experiments. All extra parameters that are handed over to ParFamWrapper (such as functions/function_names) or to parfam.fit (such as time_limit), overwrite the values specified in the config files. See also [example.ipynb](example.ipynb) for more possible hyperparameters.
 
 The computed formula can then be assessed by running 
 ````
