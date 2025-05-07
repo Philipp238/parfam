@@ -13,6 +13,8 @@ For applications, it is usually enough to use the wrapper `ParFamWrapper` in `pa
 parfam = ParFamWrapper(iterate=True, functions=functions, function_names=function_names)
 parfam.fit(x, y, time_limit=100)
 ````
+This will use the default/small [config file](config_files/wrapper/small.md))
+
 
 The computed formula can then be assessed by running 
 ````
