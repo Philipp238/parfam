@@ -13,6 +13,13 @@ For applications, it is usually enough to use the wrapper `ParFamWrapper` in `pa
 parfam = ParFamWrapper(iterate=True, functions=functions, function_names=function_names)
 parfam.fit(x, y, time_limit=100)
 ````
+This will use the default/small configuration specifified in this [config file](config_files/wrapper/small.md). To pick a [bigger one](config_files/wrapper/big.md), set:
+
+````
+parfam = ParFamWrapper(config_name='big', iterate=True, functions=functions, function_names=function_names)
+parfam.fit(x, y)
+````
+Note that these are the same settings used in the paper for the Feynman experiments. All extra parameters that are handed over to ParFamWrapper (such as functions/function_names) or to parfam.fit (such as time_limit), overwrite the values specified in the config files. See also [example.ipynb](example.ipynb) for more possible hyperparameters.
 
 The computed formula can then be assessed by running 
 ````
@@ -22,7 +29,7 @@ and it can be used for predictions using
 ````
 y_pred = parfam.predict(x).
 ````
-A more thorough introduction with some examples is shown in `example.ipynb`. There, many of the necessary hyperparameters are described which might be necessary for indepth experiments, since the parametric family used by per default in *parfam.fit(x,y)* is rather small.
+A more thorough introduction is shown in `example.ipynb`. There, many of the necessary hyperparameters are described which might be necessary for indepth experiments.
 
 ## Structure
 
