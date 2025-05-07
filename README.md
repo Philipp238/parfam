@@ -1,7 +1,7 @@
 ## Prerequisites
 
 This repository contains the code accompanying the paper "ParFam - (Neural Guided) Symbolic Regression using Global Continuous
-Optimization" [1], which investigates a new symbolic regression method leveraging the structure of common physical laws.
+Optimization" by Philipp Scholl, Katharina Bieker, Hillary Hauger, and Gitta Kutyniok, accepted at ICLR 2025 [1]. It proposes a new symbolic regression method leveraging the structure of common physical laws.
 
 The code is implemented in Python 3 and requires the packages specified in ``requirements.txt``.
 
@@ -22,12 +22,12 @@ and it can be used for predictions using
 ````
 y_pred = parfam.predict(x).
 ````
-A more thourough introduction with some examples is shown in `example.ipynb`
+A more thorough introduction with some examples is shown in `example.ipynb`. There, many of the necessary hyperparameters are described which might be necessary for indepth experiments, since the parametric family used by per default in *parfam.fit(x,y)* is rather small.
 
 ## Structure
 
-The `parfam_torch.py` module contains the main work of this repository: The `ParFamTorch` class which defines the ParFam
-algorithm and the `Evaluator` class which provides the framework to evaluate the learned coefficients for a given data 
+The `parfam_torch.py` module contains the main work of this repository: The `ParFamTorch` class, which defines the ParFam
+algorithm, and the `Evaluator` class, which provides the framework to evaluate the learned coefficients for a given data 
 set and obtain the loss function as specified in Equation (2) in "ParFam - Symbolic Regression using Global Continuous
 Optimization":
 $$L(\theta)=\frac{1}{N}\sum_{i=1}^N\left(y_i-f_\theta(x_i)\right)^2+ \lambda R(\theta)$$
@@ -56,14 +56,18 @@ respective constructors. To obtain the function given the coefficients run the c
 model.get_formula(ret.x, decimals=10)
 ````
 which returns the formula as a `sympy` function. This can be used to predict new inputs, however, it is recommended to 
-avoid `sympy` for evaluation and instead keep everything in pytorch by running
+avoid `sympy` for evaluation and instead, keep everything in pytorch by running
 ````
 model.predict(ret.x, x)
 ````
 
 These base functionalities are all included in the function `dev_training`, which should run by starting the main 
 function to test if the installation worked and can be used to gain familiarity with the framework. It tests the process
-for arbitrary mathematical functions which can be specified in `dev_training` directly. 
+for arbitrary mathematical functions that can be directly specified in `dev_training`. 
+
+## Plots
+
+To analyze the results shown in [2] and redo the plots, run the cells in `results/srbench_groundtruth_results.ipynb`, which builds up on the code from [2].
 
 ## Reproduce experiments
 
@@ -108,13 +112,8 @@ which will save the trained model in a subdirectory of trainingOnSyntheticData/r
 
 The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
 
-
-
 ## References
 
-[1] Philipp Scholl, Katharina Bieker, Hillary Hauger, Gitta Kutyniok. "ParFam - (Neural Guided) Symbolic Regression based on Global Continuous
-Optimization". https://arxiv.org/abs/2310.05537 (2023).
+[1] Philipp Scholl, Katharina Bieker, Hillary Hauger, and Gitta Kutyniok. "ParFam--Symbolic Regression Based on Continuous Global Optimization." International Conference on Representation Learning (ICLR). 2025. [arXiv](https://arxiv.org/abs/2310.05537).
 
-[2] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, 
-Michael Kommenda, and Jason H. Moore. "Contemporary symbolic regression methods and their relative performance." 
-arXiv preprint arXiv:2107.14351 (2021).
+[2] La Cava, William, Patryk Orzechowski, Bogdan Burlacu, Fabrício Olivetti de França, Marco Virgolin, Ying Jin, Michael Kommenda, and Jason H. Moore. "Contemporary symbolic regression methods and their relative performance." Conference on Neural Information Processing Systems (NeurIPS). 2021. [arxiv](https://arxiv.org/abs/2107.14351).
