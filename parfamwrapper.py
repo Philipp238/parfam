@@ -17,8 +17,10 @@ class ParFamWrapper:
         
         self.input_names = input_names
 
-        cwd = os.getcwd()  # Get current working directory
-        config_path = os.path.join(cwd, 'config_files', 'wrapper', config_name + '.ini')
+        
+        
+        root_path = os.path.dirname(os.path.abspath(__file__))  # Get root_path (.../parfam)
+        config_path = os.path.join(root_path, 'config_files', 'wrapper', config_name + '.ini')
         self.config = configparser.ConfigParser()  # Create a ConfigParser object
         self.config.read(config_path)  # Read the configuration file
             
