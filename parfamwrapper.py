@@ -54,7 +54,7 @@ class ParFamWrapper:
         if degree_output_denominator is not None:
             model_parameters['max_deg_output_denominator'] = degree_output_denominator
             model_parameters_fix['degree_output_denominator'] = str(degree_output_denominator)
-        if function_names:
+        if function_names is not None:
             assert len(function_names) == len(functions)
             self.function_names_str = [f'function_{i}' for i in range(len(functions))]  # string names for the function to iterate through them
             self.function_dict = {self.function_names_str[i]: functions[i] for i in range(len(functions))}  # dictionary to map string names of the function to the torch function
