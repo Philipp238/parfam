@@ -74,14 +74,27 @@ def make_unpickable(model_parameters):
 
 
 # Evaluates the model performance
-def evaluate(model, coefficients, x_train, y_train, x_val, y_val, target_expr=""):
-    relative_l2_distance_train = relative_l2_distance(model, coefficients, x_train, y_train)
-    relative_l2_distance_val = relative_l2_distance(model, coefficients, x_val, y_val)
-    r_squared_val = r_squared(model, coefficients, x_val, y_val)
+def evaluate(model, coefficients, x_train, y_train, x_val, y_val, target_expr="", custom_loss=None):
     if target_expr != "":
         print(f'Target expression: {target_expr}')
-    print(f'Relative l_2-distance train: {relative_l2_distance_train}')
-    print(f'Relative l_2-distance validation: {relative_l2_distance_val}')
+    if custom_loss is None:
+        relative_l2_distance_train = relative_l2_distance(model, coefficients, x_train, y_train)
+        relative_l2_distance_val = relative_l2_distance(model, coefficients, x_val, y_val)
+        r_squared_val = r_squared(model, coefficients, x_val, y_val)
+
+        print(f'Relative l_2-distance train: {relative_l2_distance_train}')
+        print(f'Relative l_2-distance validation: {relative_l2_distance_val}')
+    else:
+        y_pred_train = model.predict(coefficients, x_train)
+        custom_loss_train = custom_loss(y_pred_train, y_train)
+        y_pred_val = model.predict(coefficients, x_val)
+        custom_loss_val = custom_loss(y_pred_val, y_val)
+        
+        print(f'Custom loss train: {custom_loss_train}')
+        print(f'Custom loss val: {custom_loss_val}')
+        
+        relative_l2_distance_train, relative_l2_distance_val, r_squared_val = custom_loss_train, custom_loss_val, custom_loss_val
+        
     return relative_l2_distance_train, relative_l2_distance_val, r_squared_val
 
 
@@ -241,8 +254,8 @@ def hyperparameter_training(x, y, target_expr, training_parameters, model_parame
     t_1 = time()
     print(f'Training time: {t_1 - t_0}')
     relative_l2_distance_train, relative_l2_distance_val, r_squared_val = evaluate(model, coefficients, x_train,
-                                                                                   y_train,
-                                                                                   x_val, y_val, target_expr)
+                                                                                   y_train, x_val, y_val,
+                                                                                   target_expr, custom_loss=custom_loss)
     return relative_l2_distance_train, relative_l2_distance_val, r_squared_val, t_1 - t_0, coefficients, evaluator.evaluations
 
 
@@ -1360,14 +1373,23 @@ def run_jobs_sequentially(x, y, target_expr, model_parameter_list, seed, trainin
         cumulative_n_evaluations += n_evaluations
         cumulative_training_time += t_1 - t_0
 
-        logging.info(f'Relative l2 distance train: {relative_l2_distance_train}')
-        logging.info(f'Relative l2 distance validation: {relative_l2_distance_val}')
+        if custom_loss is None:
+            logging.info(f'Relative l2 distance train: {relative_l2_distance_train}')
+            logging.info(f'Relative l2 distance validation: {relative_l2_distance_val}')
+        else:
+            logging.info(f'Custom loss train: {relative_l2_distance_train}')
+            logging.info(f'Custom loss val: {relative_l2_distance_val}')
+            
         logging.info(f'Training time: {training_time}')
         logging.info(f'Cumulative training time: {cumulative_training_time}')
         logging.info(f'Cumulative number of evaluations: {cumulative_n_evaluations}')
 
         if relative_l2_distance_val < best_relative_l2_distance_val:
-            logging.info(f"New best relative l2 distance validation: {relative_l2_distance_val}")
+            if custom_loss is None:        
+                logging.info(f"New best relative l2 distance validation: {relative_l2_distance_val}")
+            else:
+                logging.info(f"New best custom loss validation: {relative_l2_distance_val}")
+                
             best_relative_l2_distance_train = relative_l2_distance_train
             best_relative_l2_distance_val = relative_l2_distance_val
             best_training_time = training_time
@@ -1426,10 +1448,9 @@ def get_formula(coefficients, model_parameters, n_input, device, decimals):
     model = setup_model(copy.deepcopy(model_parameters), n_input, device)
     return model.get_formula(torch.tensor(coefficients, device=device), decimals=decimals, verbose=False)
 
-def finetune_coeffs(x_train, y_train, coefficients, model, cutoff, lambda_1, max_dataset_length=5000):
+def finetune_coeffs(x_train, y_train, coefficients, model, cutoff, lambda_1, max_dataset_length=5000, custom_loss=None):
     # finetuning the reduced coefficients after the fitting if the user is still unhappy with the complexity of the formula
     
-
     n_active_coefficients = sum(torch.abs(coefficients) > 0)
     mask = torch.abs(coefficients) > cutoff
     coefficients = copy.deepcopy(coefficients)
@@ -1445,7 +1466,7 @@ def finetune_coeffs(x_train, y_train, coefficients, model, cutoff, lambda_1, max
 
         n_params = model.get_number_parameters()
         evaluator = Evaluator(x_train, y_train, lambda_0=0, lambda_1=lambda_1, model=model, mask=mask,
-                                n_params=n_params)
+                                n_params=n_params, custom_loss=custom_loss)
 
         coefficients_ = train_lbfgs(evaluator, n_active_coefficients_new, maxiter=1,
                                     coefficients=coefficients[mask])
@@ -1470,10 +1491,15 @@ def finetune_coeffs(x_train, y_train, coefficients, model, cutoff, lambda_1, max
 
 
 def evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, x_test, y_test, device,
-                                       best_coefficients, retrain, lambda_1, model_str):
+                                       best_coefficients, retrain, lambda_1, model_str, custom_loss=None):
     model = setup_model(copy.deepcopy(best_model_parameters), x_test.shape[1], device, model_str)
     x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, train_size=0.8, test_size=0.2)
-    relative_l2_distance_val = relative_l2_distance(model, best_coefficients, x_val, y_val)
+    if custom_loss is None:
+        relative_l2_distance_val = relative_l2_distance(model, best_coefficients, x_val, y_val)
+    else:
+        y_pred_val = model.predict(best_coefficients, x_val)
+        custom_loss_val = custom_loss(y_pred_val, y_val)                
+        relative_l2_distance_val = custom_loss_val
     n_active_coefficients = sum(torch.abs(best_coefficients) > 0)
     finetune = True
     update = True
@@ -1490,12 +1516,17 @@ def evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, 
                     continue
                 # perform each cutoff + optimization twice, since this often helps to reduce the number
                 # of coefficients further
-                coefficients = finetune_coeffs(x_train, y_train, best_coefficients, model, cutoff=10 ** (-i), lambda_1=lambda_1, max_dataset_length=5000)
+                coefficients = finetune_coeffs(x_train, y_train, best_coefficients, model, cutoff=10 ** (-i), lambda_1=lambda_1, max_dataset_length=5000, 
+                                               custom_loss=custom_loss)
                 if coefficients is None:
                     continue
                 
-                relative_l2_distance_val_new = relative_l2_distance(model, coefficients, x_val, y_val)
-
+                if custom_loss is None:
+                    relative_l2_distance_val_new = relative_l2_distance(model, coefficients, x_val, y_val)
+                else:
+                    y_pred_val = model.predict(best_coefficients, x_val)
+                    custom_loss_val = custom_loss(y_pred_val, y_val)                
+                    relative_l2_distance_val_new = custom_loss_val
                 # Check if the formula found now is worth keeping or not
                 n_active_coefficients_new = sum(torch.abs(coefficients) > 0)
                 better_performance = relative_l2_distance_val_new < relative_l2_distance_val
@@ -1508,9 +1539,20 @@ def evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, 
                     n_active_coefficients = n_active_coefficients_new
 
     best_coefficients = model.get_normalized_coefficients(best_coefficients)
-    relative_l2_distance_test = relative_l2_distance(model, best_coefficients, x_test, y_test)
-    r_squared_test = r_squared(model, best_coefficients, x_test, y_test)
-    r_squared_val = r_squared(model, best_coefficients, x_val, y_val)
+    
+    if custom_loss is None:
+        relative_l2_distance_test = relative_l2_distance(model, best_coefficients, x_test, y_test)
+        r_squared_test = r_squared(model, best_coefficients, x_test, y_test)
+        r_squared_val = r_squared(model, best_coefficients, x_val, y_val)
+    else:
+        y_pred_test = model.predict(best_coefficients, x_test)
+        custom_loss_test = custom_loss(y_pred_test, y_test)
+        
+        y_pred_val = model.predict(best_coefficients, x_val)
+        custom_loss_val = custom_loss(y_pred_val, y_val) 
+
+        relative_l2_distance_test, r_squared_test, r_squared_val = custom_loss_test, custom_loss_val, custom_loss_test
+        
     if model_str == 'ParFamTorch':
         formula = model.get_formula(best_coefficients, decimals=3, verbose=False)
     else:
@@ -1522,7 +1564,7 @@ def evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, 
 
 
 def evaluate_test(best_model_parameters, x_train, y_train, x_test, y_test, device, best_coefficients, cutoff, retrain,
-                  model_str):
+                  model_str, custom_loss=None):
     model = setup_model(copy.deepcopy(best_model_parameters), x_test.shape[1], device, model_str)
     best_coefficients = model.get_normalized_coefficients(best_coefficients)
     x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, train_size=0.8, test_size=0.2)
@@ -1547,10 +1589,15 @@ def evaluate_test(best_model_parameters, x_train, y_train, x_test, y_test, devic
             best_coefficients[mask] = coefficients_
         else:
             logging.info(f'Coefficients_ while finetuning are None. Mask: {mask}')
-
-    relative_l2_distance_test = relative_l2_distance(model, best_coefficients, x_test, y_test)
-    r_squared_test = r_squared(model, best_coefficients, x_test, y_test)
-    r_squared_val = r_squared(model, best_coefficients, x_val, y_val)
+    
+    if custom_loss is None:
+        relative_l2_distance_test = relative_l2_distance(model, best_coefficients, x_test, y_test)
+        r_squared_test = r_squared(model, best_coefficients, x_test, y_test)
+        r_squared_val = r_squared(model, best_coefficients, x_val, y_val)
+    else:
+        y_pred_test = model.predict(best_coefficients, x_test)
+        custom_loss_test = custom_loss(y_pred_test, y_test)
+        relative_l2_distance_test, r_squared_test, r_squared_val = custom_loss_test, custom_loss_test, custom_loss_test
     if model_str == 'ParFamTorch':
         formula = model.get_formula(best_coefficients, decimals=3, verbose=False)
     else:
@@ -1750,7 +1797,7 @@ def model_parameter_search(x, y, target_expr, model_parameters_max, training_par
     # First evaluate without any finetuning
     n_active_coefficients, relative_l2_distance_test, r_squared_test, best_formula, r_squared_val = evaluate_test(
         best_model_parameters, x_train, y_train, x_test, y_test, training_parameters['device'], best_coefficients,
-        0.0, False, training_parameters['model'])
+        0.0, False, training_parameters['model'], custom_loss=custom_loss)
 
     # Now evaluate after cutting off "large" parameters and finetuning
     if training_parameters['iterative_finetuning']:
@@ -1768,11 +1815,13 @@ def model_parameter_search(x, y, target_expr, model_parameters_max, training_par
                                                                                                       'lambda_1_finetuning'],
                                                                                                   model_str=
                                                                                                   training_parameters[
-                                                                                                      'model'])
+                                                                                                      'model'], 
+                                                                                                  custom_loss=custom_loss)
     else:
         n_active_coefficients_reduced, relative_l2_distance_test_reduced, r_squared_test_reduced, best_formula_reduced, \
             r_squared_val_reduced = evaluate_test(best_model_parameters, x_train, y_train, x_test, y_test,
-                                                  training_parameters['device'], best_coefficients, 0.01, True)
+                                                  training_parameters['device'], best_coefficients, 0.01, True,
+                                                  custom_loss=custom_loss)
 
     logging.info(
         f"Best distance (train, val, test): {best_relative_l2_distance_train, best_relative_l2_distance_val, relative_l2_distance_test}")

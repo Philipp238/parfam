@@ -1297,7 +1297,7 @@ class Evaluator:
             self.loss_func_torch()
         else:            
             y_pred = self.model.predict(self.coefficients_current, self.x)
-            loss = self.custom_loss(y_pred)
+            loss = self.custom_loss(y_pred, self.y)
             self.loss_current = loss
         return (self.loss_current).cpu().detach().numpy()
 
@@ -1331,7 +1331,12 @@ class Evaluator:
             def closure():
                 if torch.is_grad_enabled():
                     optimizer.zero_grad()
-                self.loss_func_torch()
+                if self.custom_loss is None:
+                    self.loss_func_torch()
+                else:            
+                    y_pred = self.model.predict(self.coefficients_current, self.x)
+                    loss = self.custom_loss(y_pred, self.y)
+                    self.loss_current = loss
                 loss = self.loss_current
                 if loss.requires_grad:
                     loss.backward()

@@ -1,6 +1,6 @@
 from train import model_parameter_search, extend_function_dict, setup_model, finetune_coeffs
 from utils import relative_l2_distance
-import random
+import sympy
 import torch
 from sklearn.model_selection import train_test_split
 import os
@@ -95,7 +95,8 @@ class ParFamWrapper:
             lambda_1_piecewise=None, lambda_1_cut=None, local_minimizer=None, lambda_1_finetuning=None,
             iterative_finetuning=None, normalization=None, enforce_function_iterate=None, custom_loss=None,
             repetitions=None):
-
+        # custom_loss takes y_pred and y as an input. y can be chosen as any necessary variables.
+        
         training_parameters = dict(self.config['TRAININGPARAMETERS'])
         training_parameters = {key: ast.literal_eval(training_parameters[key]) for key in training_parameters.keys()}
         
@@ -154,15 +155,22 @@ class ParFamWrapper:
         
     def get_formula(self, input_names, decimals=3):
         assert len(input_names) == self.n_input
-        
-        self.model.input_names = input_names
+        self.model.input_names = []
+        for input_name in input_names:
+            if isinstance(input_name, sympy.Symbol): 
+                self.model.input_names.append(input_name)
+            elif isinstance(input_name, str):
+                self.model.input_names.append(sympy.Symbol(input_name))
+            else:
+                raise TypeError(f'Input_names should be a list of string values or sympy.Symbol. Not {type(input_names)}.')
         formula_reduced = self.model.get_formula(self.coefficients_reduced, decimals=decimals, verbose=False)
-        
         return formula_reduced 
         
         
         
     def predict(self, x, reduced=True):
+        if not isinstance(x, torch.Tensor):
+            x = torch.Tensor(x, device=self.device)
         if reduced:
             coefficients = self.coefficients_reduced
         else:
