@@ -16,8 +16,6 @@ class ParFamWrapper:
                  maximal_potence=None, degree_output_denominator_specific=None, enforce_function=None, device='cpu', separate_test_set=True):
         
         self.input_names = input_names
-
-        
         
         root_path = os.path.dirname(os.path.abspath(__file__))  # Get root_path (.../parfam)
         config_path = os.path.join(root_path, 'config_files', 'wrapper', config_name + '.ini')
@@ -74,7 +72,7 @@ class ParFamWrapper:
             model_parameters_fix['enforce_function'] = str(enforce_function)
 
         # These have to be adapted to fit the number of functions, in case specific functions are picked
-        if functions:
+        if functions is not None:
             if not degree_output_denominator_specific:
                 degree_output_denominator_specific = [1 for _ in range(len(functions))]
                 
@@ -90,7 +88,7 @@ class ParFamWrapper:
         
         self.device = device
         self.model_parameters = model_parameters
-        self.config['MODELPARAMTERSFIX'] = model_parameters_fix
+        self.config['MODELPARAMETERSFIX'] = model_parameters_fix
             
     def fit(self, x, y, time_limit=None, evaluations_limit=None, max_n_active_parameters=None, seed=None, 
             maxiter1=None, optimizer=None, maxiter_per_dim_local_minimizer=None, lambda_1=None,
@@ -250,8 +248,10 @@ if __name__ == '__main__':
         function_name_dict = {'sqrt': lambda x: sympy.sqrt(sympy.Abs(x)), 'exp': sympy.exp, 'cos': sympy.cos, 'sin': sympy.sin,
                             'log': lambda x: sympy.log(sympy.Abs(x) + 0.000001)}
         
-        functions = [function_dict['sqrt']]
-        function_names = [function_name_dict['sqrt']]
+        # functions = [function_dict['sqrt']]
+        # function_names = [function_name_dict['sqrt']]
+        functions = []
+        function_names = []
         parfam = ParFamWrapper(iterate=True, # iterate through multiple different parametric families (costs more time, but is the better choice when one is not sure about the degrees and the functions of the target formula)
                                 functions=functions, function_names=function_names, # which functions to use 
                                 degree_input_numerator=2, degree_output_numerator=3, degree_input_denominator=0, degree_output_denominator=0,  # the maximal degrees of the polynomials in the parametric family
