@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 import os
 import configparser 
 import ast
+import numpy as np
 
 class ParFamWrapper:
         
@@ -105,6 +106,10 @@ class ParFamWrapper:
         training_parameters['classifier'] = None
         
         assert x.shape[0] == len(y)
+        if isinstance(x, np.ndarray):
+            x = torch.tensor(x)
+            y = torch.tensor(y)
+        
         self.n_input = x.shape[1]
         
         if seed is not None:
@@ -120,7 +125,7 @@ class ParFamWrapper:
         if optimizer is not None:
             training_parameters['optimizer'] = optimizer
         if maxiter_per_dim_local_minimizer is not None:
-            self.config['TRAININGPARAMETERS']['maxiter_per_dim_local_minimizer'] = maxiter_per_dim_local_minimizer
+            training_parameters['maxiter_per_dim_local_minimizer'] = maxiter_per_dim_local_minimizer
         if lambda_1 is not None:
             training_parameters['lambda_1'] = lambda_1
         if lambda_1_piecewise is not None:
@@ -166,8 +171,6 @@ class ParFamWrapper:
         formula_reduced = self.model.get_formula(self.coefficients_reduced, decimals=decimals, verbose=False)
         return formula_reduced 
         
-        
-        
     def predict(self, x, reduced=True):
         if not isinstance(x, torch.Tensor):
             x = torch.Tensor(x, device=self.device)
@@ -199,6 +202,34 @@ if __name__ == '__main__':
     import numpy as np
     import matplotlib.pyplot as plt
     device = 'cpu'
+    
+    functions = []
+    function_names = []
+
+    n_data_points = 500 
+
+    x = np.linspace(0, 5, n_data_points).reshape(n_data_points,1)
+    y = ((x**2 + x)**(1/2)).flatten()
+
+    def custom_loss(y_pred, y, theta):
+        if theta is None:
+            reg = 0
+        else: 
+            reg = torch.norm(theta, p=1)
+        return torch.norm(y_pred - y**2, p=2) / torch.norm(y, p=2) + 0.001 * reg
+
+    parfam = ParFamWrapper(config_name='small', iterate=False, degree_input_denominator=0, degree_output_denominator=0, function_names=function_names, functions=functions, 
+                            degree_output_numerator=4, maximal_potence=4)
+    parfam.fit(x=x, y=y, custom_loss=custom_loss)
+
+    y_pred = parfam.predict(x)
+
+    plt.plot(x, y**2, '+', label='Samples squared')
+    plt.plot(x, y_pred, label='Prediction')
+    plt.legend()
+    plt.savefig('plot.svg')
+    
+    raise NotImplementedError
     
     feynman = True
     if not feynman:

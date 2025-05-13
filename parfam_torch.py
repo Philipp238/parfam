@@ -10,6 +10,8 @@ import copy
 import time
 import multiprocessing
 import torch.nn.functional as F
+from inspect import currentframe, getframeinfo
+
 # from torchmetrics import R2Score
 
 
@@ -23,6 +25,9 @@ import torch.nn.functional as F
 #
 # print(f'Using {device} (file: {__file__}))')
 
+def get_frameinfo():
+    cf = currentframe()
+    return f'File: {cf.f_back.filename}, Line: {cf.f_back.f_lineno}'
 
 # Convert torch or numpy arrays/tensors to module arrays/tensors
 def convert_to_module(x, module, device):
@@ -515,7 +520,7 @@ class ParFamTorch:
                 if self.degree_input_denominator > 0:hidden_layer[:, feature_number + i, torch.norm(current_coefficients, dim=0) == 0] = 10**12 
                     
             except Exception as e:
-                print(f'Caught exception {e} while running predict_batch_x_params')
+                print(f'Caught exception ({get_frameinfo()}) {e} while running predict_batch_x_params')
 
         if self.degree_output_denominator > 0:
             current_coefficients = coefficients[
@@ -987,8 +992,6 @@ class ParFamTorch:
                 input_coefficients[active_input_partition * self.n_coefficients_first_layer + chosen_coeff] = 1
         return np.concatenate([input_coefficients, output_coefficients])
 
-
-
     def get_random_coefficients_old(self, n_functions_max=3):
         """
         Get random coefficients, which relate to meaningful functions.
@@ -1052,8 +1055,7 @@ class ParFamTorch:
                                                                            monomial_features_dict=monomial_features_dict,
                                                                            n_input=n_input, device=device)
         if batch_size == 1:
-            if monomial_features.shape[1] != len(coefficients):
-                print('Stop')
+            assert monomial_features.shape[1] == len(coefficients), f'Dimension mixmatch: monomial_features.shape[1]={monomial_features.shape[1]} and len(coefficients)={len(coefficients)}'
             return torch.matmul(monomial_features, coefficients)  # No batches, simple matrix-vector product
         else:
             # Batches, so we use the matrix-vector product over the left-most indices
@@ -1297,7 +1299,7 @@ class Evaluator:
             self.loss_func_torch()
         else:            
             y_pred = self.model.predict(self.coefficients_current, self.x)
-            loss = self.custom_loss(y_pred, self.y)
+            loss = self.custom_loss(y_pred, self.y, self.coefficients_current)
             self.loss_current = loss
         return (self.loss_current).cpu().detach().numpy()
 
@@ -1334,8 +1336,13 @@ class Evaluator:
                 if self.custom_loss is None:
                     self.loss_func_torch()
                 else:            
-                    y_pred = self.model.predict(self.coefficients_current, self.x)
-                    loss = self.custom_loss(y_pred, self.y)
+                    if self.mask is None:
+                        y_pred = self.model.predict(self.coefficients_current, self.x)
+                    else:
+                        coefficients_extended = torch.zeros(self.n_params, device=self.device, dtype=torch.double)
+                        coefficients_extended[self.mask] = self.coefficients_current
+                        y_pred = self.model.predict(coefficients_extended, self.x)
+                    loss = self.custom_loss(y_pred, self.y, self.coefficients_current)
                     self.loss_current = loss
                 loss = self.loss_current
                 if loss.requires_grad:
@@ -1344,7 +1351,7 @@ class Evaluator:
             try:
                 optimizer.step(closure)
             except Exception as e:
-                print(f'Caught exception: {e}')
+                print(f'Caught exception {get_frameinfo()}: {e}')
                 break
 
         # ret = basinhopping(evaluator.gradient, niter=50, x0=x0, minimizer_kwargs={'jac': True})

@@ -86,9 +86,9 @@ def evaluate(model, coefficients, x_train, y_train, x_val, y_val, target_expr=""
         print(f'Relative l_2-distance validation: {relative_l2_distance_val}')
     else:
         y_pred_train = model.predict(coefficients, x_train)
-        custom_loss_train = custom_loss(y_pred_train, y_train)
+        custom_loss_train = custom_loss(y_pred_train, y_train, None)
         y_pred_val = model.predict(coefficients, x_val)
-        custom_loss_val = custom_loss(y_pred_val, y_val)
+        custom_loss_val = custom_loss(y_pred_val, y_val, None)
         
         print(f'Custom loss train: {custom_loss_train}')
         print(f'Custom loss val: {custom_loss_val}')
@@ -1457,6 +1457,10 @@ def finetune_coeffs(x_train, y_train, coefficients, model, cutoff, lambda_1, max
     coefficients[~ mask] = 0
     n_active_coefficients_new = sum(mask)
     if (n_active_coefficients_new > 0) and (n_active_coefficients_new < n_active_coefficients):
+        # Run this routine only in the case that
+        # 1. The number of active coefficients would be still greater than 0
+        # 2. Sum new parameters would have been set to 0
+        # Otherwise, this routine is not helpful.
         if len(y_train) > max_dataset_length:
             subset = np.random.choice(len(y_train), max_dataset_length, replace=False)
         else:
@@ -1498,7 +1502,7 @@ def evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, 
         relative_l2_distance_val = relative_l2_distance(model, best_coefficients, x_val, y_val)
     else:
         y_pred_val = model.predict(best_coefficients, x_val)
-        custom_loss_val = custom_loss(y_pred_val, y_val)                
+        custom_loss_val = custom_loss(y_pred_val, y_val, None)                
         relative_l2_distance_val = custom_loss_val
     n_active_coefficients = sum(torch.abs(best_coefficients) > 0)
     finetune = True
@@ -1525,7 +1529,7 @@ def evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, 
                     relative_l2_distance_val_new = relative_l2_distance(model, coefficients, x_val, y_val)
                 else:
                     y_pred_val = model.predict(best_coefficients, x_val)
-                    custom_loss_val = custom_loss(y_pred_val, y_val)                
+                    custom_loss_val = custom_loss(y_pred_val, y_val, None)                
                     relative_l2_distance_val_new = custom_loss_val
                 # Check if the formula found now is worth keeping or not
                 n_active_coefficients_new = sum(torch.abs(coefficients) > 0)
@@ -1546,10 +1550,10 @@ def evaluate_test_iterative_finetuning(best_model_parameters, x_train, y_train, 
         r_squared_val = r_squared(model, best_coefficients, x_val, y_val)
     else:
         y_pred_test = model.predict(best_coefficients, x_test)
-        custom_loss_test = custom_loss(y_pred_test, y_test)
+        custom_loss_test = custom_loss(y_pred_test, y_test, None)
         
         y_pred_val = model.predict(best_coefficients, x_val)
-        custom_loss_val = custom_loss(y_pred_val, y_val) 
+        custom_loss_val = custom_loss(y_pred_val, y_val, None) 
 
         relative_l2_distance_test, r_squared_test, r_squared_val = custom_loss_test, custom_loss_val, custom_loss_test
         
@@ -1596,7 +1600,7 @@ def evaluate_test(best_model_parameters, x_train, y_train, x_test, y_test, devic
         r_squared_val = r_squared(model, best_coefficients, x_val, y_val)
     else:
         y_pred_test = model.predict(best_coefficients, x_test)
-        custom_loss_test = custom_loss(y_pred_test, y_test)
+        custom_loss_test = custom_loss(y_pred_test, y_test, None)
         relative_l2_distance_test, r_squared_test, r_squared_val = custom_loss_test, custom_loss_test, custom_loss_test
     if model_str == 'ParFamTorch':
         formula = model.get_formula(best_coefficients, decimals=3, verbose=False)
