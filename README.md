@@ -3,13 +3,20 @@
 This repository contains the code accompanying the paper "ParFam - (Neural Guided) Symbolic Regression using Global Continuous
 Optimization" by Philipp Scholl, Katharina Bieker, Hillary Hauger, and Gitta Kutyniok, accepted at ICLR 2025 [1]. It proposes a new symbolic regression method leveraging the structure of common physical laws.
 
-The code is implemented in Python 3 and requires the packages specified in ``requirements.txt``.
+## Implementation
+
+As dependencies, the repository needs the packages specified in ``requirements.txt``. To install the repository as a package you can either use the wheel provided in ``dist/`` or run the command
+
+````
+pip install parfam
+````
 
 ## Usage
 
-For applications, it is usually enough to use the wrapper `ParFamWrapper` in `parfamwrapper.py` by simply calling
+For applications, it is usually enough to use the wrapper `ParFamWrapper` in `parfamwrapper.py` by simply calling (if the package is installed)
 
 ````
+from parfam import ParFamWrapper
 parfam = ParFamWrapper(iterate=True, functions=functions, function_names=function_names)
 parfam.fit(x, y, time_limit=100)
 ````
