@@ -1,3 +1,5 @@
+
+
 import logging
 import argparse
 import pathlib
@@ -5,16 +7,12 @@ import configparser
 import sys
 import ast
 import shutil
-
-from utils import *
-from train import model_parameter_search, function_dict, function_name_dict
 from pmlb import fetch_data
 import datetime
 
-import ngyuen
-
-
-# import tracemalloc
+from .utils import *
+from .train import model_parameter_search, function_dict, function_name_dict
+from . import ngyuen
 
 def init():
     sys.path.append(os.path.dirname(os.getcwd()))
@@ -26,7 +24,7 @@ def init():
 
     cwd = os.getcwd()  # Get current working directory
     config_name = args.config
-    config_path = os.path.join(cwd, 'config_files', config_name)
+    config_path = os.path.join(cwd, 'src', 'parfam', 'config_files', config_name)
     # Get configuration for *.ini file
     config = configparser.ConfigParser()  # Create a ConfigParser object
     config.read(config_path)  # Read the configuration file

@@ -1222,16 +1222,21 @@ class Evaluator:
     #    self.best_coefficients = convert_to_module(self.best_coefficients, module, device=self.device)
     #    self.best_losses = convert_to_module(self.best_losses, module, device=self.device)
 
-    def loss_func_torch(self):
-        # convert array to tensors?
-        # self.convert_evaluator_variables_to_module(torch)
-        self.evaluations += 1
+    def predict(self):
         if self.mask is None:
             y_pred = self.model.predict(self.coefficients_current, self.x)
         else:
             coefficients_extended = torch.zeros(self.n_params, device=self.device, dtype=torch.double)
             coefficients_extended[self.mask] = self.coefficients_current
             y_pred = self.model.predict(coefficients_extended, self.x)
+        return y_pred
+    
+    def loss_func_torch(self):
+        # convert array to tensors?
+        # self.convert_evaluator_variables_to_module(torch)
+        self.evaluations += 1
+        y_pred = self.predict()
+        
         if y_pred.shape != self.y.shape:
             print(f'Careful, there is a shape mismatch in the loss function: '
                   f'y_pred.shape {y_pred.shape} != y.shape {self.y.shape}')
@@ -1298,7 +1303,7 @@ class Evaluator:
         if self.custom_loss is None:
             self.loss_func_torch()
         else:            
-            y_pred = self.model.predict(self.coefficients_current, self.x)
+            y_pred = self.predict()
             loss = self.custom_loss(y_pred, self.y, self.coefficients_current)
             self.loss_current = loss
         return (self.loss_current).cpu().detach().numpy()
@@ -1336,12 +1341,7 @@ class Evaluator:
                 if self.custom_loss is None:
                     self.loss_func_torch()
                 else:            
-                    if self.mask is None:
-                        y_pred = self.model.predict(self.coefficients_current, self.x)
-                    else:
-                        coefficients_extended = torch.zeros(self.n_params, device=self.device, dtype=torch.double)
-                        coefficients_extended[self.mask] = self.coefficients_current
-                        y_pred = self.model.predict(coefficients_extended, self.x)
+                    y_pred = self.predict()
                     loss = self.custom_loss(y_pred, self.y, self.coefficients_current)
                     self.loss_current = loss
                 loss = self.loss_current

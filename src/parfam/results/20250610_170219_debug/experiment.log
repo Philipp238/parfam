@@ -1,0 +1,83 @@
+INFO:root:Starting the logger.
+INFO:root:##########1 out of 1 datasets: feynman_III_10_19##########
+INFO:root:Time: 20250610_170219
+INFO:root:Feature shape: (100000, 4), target shape: (100000,)
+INFO:root:###1 out of 1 Hyperparameter combinations ###
+INFO:root:Training parameters: {'validation': True, 'normalization': False, 'time_limit': 480, 'evaluations_limit': 1000000, 'max_dataset_length': 500, 'model': 'ParFamTorch', 'target_noise': 0.0, 'feature_noise': 0.0, 'seed': 1234, 'bayesian_hp_optimization': False, 'bayesian_opt_n_calls': 500, 'maxiter1': 100, 'maxiter2': 0, 'optimizer': 'basinhopping', 'pruning_iterations': 1, 'pruning_cut_off': 0.01, 'classifier': None, 'local_minimizer': 'BFGS', 'maxiter_per_dim_local_minimizer': 100, 'lambda_1': 0.001, 'repetitions': 1, 'parallel': False, 'n_processes': 4, 'lambda_1_cut': 0, 'lambda_1_piecewise': 0.0, 'device': 'cpu', 'accuracy': 0.0001, 'iterative_finetuning': True, 'max_n_active_parameters': 10, 'lambda_1_finetuning': 1e-05, 'path_pretrained': 'Flexible dimension/full_19_big_training_sets/20240427_070711_5M/Datetime_20240427_070717_Loss_training_set_size_797545_batch_size_341_hidden_dim_256.pt', 'topk_predictions': 3, 'enforce_function_iterate': 'Both', 'procs': 6, 'populations': 6, 'population_size': 50, 'ncycles_per_iteration': 500, 'max_size': 50, 'max_depth': 10, 'accuracy_udsr': 1e-06, 'iterations_udsr': 10000000, 'generations_udsr': 20, 'population_size_udsr': 100, 'aif_nn_epochs': 400, 'bf_try_time': 30, 'bf_ops_file_type': '19ops', 'polyfit_deg': 4, 'max_input_points': 200, 'max_number_bags': 100, 'n_trees_to_refine': 10, 'steps_kan': 30, 'normalization_kan': False, 'max_width_length_kan': 1, 'max_depth_kan': 0}
+INFO:root:Sequential computation
+INFO:root:Model parameters: {'degree_input_polynomials': 0, 'degree_output_polynomials': 3, 'degree_output_denominator': 0, 'degree_input_denominator': 0, 'function_names': [], 'width': 1, 'functions': [], 'degree_output_polynomials_specific': None, 'degree_output_polynomials_denominator_specific': None, 'enforce_function': False, 'maximal_potence': 3}
+INFO:root:Number parameters: 35
+INFO:root:Number parameters active: 35
+INFO:root:Number of evaluations: 1942
+INFO:root:Relative l2 distance train: 0.006554063873208448
+INFO:root:Relative l2 distance validation: 0.007209196251023319
+INFO:root:Training time: 1.8007569313049316
+INFO:root:Cumulative training time: 1.8655612468719482
+INFO:root:Cumulative number of evaluations: 1942
+INFO:root:New best relative l2 distance validation: 0.007209196251023319
+INFO:root:Model parameters: {'degree_input_polynomials': 1, 'degree_output_polynomials': 1, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': False, 'maximal_potence': 3}
+INFO:root:Number parameters: 11
+INFO:root:Number parameters active: 11
+INFO:root:Number of evaluations: 1059
+INFO:root:Relative l2 distance train: 0.18895908115721033
+INFO:root:Relative l2 distance validation: 0.18702423016505051
+INFO:root:Training time: 0.7766475677490234
+INFO:root:Cumulative training time: 2.697660446166992
+INFO:root:Cumulative number of evaluations: 3001
+INFO:root:Model parameters: {'degree_input_polynomials': 1, 'degree_output_polynomials': 1, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': True, 'maximal_potence': 3}
+INFO:root:Number parameters: 6
+INFO:root:Number parameters active: 6
+INFO:root:Number of evaluations: 645
+INFO:root:Relative l2 distance train: 0.3612001762148827
+INFO:root:Relative l2 distance validation: 0.36589938326671667
+INFO:root:Training time: 0.29395341873168945
+INFO:root:Cumulative training time: 3.045811176300049
+INFO:root:Cumulative number of evaluations: 3646
+INFO:root:Model parameters: {'degree_input_polynomials': 2, 'degree_output_polynomials': 1, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': False, 'maximal_potence': 3}
+INFO:root:Number parameters: 21
+INFO:root:Number parameters active: 21
+INFO:root:Number of evaluations: 2283
+INFO:root:Relative l2 distance train: 0.05390622106497571
+INFO:root:Relative l2 distance validation: 0.061016223466752985
+INFO:root:Training time: 1.2622942924499512
+INFO:root:Cumulative training time: 4.365049600601196
+INFO:root:Cumulative number of evaluations: 5929
+INFO:root:Model parameters: {'degree_input_polynomials': 2, 'degree_output_polynomials': 1, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': True, 'maximal_potence': 3}
+INFO:root:Number parameters: 16
+INFO:root:Number parameters active: 16
+INFO:root:Number of evaluations: 1812
+INFO:root:Relative l2 distance train: 0.9457149541751547
+INFO:root:Relative l2 distance validation: 0.9683913416823106
+INFO:root:Training time: 0.8827700614929199
+INFO:root:Cumulative training time: 5.303292989730835
+INFO:root:Cumulative number of evaluations: 7741
+INFO:root:Model parameters: {'degree_input_polynomials': 1, 'degree_output_polynomials': 2, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': False, 'maximal_potence': 3}
+INFO:root:Number parameters: 25
+INFO:root:Number parameters active: 25
+INFO:root:Number of evaluations: 1344
+INFO:root:Relative l2 distance train: 0.03060314281753419
+INFO:root:Relative l2 distance validation: 0.03461347714429123
+INFO:root:Training time: 1.429286241531372
+INFO:root:Cumulative training time: 6.789049863815308
+INFO:root:Cumulative number of evaluations: 9085
+INFO:root:Model parameters: {'degree_input_polynomials': 1, 'degree_output_polynomials': 2, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': True, 'maximal_potence': 3}
+INFO:root:Number parameters: 10
+INFO:root:Number parameters active: 10
+INFO:root:Number of evaluations: 1204
+INFO:root:Relative l2 distance train: 0.08490244147970381
+INFO:root:Relative l2 distance validation: 0.08589200564983979
+INFO:root:Training time: 0.896190881729126
+INFO:root:Cumulative training time: 7.739120721817017
+INFO:root:Cumulative number of evaluations: 10289
+INFO:root:Model parameters: {'degree_input_polynomials': 2, 'degree_output_polynomials': 2, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': False, 'maximal_potence': 3}
+INFO:root:Number parameters: 35
+INFO:root:Number parameters active: 35
+INFO:root:Number of evaluations: 2780
+INFO:root:Relative l2 distance train: 0.02065005235712065
+INFO:root:Relative l2 distance validation: 0.023528514968387655
+INFO:root:Training time: 2.992709159851074
+INFO:root:Cumulative training time: 10.78880500793457
+INFO:root:Cumulative number of evaluations: 13069
+INFO:root:Model parameters: {'degree_input_polynomials': 2, 'degree_output_polynomials': 2, 'functions': ['sqrt'], 'function_names': ['sqrt'], 'width': 1, 'degree_input_denominator': 0, 'degree_output_denominator': 0, 'degree_output_polynomials_specific': [1], 'degree_output_polynomials_denominator_specific': [1], 'enforce_function': True, 'maximal_potence': 3}
+INFO:root:Number parameters: 20
+INFO:root:Number parameters active: 20

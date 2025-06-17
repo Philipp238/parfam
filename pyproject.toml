@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parfam"
+version = "0.0.2"
+authors = [
+  { name="Philipp Scholl", email="philipp.scholl96@web.de" },
+]
+description = "The ParFam algorithm for symbolic regression"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+GitHub = "https://github.com/Philipp238/parfam"
+Issues = "https://github.com/Philipp238/parfam/issues"
+Paper = "https://openreview.net/pdf?id=8y5Uf6oEiB"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+parfam = ["datasets", "datasets_feynmann", "config_files/wrapper/*"]

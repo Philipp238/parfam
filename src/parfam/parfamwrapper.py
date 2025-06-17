@@ -1,5 +1,6 @@
-from train import model_parameter_search, extend_function_dict, setup_model, finetune_coeffs
-from utils import relative_l2_distance
+from .train import model_parameter_search, extend_function_dict, setup_model, finetune_coeffs
+from .utils import relative_l2_distance
+
 import sympy
 import torch
 from sklearn.model_selection import train_test_split
@@ -172,6 +173,8 @@ class ParFamWrapper:
         return formula_reduced 
         
     def predict(self, x, reduced=True):
+        assert x.shape[-1] == self.n_input
+        
         if not isinstance(x, torch.Tensor):
             x = torch.Tensor(x, device=self.device)
         if reduced:

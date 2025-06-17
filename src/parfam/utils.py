@@ -12,7 +12,7 @@ import sympy
 import torch
 from torch import nn
 import torch.nn.functional as F
-from parfam_torch import ParFamTorch
+from .parfam_torch import ParFamTorch
 import math
 import logging
 
@@ -27,6 +27,9 @@ def using(point=""):
 
 # Gets real formula of regression problem: only works for feynman so far
 # feynman_formulas = pd.read_csv(os.path.join(os.path.dirname(__file__), "feynman_formulas"), names=['Index', 'Name', 'Formula'])
+
+print(f'Utils file: {__file__}')
+
 feynman_formulas = pd.read_csv(os.path.join(os.path.dirname(__file__), "datasets"), names=['Index', 'Name', 'Formula'])
 
 def sqrt(x):
