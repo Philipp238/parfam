@@ -89,7 +89,7 @@ To run the experiments from Section 3 on the SRBench ground-truth problems [2] y
 and Strogatz data sets by downloading https://github.com/EpistasisLab/pmlb. After completing this run
 
 ````
-python -m src.parfam.benchmark.py -c feynman.ini
+python -m src.parfam.benchmark -c feynman.ini
 ````
 in the first level of the repository.
 
@@ -120,7 +120,7 @@ in the config file and set the variable *path_srsd* to the path to the SRSD data
 
 To train your own pre-trained network for DL-ParFam, you have to run
 ````
-python -m src.parfam.trainingOnSyntheticData.train.py -c train_model_parameters.ini
+python -m src.parfam.trainingOnSyntheticData.train -c train_model_parameters.ini
 ````
 which will save the trained model in a subdirectory of src/parfam/trainingOnSyntheticData/results/.
 
