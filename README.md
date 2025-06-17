@@ -3,13 +3,20 @@
 This repository contains the code accompanying the paper "ParFam - (Neural Guided) Symbolic Regression using Global Continuous
 Optimization" by Philipp Scholl, Katharina Bieker, Hillary Hauger, and Gitta Kutyniok, accepted at ICLR 2025 [1]. It proposes a new symbolic regression method leveraging the structure of common physical laws.
 
-The code is implemented in Python 3 and requires the packages specified in ``requirements.txt``.
+## Implementation
+
+As dependencies, the repository needs the packages specified in ``requirements.txt``. To install the repository as a package you can either use the wheel provided in ``dist/`` or run the command
+
+````
+pip install parfam
+````
 
 ## Usage
 
-For applications, it is usually enough to use the wrapper `ParFamWrapper` in `parfamwrapper.py` by simply calling
+For applications, it is usually enough to use the wrapper `ParFamWrapper` in `parfamwrapper.py` by simply calling (if the package is installed)
 
 ````
+from parfam import ParFamWrapper
 parfam = ParFamWrapper(iterate=True, functions=functions, function_names=function_names)
 parfam.fit(x, y, time_limit=100)
 ````
@@ -79,11 +86,12 @@ To analyze the results shown in [2] and redo the plots, run the cells in `result
 ## Reproduce experiments
 
 To run the experiments from Section 3 on the SRBench ground-truth problems [2] you first have to download the Feynman 
-and Strogatz data sets by downloading https://github.com/EpistasisLab/pmlb. After completing this use the command
+and Strogatz data sets by downloading https://github.com/EpistasisLab/pmlb. After completing this run
 
 ````
-python benchmark.py -c feynman.ini
+python -m src.parfam.benchmark.py -c feynman.ini
 ````
+in the first level of the repository.
 
 The config file `feynman.ini` has to be stored in the folder `config_files` and contains parameters about 
 
@@ -112,9 +120,9 @@ in the config file and set the variable *path_srsd* to the path to the SRSD data
 
 To train your own pre-trained network for DL-ParFam, you have to run
 ````
-python trainingOnSyntheticData/train.py -c train_model_parameters.ini
+python -m src.parfam.trainingOnSyntheticData.train.py -c train_model_parameters.ini
 ````
-which will save the trained model in a subdirectory of trainingOnSyntheticData/results/.
+which will save the trained model in a subdirectory of src/parfam/trainingOnSyntheticData/results/.
 
 
 The notebook `expressivity.ipynb` contains our calculation in Section 2.2.
