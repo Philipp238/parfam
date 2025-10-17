@@ -1,7 +1,7 @@
 ## Prerequisites
 
-This repository contains the code accompanying the paper "ParFam - (Neural Guided) Symbolic Regression using Global Continuous
-Optimization" by Philipp Scholl, Katharina Bieker, Hillary Hauger, and Gitta Kutyniok, accepted at ICLR 2025 [1]. It proposes a new symbolic regression method leveraging the structure of common physical laws.
+This repository contains the code accompanying the paper [ParFam - (Neural Guided) Symbolic Regression using Global Continuous
+Optimization](https://openreview.net/pdf?id=8y5Uf6oEiB) from ICLR 2025 [1]. It proposes a new symbolic regression method leveraging the structure of common physical laws.
 
 ## Implementation
 
